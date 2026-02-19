@@ -3,14 +3,21 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  css: [
+    '~/app/assets/styles/fonts.css',
+    '~/app/assets/styles/null.css'
+  ],
+
   alias: {
     '@': '.',
     '~': '.',
-    '@components': './components',
-    '@composables': './composables',
-    '@layouts': './layouts',
-    '@pages': './pages',
-    '@assets': './assets',
-    '@types': './types',
+    '@components': './app/components',
+    '@composables': './app/composables',
+    '@layouts': './app/layouts',
+    '@pages': './app/pages',
+    '@assets': './app/assets',
+    '@styles': './app/assets/styles',
+    '@fonts': './app/assets/fonts',
+    '@images': './app/assets/images',
   }
 })
