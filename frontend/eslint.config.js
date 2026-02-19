@@ -1,7 +1,7 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
- type: 'app',
+  type: 'app',
   typescript: true,
   vue: {
     overrides: {
