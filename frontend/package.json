@@ -8,9 +8,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "nuxt prepare && simple-git-hooks",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "nuxt": "^4.3.1",
@@ -22,6 +24,21 @@
     "@antfu/eslint-config": "^7.4.3",
     "@types/node": "^25.3.0",
     "eslint": "^9.39.2",
+    "lint-staged": "^15.2.11",
+    "prettier": "^3.8.1",
+    "simple-git-hooks": "^2.12.1",
     "typescript": "^5.9.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md,yml,yaml,css,scss}": [
+      "prettier --write"
+    ]
   }
 }
