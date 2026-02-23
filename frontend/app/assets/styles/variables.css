@@ -1,9 +1,12 @@
 :root {
   --Text-Default: #202223;
-  --Text-On-Interactive: #fff;
   --Text-Subdued: #6D7175;
   --Text-Highlight: #347C84;
+  --Text-Success:#008060;
+  --Text-On-Interactive: #fff;
+  --Text-Interactive-Default:#2C6ECB;
   --Icon-Highlight: #00A0AC;
   --Action-Secondary-Hovered: #F6F6F7;
+  --Border-Highlight-Default:#449DA7;
   --Border-Default:#8C9196;
 }
