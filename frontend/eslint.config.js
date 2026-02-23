@@ -18,7 +18,6 @@ export default antfu({
       'vue/html-self-closing': 'off',
       'vue/html-indent': ['error', 2],
       'vue/no-v-text-v-html-on-component': 'off',
-      'operator-linebreak': 'warn',
     },
   },
   stylistic: {
@@ -34,6 +33,7 @@ export default antfu({
       'style/quotes': ['error', 'single'],
       'style/comma-spacing': 'off',
       'style/func-call-spacing': 'off',
+      'style/operator-linebreak': ['error', 'before', { overrides: { '=': 'after' } }],
       'prefer-const': [
         'error',
         {
@@ -53,6 +53,5 @@ export default antfu({
     '**/coverage',
     '**/.histoire',
     '**/public',
-    
   ],
 })

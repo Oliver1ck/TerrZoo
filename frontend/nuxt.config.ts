@@ -5,7 +5,8 @@ export default defineNuxtConfig({
 
   css: [
     '~/app/assets/styles/fonts.css',
-    '~/app/assets/styles/null.css'
+    '~/app/assets/styles/null.css',
+    '~/app/assets/styles/variables.css',
   ],
 
   alias: {
