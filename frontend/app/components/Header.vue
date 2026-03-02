@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from '@components/Button.vue'
-import Link from '@components/Link.vue'
 import Search from '@components/Search.vue'
+import VLink from '@components/VLink.vue'
 import { useMediaQuery } from '@vueuse/core'
 import Address from './Address.vue'
 import Clock from './Clock.vue'
@@ -31,14 +31,14 @@ const { toggleBurger, activeModal } = useModal()
             <Search v-if="isDesktop" />
             <Nav v-if="isDesktop" />
             <Button v-else variant="search" @click="toggleBurger" />
-            <Link to="/basket" variant="basket">
+            <VLink to="/basket" variant="basket">
               <template #icon>
                 <img src="@assets/img/icons/basket.svg" alt="basket icon" />
               </template>
               <template #default>
                 0
               </template>
-            </Link>
+            </VLink>
             <Button v-if="!isDesktop" variant="burger" :state="activeModal === 'burger'" @click="toggleBurger" />
           </div>
         </div>
@@ -79,6 +79,9 @@ const { toggleBurger, activeModal } = useModal()
 }
 
 @media (max-width: 991px) {
+  .header__bottom-wrapper {
+    gap: 1rem;
+  }
   .header__bottom {
     background: var(--Header-Mob-Bg);
   }

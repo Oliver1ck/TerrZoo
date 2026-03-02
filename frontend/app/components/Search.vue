@@ -2,7 +2,7 @@
 import type { Product } from '../data/searchData'
 import { useMediaQuery, watchDebounced } from '@vueuse/core'
 import { searchList } from '../data/searchData'
-import Link from './Link.vue'
+import Link from './VLink.vue'
 
 const newSearchList = ref<Product[]>([])
 const searchModel = defineModel<string>('searchModel')
@@ -32,11 +32,11 @@ function handleFocusIn() {
     searchListVisible.value = true
   }
 }
-const isDesktop = useMediaQuery('(min-width: 992px)')
+// const isDesktop = useMediaQuery('(min-width: 992px)')
 </script>
 
 <template>
-  <form v-if="isDesktop" class="search">
+  <form class="search">
     <div class="search--wrapper">
       <img src="@assets/img/icons/searchIcon.svg" alt="search icon" />
       <input
@@ -113,6 +113,12 @@ const isDesktop = useMediaQuery('(min-width: 992px)')
   &--visible {
     opacity: 1;
     pointer-events: auto;
+  }
+}
+
+@media(max-width: 991px) {
+  .search {
+    flex: 1 1 auto;
   }
 }
 </style>

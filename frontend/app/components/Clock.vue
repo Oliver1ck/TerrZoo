@@ -30,4 +30,10 @@ import Typography from '@components/Typography.vue'
     display: none;
   }
 }
+
+@media(max-width:992px) {
+  .clock {
+    width: 100%;
+  }
+}
 </style>

@@ -7,8 +7,13 @@ type Variant =
   | 'phone'
   | 'basket'
   | 'searchItem'
+  | 'basket-outline'
 type Size = 'sm' | 'md' | 'lg'
 type LinkIconPos = 'left' | 'right'
+
+defineOptions({
+  name: 'VLink',
+})
 
 const props = withDefaults(
   defineProps<{
@@ -16,11 +21,13 @@ const props = withDefaults(
     variant?: Variant
     size?: Size
     iconPosition?: LinkIconPos
+    contentPosition?: 'left' | 'center' | 'right'
   }>(),
   {
     variant: 'primary',
     size: 'md',
     iconPosition: 'left',
+    contentPosition: 'left',
   }
 )
 
@@ -29,7 +36,9 @@ const classes = computed(() => [
   `link--${props.variant}`,
   `link--${props.size}`,
   `link--icon-${props.iconPosition}`,
+  `link--content-${props.contentPosition}`,
   { 'link--primary--active': props.to === useRoute().path },
+
 ])
 </script>
 
@@ -118,6 +127,22 @@ const classes = computed(() => [
     font-weight: 500;
     line-height: 1.25rem; /* 133.333% */
   }
+  &--basket-outline {
+    border-radius: 0.25rem;
+    border: 1px solid var(--Button-border-gradient);
+    background: var(--Action-Secondary-Default);
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
+    color: var(--Text-Default, #202223);
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem; /* 142.857% */
+    padding: 0.75rem 1.5rem;
+  }
   &--searchItem {
     color: var(--Text-Default, #202223);
     font-feature-settings:
@@ -130,7 +155,7 @@ const classes = computed(() => [
     line-height: 1.25rem; /* 142.857% */
     padding: 0.5rem 1rem;
 
-    &:deep(img){
+    &:deep(img) {
       width: 2.5rem;
       height: 2.5rem;
       object-fit: cover;
@@ -151,6 +176,18 @@ const classes = computed(() => [
   }
 }
 
+.link--content {
+  &-left {
+    justify-content: flex-start;
+  }
+  &-center {
+    justify-content: center;
+  }
+  &-right {
+    justify-content: flex-end;
+  }
+}
+
 .link--icon {
   &-left {
     flex-direction: row;
@@ -167,6 +204,17 @@ const classes = computed(() => [
       background: none;
       border: none;
       box-shadow: none;
+    }
+    &--primary {
+      color: var(--Text-Default);
+      font-feature-settings:
+        'liga' off,
+        'clig' off;
+      font-family: 'SF Pro Display';
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.75rem; /* 140% */
     }
   }
 }

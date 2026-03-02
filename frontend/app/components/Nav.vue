@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import Link from '@components/Link.vue'
+import VLink from '@components/VLink.vue'
 
 const props = withDefaults(defineProps<{
   variant?: 'primary' | 'secondary'
+  size?: 'sm'
 }>(), {
   variant: 'primary',
+  size: 'sm',
 })
 </script>
 
@@ -12,24 +14,24 @@ const props = withDefaults(defineProps<{
   <nav class="nav">
     <ul class="nav-list">
       <li class="nav-item">
-        <Link to="/" :variant="props.variant" size="sm">
+        <VLink to="/" :variant="props.variant" :size="props.size">
           Главная
-        </Link>
+        </VLink>
       </li>
       <li class="nav-item">
-        <Link to="/catalog" :variant="props.variant" size="sm">
+        <VLink to="/catalog" :variant="props.variant" :size="props.size">
           Каталог
-        </Link>
+        </VLink>
       </li>
       <li class="nav-item">
-        <Link to="/promotions" :variant="props.variant" size="sm">
+        <VLink to="/promotions" :variant="props.variant" :size="props.size">
           Акции
-        </Link>
+        </VLink>
       </li>
       <li class="nav-item">
-        <Link to="/articles" :variant="props.variant" size="sm">
+        <VLink to="/articles" :variant="props.variant" :size="props.size">
           Статьи
-        </Link>
+        </VLink>
       </li>
     </ul>
   </nav>
@@ -40,5 +42,11 @@ const props = withDefaults(defineProps<{
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .nav-list {
+    flex-direction: column;
+  }
 }
 </style>

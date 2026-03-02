@@ -5,4 +5,5 @@
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <ModalProvider />
 </template>
