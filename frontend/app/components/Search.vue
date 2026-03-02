@@ -38,7 +38,7 @@ function handleFocusIn() {
 <template>
   <form class="search">
     <div class="search--wrapper">
-      <img src="@assets/img/icons/search.svg" alt="search icon" />
+      <img src="@assets/img/icons/searchIcon.svg" alt="search icon" />
       <input
         v-model="searchModel"
         type="text"
