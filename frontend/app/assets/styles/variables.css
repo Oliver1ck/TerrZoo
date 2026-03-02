@@ -2,13 +2,18 @@
   --Text-Default: #202223;
   --Text-Subdued: #6D7175;
   --Text-Highlight: #347C84;
+  --Text-Active: #80CFD5;
   --Text-Success:#008060;
   --Text-On-Interactive: #fff;
   --Text-Interactive-Default:#2C6ECB;
+  --Text-input-border: #A7ACB1;
   --Icon-Highlight: #00A0AC;
   --Action-Secondary-Hovered: #F6F6F7;
   --Border-Highlight-Default:#449DA7;
   --Border-Default:#8C9196;
+  --Border-Neutral-Subdued:#BABFC3;
   --Background-Default: #F6F6F7;
   --Button-border-gradient:#babfc3;
+  --Surface-Default:#fff;
+  --Action-Secondary-Pressed: #F1F2F3;
 }
