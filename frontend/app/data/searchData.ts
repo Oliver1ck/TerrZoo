@@ -10,11 +10,11 @@ export const searchList: Product[] = [
     img: productCatImage,
   },
   {
-    name: 'Лакомство РОДНЫЕ КОРМА для собак корень бычий цельный сушеный в дровяной печи',
+    name: 'Сухой корм MONGE SPECIALITY DOG HYPO SALMON для взрослых собак всех пород при аллергии с лососем и тунцом',
     img: productCatImage,
   },
   {
-    name: 'Лакомство РОДНЫЕ КОРМА для собак корень бычий цельный сушеный в дровяной печи',
+    name: 'Сухой корм PURINA PRO PLAN ADULT DOG OPTIDIGEST LARGE ROBUST SENSITIVE DIGESTION для взрослых собак крупных пород мощного телосложения с чувствительным пищеварением с ягненком и рисом',
     img: productCatImage,
   },
   {
