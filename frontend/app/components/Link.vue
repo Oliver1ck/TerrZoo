@@ -6,6 +6,7 @@ type Variant =
   | 'outline'
   | 'phone'
   | 'basket'
+  | 'searchItem'
 type Size = 'sm' | 'md' | 'lg'
 type LinkIconPos = 'left' | 'right'
 
@@ -28,6 +29,7 @@ const classes = computed(() => [
   `link--${props.variant}`,
   `link--${props.size}`,
   `link--icon-${props.iconPosition}`,
+  { 'link--primary--active': props.to === useRoute().path },
 ])
 </script>
 
@@ -47,7 +49,7 @@ const classes = computed(() => [
   gap: 0.5rem;
   transition: all 0.3s ease;
   &--primary {
-    color: var(--Text-On-Interactive, #fff);
+    color: var(--Text-On-Interactive);
     font-feature-settings:
       'liga' off,
       'clig' off;
@@ -58,8 +60,16 @@ const classes = computed(() => [
     &:hover {
       text-decoration: underline;
       text-underline-offset: 0.25rem;
+      text-decoration-color: var(--Text-On-Interactive);
+    }
+    &--active {
+      color: var(--Text-Active);
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
+
   &--secondary {
     color: var(--Text-Default, #202223);
     font-feature-settings:
@@ -107,6 +117,29 @@ const classes = computed(() => [
     font-style: normal;
     font-weight: 500;
     line-height: 1.25rem; /* 133.333% */
+  }
+  &--searchItem {
+    color: var(--Text-Default, #202223);
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem; /* 142.857% */
+    padding: 0.5rem 1rem;
+
+    &:deep(img){
+      width: 2.5rem;
+      height: 2.5rem;
+      object-fit: cover;
+      border-radius: 0.1875rem;
+      border: 1px solid var(--Border-Neutral-Subdued);
+    }
+    &:hover {
+      background: var(--Action-Secondary-Pressed);
+    }
   }
   &--sm {
     font-size: 0.875rem;

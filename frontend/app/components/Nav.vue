@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Link from './Link.vue'
+import Link from '@components/Link.vue'
 
 const props = withDefaults(defineProps<{
   variant?: 'primary' | 'secondary'

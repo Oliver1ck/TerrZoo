@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Button from './Button.vue'
-import Link from './Link.vue'
-import Search from './Search.vue'
+import Button from '@components/Button.vue'
+import Link from '@components/Link.vue'
+import Search from '@components/Search.vue'
 </script>
 
 <template>
@@ -93,6 +93,7 @@ import Search from './Search.vue'
 .header-top__wrapper {
   display: flex;
   justify-content: space-between;
+  gap: 0.875rem;
 }
 
 .header__address {
@@ -101,9 +102,18 @@ import Search from './Search.vue'
   gap: 0.75rem;
 }
 .header__clock {
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.38rem;
+  container: clock / inline-size;
+  flex-wrap: wrap;
+}
+@container clock (width < 21.375rem) {
+   :deep(p:nth-child(2)) {
+    display: none;
+  }
 }
 .header__phone {
   display: flex;

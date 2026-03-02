@@ -27,6 +27,7 @@ const classes = computed(() => ['logo', `logo--${props.variant}`])
 
 <style lang="scss" scoped>
 .logo {
+  flex: 0 0 11.5rem;
   display: flex;
   align-items: center;
   gap: 0.375rem;
