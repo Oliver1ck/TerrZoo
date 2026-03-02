@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Product } from '../data/searchData'
-import { watchDebounced } from '@vueuse/core'
+import { useMediaQuery, watchDebounced } from '@vueuse/core'
 import { searchList } from '../data/searchData'
 import Link from './Link.vue'
 
@@ -18,7 +18,6 @@ watchDebounced(searchModel, (newValue: string | undefined) => {
     return
   }
   for (const i of searchList) {
-    console.log(i)
     if (i.name.toLowerCase().includes(newValue.toLowerCase())) {
       newSearchList.value.push(i)
       searchListVisible.value = true
@@ -33,10 +32,11 @@ function handleFocusIn() {
     searchListVisible.value = true
   }
 }
+const isDesktop = useMediaQuery('(min-width: 992px)')
 </script>
 
 <template>
-  <form class="search">
+  <form v-if="isDesktop" class="search">
     <div class="search--wrapper">
       <img src="@assets/img/icons/searchIcon.svg" alt="search icon" />
       <input

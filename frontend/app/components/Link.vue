@@ -159,4 +159,15 @@ const classes = computed(() => [
     flex-direction: row-reverse;
   }
 }
+
+@media (max-width: 992px) {
+  .link {
+    &--basket {
+      padding: 0;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
 </style>
