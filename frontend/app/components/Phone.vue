@@ -4,7 +4,7 @@ import VLink from '@components/VLink.vue'
 
 <template>
   <div class="phone">
-    <VLink to="tel:+375445010355" variant="phone" size="sm">
+    <VLink to="tel:+375445010355" variant="semibold" size="sm">
       <template #icon>
         <img src="@assets/img/icons/phone.svg" alt="phone icon" />
       </template>

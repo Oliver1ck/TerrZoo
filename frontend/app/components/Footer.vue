@@ -45,6 +45,7 @@ import VLink from '@components/VLink.vue'
 
 <style lang="scss" scoped>
 .footer {
+  margin-top: 3.5rem;
   background: var(--Footer-Bg);
 }
 .footer__wrapper {
@@ -98,5 +99,10 @@ import VLink from '@components/VLink.vue'
   display: flex;
   align-items: center;
   gap: 0.37rem;
+}
+@media(max-width: 992px) {
+  .footer {
+    margin-top: 2rem;
+  }
 }
 </style>

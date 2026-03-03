@@ -4,7 +4,7 @@ type Variant =
   | 'secondary'
   | 'tertiary'
   | 'outline'
-  | 'phone'
+  | 'semibold'
   | 'basket'
   | 'searchItem'
   | 'basket-outline'
@@ -102,7 +102,7 @@ const classes = computed(() => [
     font-style: normal;
     font-weight: 500;
   }
-  &--phone {
+  &--semibold {
     color: var(--Text-Default, #202223);
     font-feature-settings:
       'liga' off,
