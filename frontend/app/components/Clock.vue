@@ -24,6 +24,7 @@ import Typography from '@components/Typography.vue'
 <style lang="scss" scoped>
 .clock {
   flex: 1 1 auto;
+  max-width: 21.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
