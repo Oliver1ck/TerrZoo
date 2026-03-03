@@ -131,4 +131,13 @@ const classes = computed(() => [
     line-height: 1.5rem; /* 150% */
   }
 }
+
+@media (max-width: 992px) {
+  .typography {
+    &--heading-sm {
+      font-size: 0.9375rem;
+      line-height: 1.25rem;
+    }
+  }
+}
 </style>

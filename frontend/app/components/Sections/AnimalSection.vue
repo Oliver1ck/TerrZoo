@@ -64,10 +64,32 @@ const animalList: AnimalType[] = [
 .animal-section {
   padding: 1.5rem 0;
 }
+
+.animal-section__wrapper {
+  overflow: hidden;
+}
 .animal__list {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  overflow: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+}
+
+.animal__item {
+  flex: 0 0 13.425rem;
+}
+
+@media(max-width: 992px) {
+  .animal__list {
+    gap: 0.5rem;
+  }
+  .animal__item {
+    flex: 0 0 9rem;
+  }
 }
 </style>

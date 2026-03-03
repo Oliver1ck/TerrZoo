@@ -28,6 +28,7 @@ const props = withDefaults(
 
 <style lang="scss" scoped>
 .animal {
+  height: 100%;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -51,6 +52,19 @@ const props = withDefaults(
       &:deep(h3) {
         color: var(--Icon-Highlight);
       }
+  }
+}
+
+@media (max-width: 992px) {
+  .animal {
+    padding-right: 1rem;
+    gap: 0.5rem;
+
+    & img {
+      max-width: 3.5rem;
+      max-height: 3.5rem;
+      object-position: bottom;
+    }
   }
 }
 </style>
