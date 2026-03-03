@@ -29,13 +29,17 @@ const classes = computed(() => [
             <template #icon>
               <img src="@assets/img/icons/basket.svg" alt="basket icon" />
             </template>
-            <template #default> Корзина </template>
+            <template #default>
+              Корзина
+            </template>
           </VLink>
           <div class="mobile-menu__contacts">
             <Address />
             <Phone />
             <Clock />
-            <Button variant="call"> Обратный звонок </Button>
+            <Button variant="call">
+              Обратный звонок
+            </Button>
           </div>
         </div>
       </div>

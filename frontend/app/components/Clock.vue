@@ -8,10 +8,16 @@ import Typography from '@components/Typography.vue'
       <template #icon>
         <img src="@assets/img/icons/clock.svg" alt="clock icon" />
       </template>
-      <template #default> Пон.-Пят. 10:00-21:00 </template>
+      <template #default>
+        Пон.-Пят. 10:00-21:00
+      </template>
     </Typography>
-    <Typography variant="body-sm"> | </Typography>
-    <Typography variant="body-sm"> Суб.-Вос. 10:00-20:00 </Typography>
+    <Typography variant="body-sm">
+      |
+    </Typography>
+    <Typography variant="body-sm">
+      Суб.-Вос. 10:00-20:00
+    </Typography>
   </div>
 </template>
 

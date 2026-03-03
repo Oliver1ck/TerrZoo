@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useMediaQuery } from '@vueuse/core'
+
 import MobileMenu from './Modals/MobileMenu.vue'
 
 const { activeModal } = useModal()

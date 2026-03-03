@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { Product } from '../data/searchData'
-import { useMediaQuery, watchDebounced } from '@vueuse/core'
+
+import { watchDebounced } from '@vueuse/core'
+
 import { searchList } from '../data/searchData'
+
 import Link from './VLink.vue'
 
 const newSearchList = ref<Product[]>([])

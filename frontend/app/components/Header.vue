@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import Button from '@components/Button.vue'
-import Search from '@components/Search.vue'
-import VLink from '@components/VLink.vue'
-
 import { useMediaQuery } from '@vueuse/core'
 
-import Address from './Address.vue'
-import Clock from './Clock.vue'
-import Phone from './Phone.vue'
+import Address from '@components/Address.vue'
+import Button from '@components/Button.vue'
+import Clock from '@components/Clock.vue'
+import Phone from '@components/Phone.vue'
+import Search from '@components/Search.vue'
+import VLink from '@components/VLink.vue'
 
 const isDesktop = useMediaQuery('(min-width: 992px)', {
   ssrWidth: 1200,
@@ -27,7 +26,9 @@ const { toggleBurger, activeModal } = useModal()
           <Address />
           <Clock />
           <Phone />
-          <Button variant="call"> Обратный звонок </Button>
+          <Button variant="call">
+            Обратный звонок
+          </Button>
         </div>
       </div>
     </div>

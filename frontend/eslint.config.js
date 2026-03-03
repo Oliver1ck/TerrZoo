@@ -42,6 +42,22 @@ export default antfu({
         },
       ],
       'style/object-curly-spacing': [2, 'always'],
+      'perfectionist/sort-imports': [
+        'error',
+        {
+          groups: [
+            'type',
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'unknown',
+          ],
+          internalPattern: ['^@components', '^@assets', '^@/'],
+        },
+      ],
     },
   },
 

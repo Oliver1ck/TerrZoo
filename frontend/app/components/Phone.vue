@@ -8,7 +8,9 @@ import VLink from '@components/VLink.vue'
       <template #icon>
         <img src="@assets/img/icons/phone.svg" alt="phone icon" />
       </template>
-      <template #default> + 375 (44) 501 03 55 </template>
+      <template #default>
+        + 375 (44) 501 03 55
+      </template>
     </VLink>
     <VLink to="https://www.instagram.com">
       <template #icon>

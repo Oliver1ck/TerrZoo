@@ -8,13 +8,17 @@ import Typography from '@components/Typography.vue'
       <template #icon>
         <img src="@assets/img/icons/location.svg" alt="location icon" />
       </template>
-      <template #default> Минск, ул. Чюрлёниса, 6. </template>
+      <template #default>
+        Минск, ул. Чюрлёниса, 6.
+      </template>
     </Typography>
     <Typography variant="body-sm">
       <template #icon>
         <img src="@assets/img/icons/metro.svg" alt="" />
       </template>
-      <template #default> Малиновка </template>
+      <template #default>
+        Малиновка
+      </template>
     </Typography>
   </div>
 </template>
