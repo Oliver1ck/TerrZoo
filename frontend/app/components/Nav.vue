@@ -8,11 +8,15 @@ const props = withDefaults(defineProps<{
   variant: 'primary',
   size: 'sm',
 })
+const classes = computed(() => [
+  'nav-list',
+  `nav-list--${props.variant}`,
+])
 </script>
 
 <template>
   <nav class="nav">
-    <ul class="nav-list">
+    <ul :class="classes">
       <li class="nav-item">
         <VLink to="/" :variant="props.variant" :size="props.size">
           Главная
@@ -46,7 +50,9 @@ const props = withDefaults(defineProps<{
 
 @media (max-width: 992px) {
   .nav-list {
-    flex-direction: column;
+    &--primary {
+      flex-direction: column;
+    }
   }
 }
 </style>

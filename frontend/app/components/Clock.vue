@@ -39,7 +39,8 @@ import Typography from '@components/Typography.vue'
 
 @media(max-width:992px) {
   .clock {
-    width: 100%;
+    container-type: initial;
+    justify-content: initial;
   }
 }
 </style>

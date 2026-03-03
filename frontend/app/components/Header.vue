@@ -8,7 +8,7 @@ import Phone from '@components/Phone.vue'
 import Search from '@components/Search.vue'
 import VLink from '@components/VLink.vue'
 
-const isDesktop = useMediaQuery('(min-width: 992px)', {
+const isDesktop = useMediaQuery('(min-width: 993px)', {
   ssrWidth: 1200,
 })
 const mounted = ref<boolean>(false)
@@ -26,7 +26,7 @@ const { toggleBurger, activeModal } = useModal()
           <Address />
           <Clock />
           <Phone />
-          <Button variant="call">
+          <Button variant="callback">
             Обратный звонок
           </Button>
         </div>
@@ -35,7 +35,7 @@ const { toggleBurger, activeModal } = useModal()
     <div class="header__bottom">
       <div class="container">
         <div class="header__bottom-wrapper">
-          <Logo :variant="mounted && isDesktop ? 'primary' : 'secondary'" />
+          <Logo :variant="mounted && isDesktop ? 'primary' : 'secondary'" index="active" />
           <div class="header__controls">
             <Search v-if="mounted && isDesktop" />
             <Nav v-if="mounted && isDesktop" />
@@ -87,7 +87,7 @@ const { toggleBurger, activeModal } = useModal()
   gap: 2.5rem;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 992px) {
   .header__bottom-wrapper {
     gap: 1rem;
   }

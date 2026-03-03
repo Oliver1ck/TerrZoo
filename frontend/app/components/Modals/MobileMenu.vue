@@ -37,7 +37,7 @@ const classes = computed(() => [
             <Address />
             <Phone />
             <Clock />
-            <Button variant="call">
+            <Button variant="callback">
               Обратный звонок
             </Button>
           </div>

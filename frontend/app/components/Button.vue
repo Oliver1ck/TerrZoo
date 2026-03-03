@@ -1,12 +1,12 @@
 <script setup lang="ts">
-type Variant = 'call' | 'outlined' | 'burger' | 'search'
+type Variant = 'callback' | 'outlined' | 'burger' | 'search'
 const props = withDefaults(
   defineProps<{
     variant?: Variant
     state?: boolean
   }>(),
   {
-    variant: 'call',
+    variant: 'callback',
     state: false,
   }
 )
@@ -33,7 +33,7 @@ const classes = computed(() => [
 <style lang="scss" scoped>
 .button {
   background: none;
-  &--call {
+  &--callback {
     color: var(--Interactive-Default, #2c6ecb);
     font-feature-settings:
       'liga' off,

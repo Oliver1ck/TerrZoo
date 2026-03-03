@@ -25,5 +25,6 @@ import VLink from '@components/VLink.vue'
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex: 0 0 auto;
 }
 </style>

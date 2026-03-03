@@ -8,6 +8,7 @@ type Variant =
   | 'basket'
   | 'searchItem'
   | 'basket-outline'
+  | 'interactive'
 type Size = 'sm' | 'md' | 'lg'
 type LinkIconPos = 'left' | 'right'
 
@@ -38,7 +39,6 @@ const classes = computed(() => [
   `link--icon-${props.iconPosition}`,
   `link--content-${props.contentPosition}`,
   { 'link--primary--active': props.to === useRoute().path },
-
 ])
 </script>
 
@@ -165,6 +165,17 @@ const classes = computed(() => [
     &:hover {
       background: var(--Action-Secondary-Pressed);
     }
+  }
+  &--interactive {
+    color: var(--Text-Interactive-Default);
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem; /* 171.429% */
   }
   &--sm {
     font-size: 0.875rem;

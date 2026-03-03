@@ -28,5 +28,6 @@ import Typography from '@components/Typography.vue'
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 </style>

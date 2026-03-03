@@ -4,13 +4,19 @@ type Variant = 'primary' | 'secondary'
 const props = withDefaults(
   defineProps<{
     variant?: Variant
+    index?: 'active' | 'default'
   }>(),
   {
     variant: 'primary',
+    index: 'default',
   }
 )
 
-const classes = computed(() => ['logo', `logo--${props.variant}`])
+const classes = computed(() => [
+  'logo',
+  `logo--${props.variant}`,
+  { 'logo--index': props.index === 'active' },
+])
 </script>
 
 <template>
@@ -32,7 +38,6 @@ const classes = computed(() => ['logo', `logo--${props.variant}`])
   align-items: center;
   gap: 0.375rem;
   position: relative;
-  z-index: 10;
   &--primary {
     color: var(--Text-On-Interactive);
     font-feature-settings:
@@ -60,6 +65,9 @@ const classes = computed(() => ['logo', `logo--${props.variant}`])
     & b {
       color: var(--Text-Success);
     }
+  }
+  &--index {
+    z-index: 10;
   }
 }
 </style>

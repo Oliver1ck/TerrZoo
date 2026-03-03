@@ -9,6 +9,7 @@ type ColorVars =
   | 'Highlight'
   | 'Interactive-Default'
   | 'Success'
+  | 'Disabled'
 type Variant =
   | 'heading-xl'
   | 'heading-lg'
@@ -41,6 +42,7 @@ const computedColor = computed(() => {
     'Highlight',
     'Interactive-Default',
     'Success',
+    'Disabled',
   ]
   return colorVars.includes(props.color)
     ? `var(--Text-${props.color})`
