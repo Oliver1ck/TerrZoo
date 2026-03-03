@@ -1,13 +1,9 @@
 <script setup lang="ts">
-
+import AnimalSection from '@components/Sections/AnimalSection.vue'
 </script>
 
 <template>
-  <div class="container">
-    <Typography variant="heading-xl" tag="h1">
-      Главная страница
-    </Typography>
-  </div>
+  <AnimalSection />
 </template>
 
 <style lang="scss" scoped>

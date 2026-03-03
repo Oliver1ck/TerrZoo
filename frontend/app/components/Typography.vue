@@ -10,14 +10,8 @@ type ColorVars =
   | 'Interactive-Default'
   | 'Success'
   | 'Disabled'
-type Variant =
-  | 'heading-xl'
-  | 'heading-lg'
-  | 'heading-md'
-  | 'heading-sm'
-  | 'body-sm'
-  | 'body-md'
-  | 'body-lg'
+type Size = 'xl' | 'lg' | 'md' | 'sm'
+type Variant = `heading-${Size}` | `body-${Size}`
 type TypographyIconPos = 'left' | 'right'
 const props = withDefaults(
   defineProps<{

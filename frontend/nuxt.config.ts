@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     '@assets': fileURLToPath(new URL('./app/assets', import.meta.url)),
     '@layouts': fileURLToPath(new URL('./app/layouts', import.meta.url)),
     '@pages': fileURLToPath(new URL('./app/pages', import.meta.url)),
+    '@custom-types': fileURLToPath(new URL('./app/types', import.meta.url)),
   },
 
   nitro: {
