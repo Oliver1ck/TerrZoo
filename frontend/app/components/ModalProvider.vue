@@ -2,7 +2,7 @@
 import { useMediaQuery } from '@vueuse/core'
 import MobileMenu from './Modals/MobileMenu.vue'
 
-const { activeModal, payload, close } = useModal()
+const { activeModal } = useModal()
 const isDesktop = useMediaQuery('(min-width: 992px)')
 </script>
 

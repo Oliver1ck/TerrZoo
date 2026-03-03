@@ -2,18 +2,26 @@
 import Button from '@components/Button.vue'
 import Search from '@components/Search.vue'
 import VLink from '@components/VLink.vue'
+
 import { useMediaQuery } from '@vueuse/core'
+
 import Address from './Address.vue'
 import Clock from './Clock.vue'
 import Phone from './Phone.vue'
 
-const isDesktop = useMediaQuery('(min-width: 992px)')
+const isDesktop = useMediaQuery('(min-width: 992px)', {
+  ssrWidth: 1200,
+})
+const mounted = ref<boolean>(false)
+onMounted(() => {
+  mounted.value = true
+})
 const { toggleBurger, activeModal } = useModal()
 </script>
 
 <template>
   <header class="header">
-    <div v-if="isDesktop" class="header__top">
+    <div v-if="mounted && isDesktop" class="header__top">
       <div class="container">
         <div class="header__top-wrapper">
           <Address />
@@ -26,11 +34,11 @@ const { toggleBurger, activeModal } = useModal()
     <div class="header__bottom">
       <div class="container">
         <div class="header__bottom-wrapper">
-          <Logo :variant="isDesktop ? 'primary' : 'secondary'" />
+          <Logo :variant="mounted && isDesktop ? 'primary' : 'secondary'" />
           <div class="header__controls">
-            <Search v-if="isDesktop" />
-            <Nav v-if="isDesktop" />
-            <Button v-else variant="search" @click="toggleBurger" />
+            <Search v-if="mounted && isDesktop" />
+            <Nav v-if="mounted && isDesktop" />
+            <Button v-if="mounted && !isDesktop" variant="search" @click="toggleBurger" />
             <VLink to="/basket" variant="basket">
               <template #icon>
                 <img src="@assets/img/icons/basket.svg" alt="basket icon" />
@@ -39,7 +47,7 @@ const { toggleBurger, activeModal } = useModal()
                 0
               </template>
             </VLink>
-            <Button v-if="!isDesktop" variant="burger" :state="activeModal === 'burger'" @click="toggleBurger" />
+            <Button v-if="mounted && !isDesktop" variant="burger" :state="activeModal === 'burger'" @click="toggleBurger" />
           </div>
         </div>
       </div>
