@@ -112,7 +112,7 @@ import VLink from '@components/VLink.vue'
     margin: 0;
   }
   .footer__accent {
-    display: initial;
+    display: block;
   }
 }
 </style>

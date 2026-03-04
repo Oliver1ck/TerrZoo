@@ -6,18 +6,12 @@ import Typography from '@components/Typography.vue'
   <div class="clock">
     <Typography variant="body-sm">
       <template #icon>
-        <img src="@assets/img/icons/clock.svg" alt="clock icon" />
+        <img class="icon" src="@assets/img/icons/clock.svg" alt="clock icon" />
       </template>
-      <template #default>
-        Пон.-Пят. 10:00-21:00
-      </template>
+      <template #default> Пон.-Пят. 10:00-21:00 </template>
     </Typography>
-    <Typography variant="body-sm">
-      |
-    </Typography>
-    <Typography variant="body-sm">
-      Суб.-Вос. 10:00-20:00
-    </Typography>
+    <Typography variant="body-sm"> | </Typography>
+    <Typography variant="body-sm"> Суб.-Вос. 10:00-20:00 </Typography>
   </div>
 </template>
 
@@ -38,10 +32,17 @@ import Typography from '@components/Typography.vue'
   }
 }
 
-@media(max-width:992px) {
+@media (max-width: 992px) {
   .clock {
     container-type: initial;
     justify-content: initial;
+
+    &:deep(p:nth-child(2)) {
+      display: none;
+    }
+  }
+  .icon {
+    display: none;
   }
 }
 </style>

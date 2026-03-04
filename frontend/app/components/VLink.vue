@@ -95,6 +95,11 @@ function handleClick() {
     font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 500;
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.25rem;
+      text-decoration-color: inherit;
+    }
   }
   &--outline {
     border-radius: 0.25rem;
@@ -264,6 +269,14 @@ function handleClick() {
       font-style: normal;
       font-weight: 600;
       line-height: 1.75rem; /* 140% */
+    }
+    &--primary-button {
+      padding: 0.5rem 1rem;
+    }
+
+    &--md {
+      font-size: 0.9375rem;
+      line-height: 1.25rem;
     }
   }
 }
