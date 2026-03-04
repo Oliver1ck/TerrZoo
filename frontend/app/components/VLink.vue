@@ -11,6 +11,7 @@ type Variant =
   | 'interactive'
   | 'primary-button'
 
+// sm - 0.875rem, md - 1rem, lg - 1.125rem
 type Size = 'sm' | 'md' | 'lg'
 type LinkIconPos = 'left' | 'right'
 
