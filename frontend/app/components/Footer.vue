@@ -24,7 +24,7 @@ import VLink from '@components/VLink.vue'
             Обратный звонок
           </Button>
         </div>
-        <hr />
+        <hr class="footer__accent" />
         <div class="footer__politic">
           <div class="footer__design">
             <Typography variant="body-sm" color="Disabled">
@@ -93,6 +93,7 @@ import VLink from '@components/VLink.vue'
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .footer__design {
@@ -100,9 +101,18 @@ import VLink from '@components/VLink.vue'
   align-items: center;
   gap: 0.37rem;
 }
+.footer__accent {
+  display: none;
+}
 @media(max-width: 992px) {
   .footer {
     margin-top: 2rem;
+  }
+  .footer__politic {
+    margin: 0;
+  }
+  .footer__accent {
+    display: initial;
   }
 }
 </style>
