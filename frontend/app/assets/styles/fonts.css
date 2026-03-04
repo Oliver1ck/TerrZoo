@@ -4,6 +4,12 @@
   font-weight: 600;
   font-style: normal;
 }
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../fonts/SFProDisplay/SF-Pro-Display-Bold.otf");
+  font-weight: 700;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "SF Pro Text";

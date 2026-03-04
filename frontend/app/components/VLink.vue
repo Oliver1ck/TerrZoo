@@ -9,6 +9,8 @@ type Variant =
   | 'searchItem'
   | 'basket-outline'
   | 'interactive'
+  | 'primary-button'
+
 type Size = 'sm' | 'md' | 'lg'
 type LinkIconPos = 'left' | 'right'
 
@@ -117,6 +119,7 @@ function handleClick() {
     font-style: normal;
     font-weight: 600;
   }
+  // for basket link in header
   &--basket {
     border-radius: 0.25rem;
     border: 1px solid var(--Button-border-gradient);
@@ -133,6 +136,7 @@ function handleClick() {
     font-weight: 500;
     line-height: 1.25rem; /* 133.333% */
   }
+  // for the move to basket button in mobile menu
   &--basket-outline {
     border-radius: 0.25rem;
     border: 1px solid var(--Button-border-gradient);
@@ -149,6 +153,7 @@ function handleClick() {
     line-height: 1.25rem; /* 142.857% */
     padding: 0.75rem 1.5rem;
   }
+  // for list items in search results
   &--searchItem {
     color: var(--Text-Default, #202223);
     font-feature-settings:
@@ -182,6 +187,33 @@ function handleClick() {
     font-style: normal;
     font-weight: 400;
     line-height: 1.5rem; /* 171.429% */
+  }
+  //
+  &--primary-button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    background: var(--Icon-Highlight);
+    box-shadow:
+      0 1px 0 0 rgba(0, 0, 0, 0.08),
+      0 -1px 0 0 rgba(0, 0, 0, 0.2) inset;
+    color: var(--Text-On-Primary);
+    text-align: center;
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem; /* 142.857% */
+
+    &:hover {
+      border-radius: 0.25rem;
+      background: var(--Text-Highlight);
+      box-shadow:
+        0 1px 0 0 rgba(0, 0, 0, 0.08),
+        0 -1px 0 0 rgba(0, 0, 0, 0.2) inset;
+    }
   }
   &--sm {
     font-size: 0.875rem;

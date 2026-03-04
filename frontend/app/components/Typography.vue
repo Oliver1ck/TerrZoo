@@ -130,6 +130,10 @@ const classes = computed(() => [
     font-weight: 400;
     line-height: 1.5rem; /* 150% */
   }
+
+  & b {
+    font-weight: 700;
+  }
 }
 
 @media (max-width: 992px) {
