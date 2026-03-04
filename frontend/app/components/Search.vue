@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Product } from '../data/searchData'
 
-import { watchDebounced } from '@vueuse/core'
+import { useTimeout, watchDebounced } from '@vueuse/core'
 
 import { searchList } from '../data/searchData'
 
@@ -17,7 +17,11 @@ const searchProductListClass = computed(() => [
 watchDebounced(searchModel, (newValue: string | undefined) => {
   if (!newValue) {
     searchListVisible.value = false
-    newSearchList.value = []
+    useTimeout(300, {
+      callback: () => {
+        newSearchList.value = []
+      }
+    })
     return
   }
   for (const i of searchList) {
