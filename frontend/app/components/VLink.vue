@@ -40,10 +40,16 @@ const classes = computed(() => [
   `link--content-${props.contentPosition}`,
   { 'link--primary--active': props.to === useRoute().path },
 ])
+const { activeModal, close } = useModal()
+function handleClick() {
+  if (activeModal.value) {
+    close()
+  }
+}
 </script>
 
 <template>
-  <NuxtLink :to="props.to" :class="classes">
+  <NuxtLink :to="props.to" :class="classes" @click="handleClick">
     <slot name="icon" />
     <span>
       <slot />
