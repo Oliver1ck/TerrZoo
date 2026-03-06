@@ -61,14 +61,11 @@ const animalList: AnimalType[] = [
 </template>
 
 <style lang="scss" scoped>
-.animal-section {
-  padding: 1.5rem 0;
-}
-
 .animal-section__wrapper {
   overflow: hidden;
 }
 .animal__list {
+  padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;
