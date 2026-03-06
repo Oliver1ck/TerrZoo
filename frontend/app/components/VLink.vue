@@ -115,6 +115,10 @@ function handleClick() {
     font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 500;
+
+    &:hover {
+      background: var(--Action-Secondary-Hovered);
+    }
   }
   &--semibold {
     color: var(--Text-Default, #202223);

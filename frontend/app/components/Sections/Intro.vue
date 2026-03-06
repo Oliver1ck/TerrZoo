@@ -35,7 +35,7 @@ import VLink from '@components/VLink.vue'
           </VLink>
         </div>
         <div class="intro__image">
-          <img :src="introImg" alt="Intro image" />
+          <img :src="introImg" alt="Intro image" fetchpriority="high" />
         </div>
       </div>
     </div>
