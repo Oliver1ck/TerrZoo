@@ -26,12 +26,14 @@ const props = withDefaults(
     size?: Size
     iconPosition?: LinkIconPos
     contentPosition?: 'left' | 'center' | 'right'
+    position?: 'left' | 'center' | 'right' | 'fullWidth'
   }>(),
   {
     variant: 'primary',
     size: 'md',
     iconPosition: 'left',
     contentPosition: 'left',
+    position: 'left',
   }
 )
 
@@ -41,6 +43,7 @@ const classes = computed(() => [
   `link--${props.size}`,
   `link--icon-${props.iconPosition}`,
   `link--content-${props.contentPosition}`,
+  `link--position-${props.position}`,
   { 'link--primary--active': props.to === useRoute().path },
 ])
 const { activeModal, close } = useModal()
@@ -244,6 +247,23 @@ function handleClick() {
   }
   &-right {
     justify-content: flex-end;
+  }
+}
+
+.link--position {
+  &-left {
+    align-self: flex-start;
+  }
+  &-center {
+    align-self: center;
+  }
+  &-right {
+    align-self: flex-end;
+  }
+
+  &-fullWidth {
+    align-self: stretch;
+    width: 100%;
   }
 }
 
