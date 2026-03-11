@@ -114,7 +114,6 @@ function slideNext() {
 .slider-section__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 .slider-section__controls-wrap {
   display: flex;
@@ -128,10 +127,10 @@ function slideNext() {
 }
 .swiper {
   overflow: hidden;
+  padding: 1.5rem 0;
 }
 .slider-list {
   display: flex;
-  // gap: 1.875rem;
 }
 
 .swiper-slide {
