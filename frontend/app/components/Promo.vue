@@ -20,9 +20,7 @@ const classes = computed(() => ['promo', `promo--${props.variant}`])
       <Typography tag="h3" variant="heading-md">
         {{ props.data.title }}
       </Typography>
-      <VLink to="/catalog" variant="outline">
-        Перейти к выбору товара
-      </VLink>
+      <VLink to="/catalog" variant="outline" size="sm"> Перейти к выбору товара </VLink>
     </div>
     <div class="promo__img">
       <img :src="data.img" alt="sdfs" />
@@ -66,5 +64,22 @@ const classes = computed(() => ['promo', `promo--${props.variant}`])
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+}
+@media (max-width: 992px) {
+  .promo {
+    padding: 0.5rem 7rem 0.5rem 0.5rem;
+    flex: 0 1 23rem;
+    &--primary,
+    &--secondary {
+      .promo__img {
+        right: 0;
+
+        & img {
+          max-width: 7.25rem;
+          max-height: 7.25rem;
+        }
+      }
+    }
+  }
 }
 </style>

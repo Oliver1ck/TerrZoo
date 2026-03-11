@@ -142,6 +142,14 @@ const classes = computed(() => [
       font-size: 1.3125rem;
       line-height: 1.75rem;
     }
+    &--heading-lg {
+      font-size: 1.3125rem;
+      line-height: 1.75rem;
+    }
+    &--heading-md {
+      font-size: 0.9375rem;
+      line-height: 1.25rem;
+    }
     &--heading-sm {
       font-size: 0.9375rem;
       line-height: 1.25rem;

@@ -20,4 +20,13 @@ import Promo from '@components/Promo.vue'
   justify-content: space-between;
   gap: 2rem;
 }
+
+@media(max-width: 992px) {
+  .promotion__wrapper {
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
 </style>
