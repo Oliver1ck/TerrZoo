@@ -25,6 +25,7 @@ const classes = computed(() => [
             to="/basket"
             variant="basket-outline"
             content-position="center"
+            position="fullWidth"
           >
             <template #icon>
               <img src="@assets/img/icons/basket.svg" alt="basket icon" />
