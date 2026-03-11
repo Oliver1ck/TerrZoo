@@ -21,6 +21,17 @@ const sectionClasses = computed(() => [
 
 const swiperInstance = ref<SwiperType | null>(null)
 
+const breakpoints = {
+  576: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  992: {
+    slidesPerView: 4,
+    spaceBetween: 25,
+  },
+}
+
 function onSwiper(swiper: SwiperType) {
   swiperInstance.value = swiper
 }
@@ -88,8 +99,9 @@ function slideNext() {
         <Swiper
           wrapper-tag="ul"
           wrapper-class="slider-list"
-          :slides-per-view="4"
-          :space-between="30"
+          :slides-per-view="1.5"
+          :space-between="18"
+          :breakpoints="breakpoints"
           :loop="true"
           @swiper="onSwiper"
         >
