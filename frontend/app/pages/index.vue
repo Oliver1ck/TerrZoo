@@ -8,10 +8,11 @@ import Slider from '@components/Sections/Slider.vue'
 <template>
   <AnimalSection />
   <Intro />
-  <section class="promo-products">
+  <div class="promo-products">
     <Promotion />
     <Slider title="Популярные товары" />
-  </section>
+  </div>
+  <Slider title="Новинки" variant="secondary" theme="white" />
 </template>
 
 <style lang="scss" scoped>

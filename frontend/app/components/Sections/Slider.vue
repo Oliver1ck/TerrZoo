@@ -9,21 +9,23 @@ import Typography from '@components/Typography.vue'
 import { products } from '../../data/product'
 import VLink from '../VLink.vue'
 
-const { variant = 'primary', title = 'Заголовок секции' } = defineProps<{
+const { variant = 'primary', title = 'Заголовок секции', theme = 'gray' } = defineProps<{
   variant?: 'primary' | 'secondary'
   title?: string
+  theme?: 'white' | 'gray'
 }>()
 
 const sectionClasses = computed(() => [
   'slider-section',
   `slider-section--${variant}`,
+  `slider-section--theme-${theme}`,
 ])
 
 const swiperInstance = ref<SwiperType | null>(null)
 
 const breakpoints = {
   576: {
-    slidesPerView: 2,
+    slidesPerView: 2.5,
     spaceBetween: 20,
   },
   992: {
@@ -111,7 +113,7 @@ function slideNext() {
             tag="li"
             :lazy="true"
           >
-            <Product :product="product" />
+            <Product :product="product" :variant="variant" />
           </SwiperSlide>
         </Swiper>
         <VLink to="/catalog/" variant="primary-button" content-position="center" position="center">
@@ -147,5 +149,12 @@ function slideNext() {
 
 .swiper-slide {
   flex-shrink: 0;
+}
+
+.slider-section--theme {
+  &-white {
+    background: var(--Surface-Default);
+    padding: 1.5rem 0;
+  }
 }
 </style>

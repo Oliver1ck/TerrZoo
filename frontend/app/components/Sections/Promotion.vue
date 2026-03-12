@@ -8,6 +8,9 @@ import Promo from '@components/Promo.vue'
   <section class="promotion">
     <div class="container">
       <div class="promotion__wrapper">
+        <Typography v-show="false" tag="h2" variant="heading-lg">
+          Акции и скидки
+        </Typography>
         <Promo v-for="data in dataPromoStatic" :key="data.id" :data="data" :variant="data.variant" />
       </div>
     </div>
