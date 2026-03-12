@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AnimalSection from '@components/Sections/AnimalSection.vue'
+import BrandSection from '@components/Sections/BrandSection.vue'
 import Intro from '@components/Sections/Intro.vue'
 import Promotion from '@components/Sections/Promotion.vue'
 import Slider from '@components/Sections/Slider.vue'
@@ -13,6 +14,7 @@ import Slider from '@components/Sections/Slider.vue'
     <Slider title="Популярные товары" />
   </div>
   <Slider title="Новинки" variant="secondary" theme="white" />
+  <BrandSection />
 </template>
 
 <style lang="scss" scoped>
