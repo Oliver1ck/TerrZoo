@@ -99,6 +99,7 @@ function slideNext() {
           </div>
         </div>
         <Swiper
+          class="slider"
           wrapper-tag="ul"
           wrapper-class="slider-list"
           :slides-per-view="1.5"
@@ -141,6 +142,8 @@ function slideNext() {
 }
 .swiper {
   overflow: hidden;
+}
+.slider {
   padding: 1.5rem 0;
 }
 .slider-list {
@@ -155,6 +158,23 @@ function slideNext() {
   &-white {
     background: var(--Surface-Default);
     padding: 1.5rem 0;
+  }
+}
+
+@media(max-width: 992px) {
+  .slider {
+    padding: 1rem 0;
+
+  }
+  .slider-section__controls {
+    display: none;
+  }
+
+  .slider-section--theme {
+    &-white {
+      padding: 0;
+      background: none;
+    }
   }
 }
 </style>

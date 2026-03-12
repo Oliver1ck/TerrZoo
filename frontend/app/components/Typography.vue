@@ -10,6 +10,7 @@ type ColorVars =
   | 'Interactive-Default'
   | 'Success'
   | 'Disabled'
+  | 'Warning'
 type Size = 'xl' | 'lg' | 'md' | 'sm'
 type Variant = `heading-${Size}` | `body-${Size}`
 type TypographyIconPos = 'left' | 'right'
@@ -19,6 +20,7 @@ const props = withDefaults(
     variant?: Variant
     iconPosition?: TypographyIconPos
     color?: ColorVars
+    textAlign?: 'left' | 'center' | 'right'
   }>(),
   {
     tag: 'p',
@@ -37,6 +39,7 @@ const computedColor = computed(() => {
     'Interactive-Default',
     'Success',
     'Disabled',
+    'Warning'
   ]
   return colorVars.includes(props.color)
     ? `var(--Text-${props.color})`
@@ -47,6 +50,7 @@ const classes = computed(() => [
   'typography',
   `typography--${props.variant}`,
   `typography-position--${props.iconPosition}`,
+  `typography-align--${props.textAlign}`,
 ])
 </script>
 
@@ -62,7 +66,7 @@ const classes = computed(() => [
 <style lang="scss" scoped>
 .typography {
   transition: all 0.3s ease;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.38rem;
   color: v-bind(computedColor);
@@ -133,6 +137,21 @@ const classes = computed(() => [
 
   & b {
     font-weight: 700;
+  }
+  
+}
+.typography-align {
+  &--left {
+    align-self: flex-start;
+    text-align: left;
+  }
+  &--center {
+    align-self: center;
+    text-align: center;
+  }
+  &--right {
+    align-self: flex-end;
+    text-align: right;
   }
 }
 

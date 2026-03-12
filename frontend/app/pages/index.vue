@@ -3,6 +3,7 @@ import AnimalSection from '@components/Sections/AnimalSection.vue'
 import BrandSection from '@components/Sections/BrandSection.vue'
 import Intro from '@components/Sections/Intro.vue'
 import Promotion from '@components/Sections/Promotion.vue'
+import Reviews from '@components/Sections/Reviews.vue'
 import Slider from '@components/Sections/Slider.vue'
 </script>
 
@@ -15,6 +16,7 @@ import Slider from '@components/Sections/Slider.vue'
   </div>
   <Slider title="Новинки" variant="secondary" theme="white" />
   <BrandSection />
+  <Reviews />
 </template>
 
 <style lang="scss" scoped>
@@ -23,5 +25,13 @@ import Slider from '@components/Sections/Slider.vue'
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
+}
+
+@media(max-width: 992px) {
+  .promo-products {
+    padding: 2rem 0;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
 }
 </style>
