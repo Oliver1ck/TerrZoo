@@ -116,7 +116,7 @@ function slideNext() {
             <Product :product="product" :variant="variant" />
           </SwiperSlide>
         </Swiper>
-        <VLink to="/catalog/" variant="primary-button" content-position="center" position="center">
+        <VLink to="/catalog/" variant="primary-button" size="sm" content-position="center" position="center">
           Смотреть больше товаров
         </VLink>
       </div>
