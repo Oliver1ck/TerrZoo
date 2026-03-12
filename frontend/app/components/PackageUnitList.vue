@@ -19,13 +19,13 @@ function handleUnitClick(unitId: number, isActive: boolean) {
 
 <template>
   <ul class="package-unit-list">
-    <li v-for="unit in data" :key="unit.id" class="package-unit-list-item">
-      <PackageUnit
-        :unit="unit"
-        :is-active="activeUnitId === unit.id"
-        @click="(isActive) => handleUnitClick(unit.id, isActive) "
-      />
-    </li>
+    <PackageUnit
+      v-for="unit in data"
+      :key="unit.id"
+      :unit="unit"
+      :is-active="activeUnitId === unit.id"
+      @click="isActive => handleUnitClick(unit.id, isActive)"
+    />
   </ul>
 </template>
 

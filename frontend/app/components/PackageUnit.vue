@@ -19,7 +19,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div
+  <li
     class="package-unit"
     :class="{ 'package-unit--active': isActive }"
     @click="emit('click', isActive)"
@@ -27,7 +27,7 @@ const emit = defineEmits<{
     <Typography tag="p" variant="body-sm">
       {{ unit.count }} {{ unit.unit }}
     </Typography>
-  </div>
+  </li>
 </template>
 
 <style lang="scss" scoped>
