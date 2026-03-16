@@ -15,24 +15,24 @@ Thumbs.db
 .env.test.local
 .env.production.local
 
-frontend/node_modules/
-frontend/.pnpm-store/
+node_modules/
+.pnpm-store/
 
-frontend/dist/
-frontend/.output/
-frontend/.nuxt/
-frontend/.cache/
+dist/
+.output/
+.nuxt/
+.cache/
 
-frontend/.nitro/
-frontend/.data/
+.nitro/
+.data/
 
-frontend/coverage/
-frontend/.nyc_output/
+coverage/
+.nyc_output/
 
-frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
-frontend/pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 backend/bin/
 backend/*.exe
@@ -74,7 +74,7 @@ docker-compose.override.yml
 /public/uploads/
 /static/uploads/
 backend/uploads/
-frontend/public/uploads/
+public/uploads/
 
 logs/
 *.log

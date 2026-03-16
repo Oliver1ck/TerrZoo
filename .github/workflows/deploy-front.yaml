@@ -15,7 +15,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -34,8 +34,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
-          cache-dependency-path: './frontend/pnpm-lock.yaml'
+          cache: pnpm
+          cache-dependency-path: ./frontend/pnpm-lock.yaml
 
       - name: Install dependencies
         working-directory: ./frontend
@@ -51,7 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './frontend/.output/public'
+          path: ./frontend/.output/public
 
   deploy:
     environment:
