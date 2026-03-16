@@ -40,6 +40,8 @@ jobs:
 
       - name: Generate static site
         run: pnpm nuxi generate
+        env:
+          NUXT_APP_BASE_URL: '/TerrZoo/'
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
