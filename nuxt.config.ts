@@ -5,14 +5,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
   app: {
+    baseURL: '/TerrZoo/',
     buildAssetsDir: 'assets',
   },
 
   css: ['@styles/fonts.css', '@styles/null.css', '@styles/variables.css'],
 
   alias: {
-    '~': './',
-    '@': './',
     '@components': fileURLToPath(new URL('./app/components', import.meta.url)),
     '@composables': fileURLToPath(
       new URL('./app/composables', import.meta.url)
@@ -22,6 +21,17 @@ export default defineNuxtConfig({
     '@layouts': fileURLToPath(new URL('./app/layouts', import.meta.url)),
     '@pages': fileURLToPath(new URL('./app/pages', import.meta.url)),
     '@custom-types': fileURLToPath(new URL('./app/types', import.meta.url)),
+  },
+
+  vite: {
+    resolve: {
+      alias: {
+        '@styles': fileURLToPath(
+          new URL('./app/assets/styles', import.meta.url)
+        ),
+        '@assets': fileURLToPath(new URL('./app/assets', import.meta.url)),
+      },
+    },
   },
 
   nitro: {
