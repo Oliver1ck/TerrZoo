@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { AnimalType } from '@custom-types/animal'
+import type { AnimalType } from '~/types/animal'
 
-import BirdImage from '@assets/img/animals/bird.png'
-import CatImage from '@assets/img/animals/cat.png'
-import DogImage from '@assets/img/animals/dog.png'
-import FishImage from '@assets/img/animals/fish.png'
-import MouseImage from '@assets/img/animals/mouse.png'
-import Animal from '@components/Animal.vue'
+import BirdImage from '~/assets/img/animals/bird.png'
+import CatImage from '~/assets/img/animals/cat.png'
+import DogImage from '~/assets/img/animals/dog.png'
+import FishImage from '~/assets/img/animals/fish.png'
+import MouseImage from '~/assets/img/animals/mouse.png'
+import Animal from '~/components/Animal.vue'
 
 const animalList: AnimalType[] = [
   {

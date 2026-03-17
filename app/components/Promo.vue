@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Promotion } from '../data/promotionData'
+import type { Promotion } from '~/data/promotionData'
 
 type Variant = 'primary' | 'secondary'
 const props = withDefaults(

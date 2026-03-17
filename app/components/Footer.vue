@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Address from '@components/Address.vue'
-import Button from '@components/Button.vue'
-import Clock from '@components/Clock.vue'
-import Logo from '@components/Logo.vue'
-import Nav from '@components/Nav.vue'
-import VLink from '@components/VLink.vue'
+import Address from '~/components/Address.vue'
+import Button from '~/components/Button.vue'
+import Clock from '~/components/Clock.vue'
+import Logo from '~/components/Logo.vue'
+import Nav from '~/components/Nav.vue'
+import VLink from '~/components/VLink.vue'
 </script>
 
 <template>

@@ -2,12 +2,10 @@
 // import 'swiper/swiper.css'
 import type { Swiper as SwiperType } from 'swiper'
 
+import Typography from '~/components/Typography.vue'
+import VLink from '~/components/VLink.vue'
+import { products } from '~/data/product'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-
-import Typography from '@components/Typography.vue'
-
-import { products } from '../../data/product'
-import VLink from '../VLink.vue'
 
 const {
   variant = 'primary',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VLink from '@components/VLink.vue'
+import VLink from '~/components/VLink.vue'
 </script>
 
 <template>

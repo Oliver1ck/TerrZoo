@@ -1,37 +1,27 @@
-import { fileURLToPath } from 'node:url'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   ssr: true,
+
   app: {
-    baseURL: '/TerrZoo/',
-    buildAssetsDir: 'assets',
+    buildAssetsDir: '/_assets/',
   },
 
-  css: ['@styles/fonts.css', '@styles/null.css', '@styles/variables.css'],
+  css: [
+    '~/assets/styles/fonts.css',
+    '~/assets/styles/null.css',
+    '~/assets/styles/variables.css',
+  ],
 
   alias: {
-    '@components': fileURLToPath(new URL('./app/components', import.meta.url)),
-    '@composables': fileURLToPath(
-      new URL('./app/composables', import.meta.url)
-    ),
-    '@styles': fileURLToPath(new URL('./app/assets/styles', import.meta.url)),
-    '@assets': fileURLToPath(new URL('./app/assets', import.meta.url)),
-    '@layouts': fileURLToPath(new URL('./app/layouts', import.meta.url)),
-    '@pages': fileURLToPath(new URL('./app/pages', import.meta.url)),
-    '@custom-types': fileURLToPath(new URL('./app/types', import.meta.url)),
-  },
-
-  vite: {
-    resolve: {
-      alias: {
-        '@styles': fileURLToPath(
-          new URL('./app/assets/styles', import.meta.url)
-        ),
-        '@assets': fileURLToPath(new URL('./app/assets', import.meta.url)),
-      },
-    },
+    '@components': '~/components',
+    '@composables': '~/composables',
+    '@styles': '~/assets/styles',
+    '@assets': '~/assets',
+    '@layouts': '~/layouts',
+    '@pages': '~/pages',
+    '@custom-types': '~/types',
   },
 
   nitro: {

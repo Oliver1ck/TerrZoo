@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import type { Product } from '../data/searchData'
+import type { Product } from '~/data/searchData'
 
 import { useTimeout, watchDebounced } from '@vueuse/core'
-
-import { searchList } from '../data/searchData'
-
-import Link from './VLink.vue'
+import Link from '~/components/VLink.vue'
+import { searchList } from '~/data/searchData'
 
 const newSearchList = ref<Product[]>([])
 const searchModel = defineModel<string>('searchModel')
