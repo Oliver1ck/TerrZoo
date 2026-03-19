@@ -15,13 +15,7 @@ export default defineNuxtConfig({
   ],
 
   alias: {
-    '@components': '~/components',
-    '@composables': '~/composables',
-    '@styles': '~/assets/styles',
     '@assets': '~/assets',
-    '@layouts': '~/layouts',
-    '@pages': '~/pages',
-    '@custom-types': '~/types',
   },
 
   nitro: {
