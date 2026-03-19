@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <article class="article">
-    <NuxtLink to="/article" class="article__link">
+    <NuxtLink to="/" class="article__link">
       <div class="article__img">
         <img :src="article.image_url" :alt="article.title" />
       </div>
