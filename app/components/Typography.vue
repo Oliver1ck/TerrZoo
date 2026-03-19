@@ -27,6 +27,7 @@ const props = withDefaults(
     variant: 'body-sm',
     iconPosition: 'left',
     color: 'Default',
+    textAlign: 'left',
   }
 )
 
@@ -99,7 +100,7 @@ const classes = computed(() => [
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 130%; /* 1.625rem */
+    line-height: 1.3; /* 1.625rem */
   }
 
   &--heading-sm {
@@ -110,7 +111,7 @@ const classes = computed(() => [
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
-    line-height: 130%; /* 1.3rem */
+    line-height: 1.3; /* 1.3rem */
   }
 
   &--body-sm {
@@ -132,7 +133,7 @@ const classes = computed(() => [
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.5rem; /* 150% */
+    line-height: 1.3; /* 150% */
   }
 
   & b {
