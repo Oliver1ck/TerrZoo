@@ -4,6 +4,7 @@ import type { Swiper as SwiperType } from 'swiper'
 
 import Typography from '~/components/Typography.vue'
 import VLink from '~/components/VLink.vue'
+import { articles } from '~/data/articles'
 import { products } from '~/data/product'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
@@ -11,10 +12,12 @@ const {
   variant = 'primary',
   title = 'Заголовок секции',
   theme = 'gray',
+  article = false,
 } = defineProps<{
   variant?: 'primary' | 'secondary'
   title?: string
   theme?: 'white' | 'gray'
+  article?: boolean
 }>()
 
 const sectionClasses = computed(() => [
@@ -32,6 +35,17 @@ const breakpoints = {
   },
   992: {
     slidesPerView: 4,
+    spaceBetween: 25,
+  },
+}
+
+const breakpointsArticle = {
+  576: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  992: {
+    slidesPerView: 3,
     spaceBetween: 25,
   },
 }
@@ -101,12 +115,14 @@ function slideNext() {
           </div>
         </div>
         <Swiper
+          v-if="!article"
           class="slider"
           wrapper-tag="ul"
           wrapper-class="slider-list"
           :slides-per-view="1.5"
           :space-between="18"
           :breakpoints="breakpoints"
+          :simulate-touch="false"
           :loop="true"
           @swiper="onSwiper"
         >
@@ -119,6 +135,27 @@ function slideNext() {
             <Product :product="product" :variant="variant" />
           </SwiperSlide>
         </Swiper>
+        <Swiper
+          v-else
+          class="slider"
+          wrapper-tag="ul"
+          wrapper-class="slider-list"
+          :slides-per-view="1.25"
+          :space-between="18"
+          :breakpoints="breakpointsArticle"
+          :simulate-touch="false"
+          :loop="true"
+          @swiper="onSwiper"
+        >
+          <SwiperSlide
+            v-for="article in articles"
+            :key="article.id"
+            tag="li"
+            :lazy="true"
+          >
+            <Article :article="article" />
+          </SwiperSlide>
+        </Swiper>
         <VLink
           to="/catalog/"
           variant="primary-button"
@@ -126,7 +163,7 @@ function slideNext() {
           content-position="center"
           position="center"
         >
-          Смотреть больше товаров
+          {{ article ? 'Читать больше статей' : 'Смотреть больше товаров' }}
         </VLink>
       </div>
     </div>

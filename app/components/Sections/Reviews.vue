@@ -103,6 +103,9 @@ function goToNext() {
 </template>
 
 <style lang="scss">
+.reviews {
+  margin-bottom: 3.5rem;
+}
 .reviews__wrapper {
   background: var(--Surface-Default);
   border-radius: 0.3125rem;
