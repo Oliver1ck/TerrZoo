@@ -61,6 +61,13 @@ defineProps<{
   border-radius: 0.3125rem;
   background: var(--Surface-Default);
   height: 100%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow:
+      0 0 2px 0 rgba(0, 0, 0, 0.06),
+      0 12px 32px 0 rgba(0, 0, 0, 0.1);
+  }
 }
 
 .article__img {

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import AnimalSection from '@components/Sections/AnimalSection.vue'
-import BrandSection from '@components/Sections/BrandSection.vue'
-import Intro from '@components/Sections/Intro.vue'
-import Promotion from '@components/Sections/Promotion.vue'
-import Reviews from '@components/Sections/Reviews.vue'
-import Slider from '@components/Sections/Slider.vue'
+import About from '~/components/Sections/About.vue'
+import AnimalSection from '~/components/Sections/AnimalSection.vue'
+import BrandSection from '~/components/Sections/BrandSection.vue'
+import Intro from '~/components/Sections/Intro.vue'
+import Promotion from '~/components/Sections/Promotion.vue'
+import Reviews from '~/components/Sections/Reviews.vue'
+import Slider from '~/components/Sections/Slider.vue'
 </script>
 
 <template>
@@ -17,6 +18,8 @@ import Slider from '@components/Sections/Slider.vue'
   <Slider title="Новинки" variant="secondary" theme="white" />
   <BrandSection />
   <Reviews />
+  <Slider title="Полезные статьи" :article="true" />
+  <About />
 </template>
 
 <style lang="scss" scoped>
