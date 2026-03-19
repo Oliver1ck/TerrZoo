@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <article class="review">
-    <Typography tag="h3" variant="heading-sm">
+    <Typography tag="h3" variant="heading-sm" text-align="center">
       {{ review.name }}
     </Typography>
     <Typography text-align="center" variant="body-sm" color="Default">

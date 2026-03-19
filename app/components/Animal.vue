@@ -20,7 +20,7 @@ const props = withDefaults(
 <template>
   <NuxtLink to="/" class="animal">
     <img :src="props.animal.image" :alt="props.animal.description" />
-    <Typography tag="h3" variant="heading-sm">
+    <Typography tag="h3" variant="heading-sm" text-align="center">
       {{ props.animal.name }}
     </Typography>
   </NuxtLink>
