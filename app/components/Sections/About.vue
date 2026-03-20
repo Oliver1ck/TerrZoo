@@ -104,4 +104,17 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+@media (max-width: 992px) {
+  .about {
+    padding: 1rem 0;
+  }
+
+  .about__wrapper {
+    justify-content: center;
+  }
+  .about__image {
+    display: none;
+  }
+}
 </style>

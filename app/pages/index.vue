@@ -2,6 +2,7 @@
 import About from '~/components/Sections/About.vue'
 import AnimalSection from '~/components/Sections/AnimalSection.vue'
 import BrandSection from '~/components/Sections/BrandSection.vue'
+import Contacts from '~/components/Sections/Contacts.vue'
 import Intro from '~/components/Sections/Intro.vue'
 import Promotion from '~/components/Sections/Promotion.vue'
 import Reviews from '~/components/Sections/Reviews.vue'
@@ -20,6 +21,7 @@ import Slider from '~/components/Sections/Slider.vue'
   <Reviews />
   <Slider title="Полезные статьи" :article="true" />
   <About />
+  <Contacts />
 </template>
 
 <style lang="scss" scoped>

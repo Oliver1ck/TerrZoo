@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import VLink from '~/components/VLink.vue'
+
+const { inst = true } = defineProps<{
+  inst?: boolean
+}>()
 </script>
 
 <template>
@@ -12,7 +16,7 @@ import VLink from '~/components/VLink.vue'
         + 375 (44) 501 03 55
       </template>
     </VLink>
-    <VLink to="https://www.instagram.com">
+    <VLink v-if="inst" to="https://www.instagram.com">
       <template #icon>
         <img src="@assets/img/icons/inst.svg" alt="instagram icon" />
       </template>
