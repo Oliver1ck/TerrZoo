@@ -57,6 +57,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding-right: 4.38rem;
 }
 
 .contacts__map {
