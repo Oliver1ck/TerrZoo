@@ -13,11 +13,7 @@
           ></iframe>
         </div>
         <div class="contacts__info">
-          <Typography
-            tag="h2"
-            variant="heading-md"
-            style="max-width: 19.5625rem"
-          >
+          <Typography tag="h2" variant="heading-md" class="contacts__title">
             Бесплатно проконсультируем по любому вопросу связанному с вашим
             любимцем
           </Typography>
@@ -60,12 +56,16 @@
   padding-right: 4.38rem;
 }
 
+.contacts__title {
+  max-width: 19.5625rem;
+}
+
 .contacts__map {
   flex: 0 1 41.875rem;
   height: 23.375rem;
 }
 .contacts__info {
-  flex: 0 1 21.75rem;
+  flex: 0 0 21.75rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -77,5 +77,27 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+@media (max-width: 992px) {
+  .contacts {
+    margin-top: 2rem;
+  }
+  .contacts__wrapper {
+    align-items: initial;
+    flex-direction: column;
+    padding-right: 0;
+  }
+  .contacts__title {
+    max-width: none;
+  }
+  .contacts__map {
+    width: 100%;
+    flex: 0 0 15.1875rem;
+  }
+
+  .contacts__info {
+    flex: initial;
+  }
 }
 </style>

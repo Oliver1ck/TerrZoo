@@ -138,4 +138,10 @@ function goToNext() {
   line-height: 1.5rem;
   color: var(--text-secondary, #5c5f62);
 }
+
+@media (max-width: 992px) {
+  .reviews {
+    margin-bottom: 2rem;
+  }
+}
 </style>

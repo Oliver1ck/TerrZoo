@@ -69,7 +69,13 @@ const { toggleBurger, activeModal } = useModal()
 
 <style lang="scss" scoped>
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
   &__top {
+    background: var(--Surface-Default);
     padding: 0.75rem 0;
   }
 }

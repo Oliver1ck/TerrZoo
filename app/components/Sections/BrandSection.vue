@@ -40,6 +40,9 @@ import { brandsData } from '~~/app/data/brand'
 }
 
 @media (max-width: 992px) {
+  .brands {
+    padding: 2rem 0 3.5rem;
+  }
   .brands__list {
     gap: 1rem 0.5rem;
     grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));

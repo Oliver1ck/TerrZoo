@@ -4,7 +4,14 @@
   padding: 0 0.62rem;
 }
 
+.wrapper {
+  padding-top: 2.5rem;
+}
+
 @media (min-width: 993px) {
+  .wrapper {
+    padding-top: 6.125rem;
+  }
   .container {
     max-width: 75rem;
     padding: 0 0.938rem;

@@ -17,7 +17,7 @@
               для ваших домашних любимцев.
             </Typography>
           </div>
-          <ul class="about_list">
+          <ul class="about__list">
             <li class="about__item">
               <AccentText>
                 <div class="about__accent-item">
@@ -94,7 +94,7 @@
   flex-direction: column;
   gap: 0.75rem;
 }
-.about_list {
+.about__list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -108,10 +108,19 @@
 @media (max-width: 992px) {
   .about {
     padding: 1rem 0;
+    margin-top: 2rem;
+  }
+  .about__list {
+    flex-direction: initial;
+    flex-wrap: wrap;
   }
 
-  .about__wrapper {
-    justify-content: center;
+  .about__text {
+    flex: initial;
+  }
+
+  .about__item {
+    flex: 1 1 20.875rem;
   }
   .about__image {
     display: none;
