@@ -13,33 +13,22 @@ const { toggleBurger, activeModal } = useModal()
 
 <template>
   <header class="header">
-    <div v-if="mounted && isDesktop" class="header__top">
+    <div class="header__top">
       <div class="container">
         <div class="header__top-wrapper">
-          <Address />
-          <Clock />
-          <Phone />
-          <Button variant="callback">
-            Обратный звонок
-          </Button>
-        </div>
-      </div>
-    </div>
-    <div class="header__bottom">
-      <div class="container">
-        <div class="header__bottom-wrapper">
           <Logo
-            :variant="mounted && isDesktop ? 'primary' : 'secondary'"
+            v-if="mounted && !isDesktop"
+            variant="secondary"
             index="active"
           />
-          <div class="header__controls">
-            <Search v-if="mounted && isDesktop" />
-            <Nav v-if="mounted && isDesktop" />
-            <Button
-              v-if="mounted && !isDesktop"
-              variant="search"
-              @click="toggleBurger"
-            />
+          <Address v-if="mounted && isDesktop" />
+          <Clock v-if="mounted && isDesktop" />
+          <Phone v-if="mounted && isDesktop" />
+          <Button v-if="mounted && isDesktop" variant="callback">
+            Обратный звонок
+          </Button>
+          <div v-if="mounted && !isDesktop" class="header__top-controls">
+            <Button variant="search" @click="toggleBurger" />
             <VLink to="/basket" variant="basket">
               <template #icon>
                 <img src="@assets/img/icons/basket.svg" alt="basket icon" />
@@ -49,11 +38,55 @@ const { toggleBurger, activeModal } = useModal()
               </template>
             </VLink>
             <Button
-              v-if="mounted && !isDesktop"
               variant="burger"
               :state="activeModal === 'burger'"
               @click="toggleBurger"
             />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="header__bottom"
+      :class="{ burger__active: activeModal === 'burger' }"
+    >
+      <div class="container">
+        <div class="header__bottom-wrapper">
+          <Logo v-if="mounted && isDesktop" variant="primary" index="active" />
+          <Search />
+          <div class="header__bottom-controls">
+            <Nav />
+            <VLink v-if="mounted && isDesktop" to="/basket" variant="basket">
+              <template #icon>
+                <img src="@assets/img/icons/basket.svg" alt="basket icon" />
+              </template>
+              <template #default>
+                0
+              </template>
+            </VLink>
+          </div>
+          <div v-if="mounted && !isDesktop" class="burger__controls">
+            <VLink
+              to="/basket"
+              variant="basket-outline"
+              content-position="center"
+              position="fullWidth"
+            >
+              <template #icon>
+                <img src="@assets/img/icons/basket.svg" alt="basket icon" />
+              </template>
+              <template #default>
+                Корзина
+              </template>
+            </VLink>
+            <div class="burger__contacts">
+              <Address />
+              <Phone />
+              <Clock />
+              <Button variant="callback">
+                Обратный звонок
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -75,6 +108,7 @@ const { toggleBurger, activeModal } = useModal()
 }
 .header__top-wrapper {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 0.875rem;
 }
@@ -91,23 +125,61 @@ const { toggleBurger, activeModal } = useModal()
   gap: 2.5rem;
 }
 
-.header__controls {
+.header__bottom-controls {
   display: flex;
   align-items: center;
   flex: 1 1 auto;
   gap: 2.5rem;
 }
 
+.header__top-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.burger__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.burger__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 @media (max-width: 992px) {
-  .header__bottom-wrapper {
-    gap: 1rem;
-  }
   .header__bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
     background: var(--Header-Mob-Bg);
+    padding: 3.5rem 0 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
-  .header__controls {
-    gap: 1.5rem;
+  .header__top {
+    padding: 0.5rem 0;
+  }
+  .burger__active {
+    transform: translateX(0);
+  }
+  .header__bottom-wrapper {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .header__bottom-controls {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
     justify-content: flex-end;
+    gap: 1.5rem;
   }
 }
 </style>
