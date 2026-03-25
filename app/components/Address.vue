@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import Typography from '~/components/Typography.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="address">

@@ -2,11 +2,10 @@
 // import 'swiper/swiper.css'
 import type { Swiper as SwiperType } from 'swiper'
 
-import Typography from '~/components/Typography.vue'
-import VLink from '~/components/VLink.vue'
-import { articles } from '~/data/articles'
-import { products } from '~/data/product'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+
+import { articles } from '@data/articles'
+import { products } from '@data/product'
 
 const {
   variant = 'primary',
@@ -148,12 +147,12 @@ function slideNext() {
           @swiper="onSwiper"
         >
           <SwiperSlide
-            v-for="article in articles"
-            :key="article.id"
+            v-for="articleItem in articles"
+            :key="articleItem.id"
             tag="li"
             :lazy="true"
           >
-            <Article :article="article" />
+            <Article :article="articleItem" />
           </SwiperSlide>
         </Swiper>
         <VLink

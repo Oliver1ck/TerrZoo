@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { Swiper as SwiperType } from 'swiper'
 
-import Button from '~/components/Button.vue'
-import Typography from '~/components/Typography.vue'
-import { mockReviews } from '~/data/review'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { ref } from 'vue'
+
+import { mockReviews } from '@data/review'
 
 const swiperInstance = ref<SwiperType | null>(null)
 const currentSlide = ref(1)

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type { NumberOfPackages } from '~/data/product'
-
-import PackageUnit from './PackageUnit.vue'
+import type { NumberOfPackages } from '@data/product'
 
 defineProps<{
   data: NumberOfPackages[]

@@ -1,11 +1,5 @@
 <script setup lang="ts">
 import { useMediaQuery } from '@vueuse/core'
-import Address from '~/components/Address.vue'
-import Button from '~/components/Button.vue'
-import Clock from '~/components/Clock.vue'
-import Phone from '~/components/Phone.vue'
-import Search from '~/components/Search.vue'
-import VLink from '~/components/VLink.vue'
 
 const isDesktop = useMediaQuery('(min-width: 993px)', {
   ssrWidth: 1200,

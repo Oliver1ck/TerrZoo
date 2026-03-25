@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import introImg from '~/assets/img/intro.png'
-import AccentText from '~/components/AccentText.vue'
-import Typography from '~/components/Typography.vue'
-import VLink from '~/components/VLink.vue'
+import introImg from '@assets/img/intro.png'
 </script>
 
 <template>

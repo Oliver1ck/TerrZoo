@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AnimalType } from '~/types/animal'
+import type { AnimalType } from '@custom-types/animal'
 
 const props = withDefaults(
   defineProps<{

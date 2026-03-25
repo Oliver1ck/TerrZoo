@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Promo from '~/components/Promo.vue'
-import { dataPromoStatic } from '~/data/promotionData'
+import { dataPromoStatic } from '@data/promotionData'
 </script>
 
 <template>

@@ -1,12 +1,4 @@
 <script setup lang="ts">
-import Address from '../Address.vue'
-import Button from '../Button.vue'
-import Clock from '../Clock.vue'
-import Nav from '../Nav.vue'
-import Phone from '../Phone.vue'
-import Search from '../Search.vue'
-import VLink from '../VLink.vue'
-
 const { activeModal } = useModal()
 const classes = computed(() => [
   'mobile-menu',

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import VLink from '~/components/VLink.vue'
-
 const { inst = true } = defineProps<{
   inst?: boolean
 }>()

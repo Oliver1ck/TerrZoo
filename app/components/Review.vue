@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type { ReviewType } from '~/data/review'
-
-import Typography from '~/components/Typography.vue'
+import type { ReviewType } from '@data/review'
 
 defineProps<{
   review: ReviewType

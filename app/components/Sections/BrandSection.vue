@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Brand from '~/components/Brand.vue'
-import { brandsData } from '~~/app/data/brand'
+import { brandsData } from '@data/brand'
 </script>
 
 <template>

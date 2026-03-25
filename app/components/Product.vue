@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type { ProductType } from '../data/product'
-
-import Button from '~/components/Button.vue'
+import type { ProductType } from '@data/product'
 
 const { variant = 'primary' } = defineProps<{
   variant?: 'primary' | 'secondary'
