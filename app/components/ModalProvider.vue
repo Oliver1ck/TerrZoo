@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { useMediaQuery } from '@vueuse/core'
+// import { useMediaQuery } from '@vueuse/core'
 
-import MobileMenu from '@components/Modals/MobileMenu.vue'
-
-const { activeModal } = useModal()
-const isDesktop = useMediaQuery('(min-width: 993px)')
+// const { activeModal } = useModal()
+// const isDesktop = useMediaQuery('(min-width: 993px)')
 </script>
 
 <template>
   <ClientOnly>
     <Teleport to="body">
       <Transition name="slide-right" mode="out-in">
-        <MobileMenu v-if="!isDesktop && activeModal === 'burger'" />
       </Transition>
     </Teleport>
   </ClientOnly>

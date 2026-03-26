@@ -34,6 +34,9 @@
   :deep(p:nth-child(2)) {
     display: none;
   }
+  .icon {
+    display: none;
+  }
 }
 
 @media (max-width: 992px) {
