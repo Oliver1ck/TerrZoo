@@ -4,11 +4,9 @@ import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
 
 <template>
   <BreadCrumbs />
-  <div class="container">
-    <Typography variant="heading-xl" tag="h1">
-      Страница акций
-    </Typography>
-  </div>
+  <Typography variant="heading-xl" tag="h1">
+    Страница товара
+  </Typography>
 </template>
 
 <style lang="scss" scoped></style>
