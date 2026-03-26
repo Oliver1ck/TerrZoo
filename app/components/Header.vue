@@ -45,6 +45,11 @@ const { toggleBurger, activeModal } = useModal()
     <div
       class="header__bottom"
       :class="{ burger__active: activeModal === 'burger' }"
+      :role="!isDesktop && activeModal === 'burger' ? 'dialog' : undefined"
+      :aria-modal="!isDesktop && activeModal === 'burger' ? 'true' : undefined"
+      aria-label="Основное меню"
+      :aria-hidden="!isDesktop && activeModal !== 'burger'"
+      :inert="!isDesktop && activeModal !== 'burger'"
     >
       <div class="container">
         <div class="header__bottom-wrapper">
