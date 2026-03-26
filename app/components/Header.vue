@@ -16,18 +16,14 @@ const { toggleBurger, activeModal } = useModal()
     <div class="header__top">
       <div class="container">
         <div class="header__top-wrapper">
-          <Logo
-            v-if="mounted && !isDesktop"
-            variant="secondary"
-            index="active"
-          />
-          <Address v-if="mounted && isDesktop" />
-          <Clock v-if="mounted && isDesktop" />
-          <Phone v-if="mounted && isDesktop" />
-          <Button v-if="mounted && isDesktop" variant="callback">
+          <Logo v-if="!isDesktop" variant="secondary" index="active" />
+          <Address v-if="isDesktop" />
+          <Clock v-if="isDesktop" />
+          <Phone v-if="isDesktop" />
+          <Button v-if="isDesktop" variant="callback">
             Обратный звонок
           </Button>
-          <div v-if="mounted && !isDesktop" class="header__top-controls">
+          <div v-if="!isDesktop" class="header__top-controls">
             <Button variant="search" @click="toggleBurger" />
             <VLink to="/basket" variant="basket">
               <template #icon>
@@ -52,11 +48,11 @@ const { toggleBurger, activeModal } = useModal()
     >
       <div class="container">
         <div class="header__bottom-wrapper">
-          <Logo v-if="mounted && isDesktop" variant="primary" index="active" />
+          <Logo v-if="isDesktop" variant="primary" index="active" />
           <Search />
           <div class="header__bottom-controls">
             <Nav />
-            <VLink v-if="mounted && isDesktop" to="/basket" variant="basket">
+            <VLink v-if="isDesktop" to="/basket" variant="basket">
               <template #icon>
                 <img src="@assets/img/icons/basket.svg" alt="basket icon" />
               </template>
@@ -65,7 +61,7 @@ const { toggleBurger, activeModal } = useModal()
               </template>
             </VLink>
           </div>
-          <div v-if="mounted && !isDesktop" class="burger__controls">
+          <div v-if="!isDesktop" class="burger__controls">
             <VLink
               to="/basket"
               variant="basket-outline"
@@ -163,6 +159,7 @@ const { toggleBurger, activeModal } = useModal()
     padding: 3.5rem 0 0;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
+    overflow-y: auto;
   }
   .header__top {
     padding: 0.5rem 0;
