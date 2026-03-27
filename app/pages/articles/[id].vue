@@ -3,12 +3,11 @@ import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
 </script>
 
 <template>
-  <BreadCrumbs />
-  <div class="container">
-    <Typography variant="heading-xl" tag="h1">
-      Страница акций
-    </Typography>
-  </div>
+  <BreadCrumbs>
+    <template #product>
+      Какая-то статья
+    </template>
+  </BreadCrumbs>
 </template>
 
 <style lang="scss" scoped></style>

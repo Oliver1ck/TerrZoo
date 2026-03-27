@@ -10,6 +10,7 @@ type Variant =
   | 'basket-outline'
   | 'interactive'
   | 'primary-button'
+  | 'breadCrumbs'
 
 // sm - 0.875rem, md - 1rem, lg - 1.125rem
 type Size = 'sm' | 'md' | 'lg'
@@ -176,7 +177,7 @@ function handleClick() {
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.25rem; /* 142.857% */
+    line-height: 1.25rem;
     padding: 0.5rem 1rem;
 
     &:deep(img) {
@@ -189,6 +190,16 @@ function handleClick() {
     &:hover {
       background: var(--Action-Secondary-Pressed);
     }
+  }
+  &--breadCrumbs {
+    color: var(--Text-Default, #202223);
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem;
   }
   &--interactive {
     color: var(--Text-Interactive-Default);
