@@ -3,14 +3,11 @@ import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
 </script>
 
 <template>
-  <BreadCrumbs :parent-routes="[{ label: 'Каталог', path: '/catalog' }]">
+  <BreadCrumbs :parent-routes="[{ label: 'Статьи', path: '/articles' }]">
     <template #current>
-      какой-то товар
+      какая-то статья
     </template>
   </BreadCrumbs>
-  <Typography variant="heading-xl" tag="h1">
-    Страница товара
-  </Typography>
 </template>
 
 <style lang="scss" scoped></style>
