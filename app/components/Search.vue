@@ -59,14 +59,14 @@ function handleFocusIn() {
     </div>
     <ul :class="searchProductListClass">
       <li v-for="item in newSearchList" :key="item.name" class="item">
-        <Link to="/" variant="searchItem">
+        <VLink to="/" variant="searchItem">
           <template #icon>
             <img :src="item.img" alt="product image" />
           </template>
           <template #default>
             {{ item.name }}
           </template>
-        </Link>
+        </VLink>
       </li>
     </ul>
   </form>
