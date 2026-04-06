@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ModelValue } from './FilterBox.vue'
-import type { Brand } from '@data/CatalogBrands'
+import type { ModelCategories } from '@components/CatalogFilters.vue'
+import type { Brand } from '@data/catalogBrands'
 import type { Category } from '@data/catalogCategories'
 import type { Sales } from '@data/catalogSales'
 
@@ -8,31 +8,28 @@ const props = defineProps<{
   item: Category | Brand | Sales
 }>()
 
-const modelValue = defineModel<ModelValue>({
-  default: {
-    mainCategory: '',
-    subCategories: [],
-  },
-})
+const modelValue = defineModel<ModelCategories | string[]>()
 
 function isCategoryType(item: Category | Brand): item is Category {
   return 'subcategories' in item
 }
 
 watch(
-  () => modelValue.value?.mainCategory,
+  () => {
+    if (isCategoryType(props.item)) {
+      return (modelValue.value as ModelCategories).mainCategory
+    }
+
+    return modelValue.value as string[]
+  },
   newCategory => {
-    if (newCategory === props.item.title) {
-      if (
-        isCategoryType(props.item)
-        && props.item.subcategories
-        && props.item.subcategories.length > 0
-      ) {
-        modelValue.value.subCategories = props.item.subcategories.map(
-          sub => sub.title
-        )
+    if (isCategoryType(props.item) && newCategory === props.item.title) {
+      const catModel = modelValue.value as ModelCategories
+
+      if (props.item.subcategories && props.item.subcategories.length > 0) {
+        catModel.subCategories = props.item.subcategories.map(sub => sub.title)
       } else {
-        modelValue.value.subCategories = []
+        catModel.subCategories = []
       }
     }
   }
@@ -43,14 +40,14 @@ watch(
   <li class="filter-category__item">
     <VRadio
       v-if="isCategoryType(item)"
-      v-model="modelValue.mainCategory"
+      v-model="(modelValue as ModelCategories).mainCategory"
       :title="item.title"
       :value="item.title"
       name="category"
     />
     <VChecked
       v-else
-      v-model="modelValue.subCategories"
+      v-model="modelValue as string[]"
       :value="item.title"
       :label="item.title"
       :name="item.title"
@@ -63,7 +60,7 @@ watch(
       <VChecked
         v-for="checkItem in item.subcategories"
         :key="checkItem.id"
-        v-model="modelValue.subCategories"
+        v-model="(modelValue as ModelCategories).subCategories"
         :value="checkItem.title"
         :name="item.title"
       >

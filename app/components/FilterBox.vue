@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { Brand } from '@data/CatalogBrands'
+import type { ModelCategories } from '@components/CatalogFilters.vue'
+import type { Brand } from '@data/catalogBrands'
 import type { Category } from '@data/catalogCategories'
 import type { Sales } from '@data/catalogSales'
 
@@ -35,16 +36,7 @@ const computedPadding = computed(() => {
       return '1rem'
   }
 })
-
-export interface ModelValue {
-  mainCategory: string
-  subCategories: string[] | undefined
-}
-
-const checkedCategory = ref<ModelValue>({
-  mainCategory: '',
-  subCategories: [],
-})
+const modelValue = defineModel<ModelCategories | string[]>()
 </script>
 
 <template>
@@ -57,7 +49,7 @@ const checkedCategory = ref<ModelValue>({
       <FilterCategoryItem
         v-for="item in data"
         :key="item.id"
-        v-model="checkedCategory"
+        v-model="modelValue"
         :item="item"
       />
     </ul>

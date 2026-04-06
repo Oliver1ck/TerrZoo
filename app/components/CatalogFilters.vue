@@ -1,14 +1,61 @@
 <script setup lang="ts">
-import { mockBrands } from '@data/CatalogBrands'
+import { mockBrands } from '@data/catalogBrands'
 import { categories } from '@data/catalogCategories'
 import { sales } from '@data/catalogSales'
+
+export interface ModelValue {
+  sales: string[] | undefined
+  categories: ModelCategories
+  brands: string[] | undefined
+}
+export interface ModelCategories {
+  mainCategory: string | undefined
+  subCategories: string[] | []
+}
+
+const checkedCategory = ref<ModelValue>({
+  sales: [],
+  categories: {
+    mainCategory: '',
+    subCategories: [],
+  },
+  brands: [],
+})
+
+watch(
+  checkedCategory,
+  newValue => {
+    console.log(
+      'Checked sales',
+      newValue.sales,
+      'Checked categories',
+      newValue.categories,
+      'Checked brands',
+      newValue.brands
+    )
+  },
+  { deep: true }
+)
 </script>
 
 <template>
   <aside class="catalog__filters">
-    <FilterBox variant="secondary" :data="sales" />
-    <FilterBox title="Тип товара" :data="categories" />
-    <FilterBox title="Бренд" :searchField="true" :data="mockBrands" />
+    <FilterBox
+      v-model="checkedCategory.sales"
+      variant="secondary"
+      :data="sales"
+    />
+    <FilterBox
+      v-model="checkedCategory.categories"
+      title="Тип товара"
+      :data="categories"
+    />
+    <FilterBox
+      v-model="checkedCategory.brands"
+      title="Бренд"
+      :searchField="true"
+      :data="mockBrands"
+    />
   </aside>
 </template>
 
