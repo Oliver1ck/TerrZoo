@@ -16,19 +16,27 @@ const computedPadding = computed(() => {
   if (props.padding) {
     return props.padding
   }
+
   switch (props.variant) {
     case 'primary':
       return '1rem'
+
     case 'secondary':
       return '1.12rem'
+
     default:
       return '1rem'
   }
 })
 
-const checkedCategory = ref<string | undefined>(undefined)
-watch(checkedCategory, newVal => {
-  console.log('Checked category:', newVal)
+export interface ModelValue {
+  mainCategory: string
+  subCategories: string[] | undefined
+}
+
+const checkedCategory = ref<ModelValue>({
+  mainCategory: '',
+  subCategories: [],
 })
 </script>
 

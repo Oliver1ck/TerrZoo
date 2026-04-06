@@ -1,35 +1,48 @@
 <script setup lang="ts">
+import type { ModelValue } from './FilterBox.vue'
 import type { Category } from '~/data/catalogCategories'
 
 const props = defineProps<{
   item: Category
 }>()
 
-const modelValue = defineModel<string | undefined>()
-const innerCategory = ref<string[] | undefined>([])
-
-watch(modelValue, newVal => {
-  if (newVal !== props.item.title || newVal === undefined) {
-    innerCategory.value = []
-  } else {
-    innerCategory.value = props.item.subcategories?.map(sub => sub.title) || []
-  }
+const modelValue = defineModel<ModelValue>({
+  default: {
+    mainCategory: '',
+    subCategories: [],
+  },
 })
+
+watch(
+  () => modelValue.value?.mainCategory,
+  newCategory => {
+    if (newCategory === props.item.title) {
+      if (props.item.subcategories && props.item.subcategories.length > 0) {
+        modelValue.value.subCategories = props.item.subcategories.map(
+          sub => sub.title
+        )
+      } else {
+        modelValue.value.subCategories = []
+      }
+    }
+  }
+)
 </script>
 
 <template>
   <li class="filter-category__item">
     <VRadio
-      v-model="modelValue"
+      v-model="modelValue.mainCategory"
       :title="item.title"
       :value="item.title"
       name="category"
     />
+
     <div v-if="item.subcategories?.length" class="filter__inner">
       <VChecked
         v-for="checkItem in item.subcategories"
         :key="checkItem.id"
-        v-model="innerCategory"
+        v-model="modelValue.subCategories"
         :value="checkItem.title"
         :name="item.title"
       >
