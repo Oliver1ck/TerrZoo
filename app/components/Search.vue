@@ -75,8 +75,8 @@ function handleFocusIn() {
 
 <style lang="scss" scoped>
 .search {
-  flex: 0 1 31.25rem;
   position: relative;
+  width: 100%;
 }
 
 .search--product--list {
@@ -98,13 +98,6 @@ function handleFocusIn() {
   &--visible {
     opacity: 1;
     pointer-events: auto;
-  }
-}
-
-@media (max-width: 992px) {
-  .search {
-    flex: 1 1 auto;
-    width: 100%;
   }
 }
 </style>
