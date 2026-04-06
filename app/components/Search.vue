@@ -3,8 +3,17 @@ import type { Product } from '@data/searchData'
 
 import { useTimeout, watchDebounced } from '@vueuse/core'
 
+import VInput from '@components/Input.vue'
 import { searchList } from '@data/searchData'
 
+const props = withDefaults(
+  defineProps<{
+    drop?: boolean
+  }>(),
+  {
+    drop: false,
+  }
+)
 const newSearchList = ref<Product[]>([])
 const searchModel = defineModel<string>('searchModel')
 const searchListVisible = ref<boolean>(false)
@@ -41,32 +50,32 @@ function handleFocusIn() {
     searchListVisible.value = true
   }
 }
-// const isDesktop = useMediaQuery('(min-width: 992px)')
 </script>
 
 <template>
   <form class="search">
-    <div class="search--wrapper">
-      <img src="@assets/img/icons/searchIcon.svg" alt="search icon" />
-      <input
-        v-model="searchModel"
-        type="text"
-        name="search"
-        placeholder="Поиск"
-        @focusout="handleFocusOut"
-        @focusin="handleFocusIn"
-      />
-    </div>
-    <ul :class="searchProductListClass">
+    <VInput
+      v-model="searchModel"
+      type="text"
+      name="search"
+      placeholder="Поиск"
+      @focusout="handleFocusOut"
+      @focusin="handleFocusIn"
+    >
+      <template #prepend>
+        <img src="@assets/img/icons/searchIcon.svg" alt="search icon" />
+      </template>
+    </VInput>
+    <ul v-if="props.drop" :class="searchProductListClass">
       <li v-for="item in newSearchList" :key="item.name" class="item">
-        <Link to="/" variant="searchItem">
+        <VLink to="/" variant="searchItem">
           <template #icon>
             <img :src="item.img" alt="product image" />
           </template>
           <template #default>
             {{ item.name }}
           </template>
-        </Link>
+        </VLink>
       </li>
     </ul>
   </form>
@@ -74,33 +83,8 @@ function handleFocusIn() {
 
 <style lang="scss" scoped>
 .search {
-  flex: 0 1 31.25rem;
   position: relative;
-}
-.search--wrapper {
-  & input {
-    border-radius: 0.25rem;
-    border: 1px solid var(--Text-input-border);
-    background: var(--Surface-Default);
-    padding: 0.5rem 0.75rem 0.5rem 2.5rem;
-    background: #fff;
-    width: 100%;
-    color: var(--Text-Subdued);
-    font-feature-settings:
-      'liga' off,
-      'clig' off;
-    font-family: 'SF Pro Text';
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.25rem; /* 133.333% */
-  }
-  & img {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0.88rem;
-  }
+  width: 100%;
 }
 
 .search--product--list {
@@ -122,13 +106,6 @@ function handleFocusIn() {
   &--visible {
     opacity: 1;
     pointer-events: auto;
-  }
-}
-
-@media (max-width: 992px) {
-  .search {
-    flex: 1 1 auto;
-    width: 100%;
   }
 }
 </style>

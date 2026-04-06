@@ -54,7 +54,7 @@ const { toggleBurger, activeModal } = useModal()
       <div class="container">
         <div class="header__bottom-wrapper">
           <Logo v-if="isDesktop" variant="primary" index="active" />
-          <Search />
+          <Search :drop="true" />
           <div class="header__bottom-controls">
             <Nav />
             <VLink v-if="isDesktop" to="/basket" variant="basket">
