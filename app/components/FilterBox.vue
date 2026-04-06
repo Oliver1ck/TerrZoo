@@ -1,14 +1,21 @@
 <script setup lang="ts">
-import { categories } from '@data/catalogCategories'
+import type { Brand } from '@data/CatalogBrands'
+import type { Category } from '@data/catalogCategories'
+import type { Sales } from '@data/catalogSales'
+
+import Search from '@/components/Search.vue'
 
 const props = withDefaults(
   defineProps<{
     variant?: 'primary' | 'secondary'
     title?: string
     padding?: string
+    data?: Category[] | Brand[] | Sales[]
+    searchField?: boolean
   }>(),
   {
     variant: 'primary',
+    searchField: false,
   }
 )
 
@@ -45,9 +52,10 @@ const checkedCategory = ref<ModelValue>({
     <Typography v-if="title" tag="h3" variant="heading-sm">
       {{ title }}
     </Typography>
+    <Search v-if="searchField" />
     <ul class="filter-box__list">
       <FilterCategoryItem
-        v-for="item in categories"
+        v-for="item in data"
         :key="item.id"
         v-model="checkedCategory"
         :item="item"

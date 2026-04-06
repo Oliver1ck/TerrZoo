@@ -6,7 +6,7 @@ defineProps<{
   value?: string | number
 }>()
 
-const modelValue = defineModel<string | number | boolean>()
+const modelValue = defineModel<string>()
 const inputId = useId()
 </script>
 

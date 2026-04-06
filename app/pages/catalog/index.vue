@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CatalogFilters from '@components/CatalogFilters.vue'
 import AnimalSection from '@components/Sections/AnimalSection.vue'
 import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
 </script>
@@ -15,9 +16,7 @@ import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
           </Typography>
         </div>
         <div class="catalog__layout">
-          <aside class="catalog__filters">
-            <FilterBox title="Тип товара" />
-          </aside>
+          <CatalogFilters />
         </div>
       </div>
     </div>
@@ -34,8 +33,5 @@ import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
   display: flex;
   align-items: flex-start;
   gap: 1.87rem;
-}
-.catalog__filters {
-  flex: 0 1 16.875rem;
 }
 </style>
