@@ -6,6 +6,14 @@ import { useTimeout, watchDebounced } from '@vueuse/core'
 import VInput from '@components/Input.vue'
 import { searchList } from '@data/searchData'
 
+const props = withDefaults(
+  defineProps<{
+    drop?: boolean
+  }>(),
+  {
+    drop: false,
+  }
+)
 const newSearchList = ref<Product[]>([])
 const searchModel = defineModel<string>('searchModel')
 const searchListVisible = ref<boolean>(false)
@@ -58,7 +66,7 @@ function handleFocusIn() {
         <img src="@assets/img/icons/searchIcon.svg" alt="search icon" />
       </template>
     </VInput>
-    <ul :class="searchProductListClass">
+    <ul v-if="props.drop" :class="searchProductListClass">
       <li v-for="item in newSearchList" :key="item.name" class="item">
         <VLink to="/" variant="searchItem">
           <template #icon>
