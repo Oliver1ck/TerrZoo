@@ -11,7 +11,8 @@ type ColorVars =
   | 'Success'
   | 'Disabled'
   | 'Warning'
-type Size = 'xl' | 'lg' | 'md' | 'sm'
+  | 'Critical-Default'
+type Size = 'xl' | 'lg' | 'md' | 'sm' | 'sales'
 type Variant = `heading-${Size}` | `body-${Size}`
 type TypographyIconPos = 'left' | 'right'
 const props = withDefaults(
@@ -28,7 +29,7 @@ const props = withDefaults(
     iconPosition: 'left',
     color: 'Default',
     textAlign: 'left',
-  }
+  },
 )
 
 const computedColor = computed(() => {
@@ -41,6 +42,7 @@ const computedColor = computed(() => {
     'Success',
     'Disabled',
     'Warning',
+    'Critical-Default',
   ]
   return colorVars.includes(props.color)
     ? `var(--Text-${props.color})`
@@ -71,6 +73,9 @@ const classes = computed(() => [
   align-items: center;
   gap: 0.38rem;
   color: v-bind(computedColor);
+  &:deep(s) {
+    text-decoration-color: var(--Text-Critical);
+  }
   &--heading-xl {
     font-feature-settings:
       'liga' off,
@@ -134,6 +139,17 @@ const classes = computed(() => [
     font-style: normal;
     font-weight: 400;
     line-height: 1.3; /* 150% */
+  }
+
+  &--body-sales {
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem;
   }
 
   & b {

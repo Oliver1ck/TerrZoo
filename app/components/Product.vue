@@ -1,12 +1,30 @@
 <script setup lang="ts">
 import type ProductType from '@data/product'
 
-const { variant = 'primary' } = defineProps<{
-  variant?: 'primary' | 'secondary'
-  product: ProductType
-}>()
+const props = withDefaults(
+  defineProps<{
+    product: ProductType
+    variant?: 'primary' | 'secondary'
+  }>(),
+  {
+    variant: 'primary',
+  },
+)
 
-const classes = computed(() => ['product', `product--${variant}`])
+const classes = computed(() => ['product', `product--${props.variant}`])
+const productSales = computed(() => {
+  if (!props.product.sales) {
+    return null
+  }
+
+  return {
+    ...props.product.sales,
+    discount_price: (
+      props.product.price
+      * (1 - props.product.sales.discount_percentage / 100)
+    ).toFixed(2),
+  }
+})
 </script>
 
 <template>
@@ -21,9 +39,21 @@ const classes = computed(() => ['product', `product--${variant}`])
     </NuxtLink>
     <PackageUnitList :data="product.numberOfPackages" />
     <div class="product__basket-wrap">
-      <Typography tag="p" variant="body-md">
-        <b> {{ product.price }} BYN </b>
-      </Typography>
+      <div class="product__basket-sales">
+        <Typography
+          v-if="product.sales"
+          tag="p"
+          variant="body-md"
+          color="Disabled"
+        >
+          <b>
+            <s>{{ product.price }} BYN</s>
+          </b>
+        </Typography>
+        <Typography tag="p" variant="body-md">
+          <b> {{ productSales?.discount_price || product.price }} BYN </b>
+        </Typography>
+      </div>
       <Button variant="product-basket">
         +
       </Button>
@@ -31,6 +61,7 @@ const classes = computed(() => ['product', `product--${variant}`])
     <Button variant="outlined">
       Купить в 1 клик
     </Button>
+    <Sales v-if="product.sales" :postion="{ top: '0.5rem', left: '0.5rem' }" />
   </article>
 </template>
 
@@ -86,5 +117,11 @@ const classes = computed(() => ['product', `product--${variant}`])
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.product__basket-sales {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 </style>
