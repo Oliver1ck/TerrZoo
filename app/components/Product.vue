@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProductType } from '@data/product'
+import type ProductType from '@data/product'
 
 const { variant = 'primary' } = defineProps<{
   variant?: 'primary' | 'secondary'
@@ -44,6 +44,7 @@ const classes = computed(() => ['product', `product--${variant}`])
   gap: 1rem;
   height: 100%;
   transition: all 0.3s ease;
+  position: relative;
 
   &--primary {
     background: var(--Product-Primary-Bg);

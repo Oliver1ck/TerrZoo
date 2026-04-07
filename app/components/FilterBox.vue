@@ -2,7 +2,7 @@
 import type { ModelCategories } from '@components/CatalogFilters.vue'
 import type { Brand } from '@data/catalogBrands'
 import type { Category } from '@data/catalogCategories'
-import type { Sales } from '@data/catalogSales'
+import type { CheckedSales } from '@data/catalogSales'
 
 import { watchDebounced } from '@vueuse/core'
 
@@ -13,7 +13,7 @@ const props = withDefaults(
     variant?: 'primary' | 'secondary'
     title?: string
     padding?: string
-    data?: Category[] | Brand[] | Sales[]
+    data?: Category[] | Brand[] | CheckedSales[]
     searchField?: boolean
   }>(),
   {
@@ -40,7 +40,7 @@ const computedPadding = computed(() => {
 })
 const modelValue = defineModel<ModelCategories | string[]>()
 const searchValue = ref<string>('')
-const filterData = ref<Category[] | Brand[] | Sales[]>(props.data || [])
+const filterData = ref<Category[] | Brand[] | CheckedSales[]>(props.data || [])
 watchDebounced(
   searchValue,
   newValue => {

@@ -1,14 +1,18 @@
+import type { Sales } from '@data/catalogSales'
+
 import freshStep from '@assets/img/freshStep.png'
 import furminator from '@assets/img/furminator.png'
 import royalCanin from '@assets/img/royalCanin.png'
 import royalSecond from '@assets/img/royalSecond.png'
+import { mockSalesData } from '@data/catalogSales'
 
-export interface ProductType {
+export default interface ProductType {
   id: number
   name: string
   img: string
   price: number
   numberOfPackages: NumberOfPackages[]
+  sales: Sales | null
 }
 
 export interface NumberOfPackages {
@@ -30,6 +34,7 @@ export const products: ProductType[] = [
         unit: 'г',
       },
     ],
+    sales: mockSalesData,
   },
   {
     id: 2,
@@ -42,6 +47,7 @@ export const products: ProductType[] = [
       { id: 203, count: 18, unit: 'л' },
       { id: 204, count: 30, unit: 'л' },
     ],
+    sales: mockSalesData,
   },
   {
     id: 3,
@@ -55,6 +61,7 @@ export const products: ProductType[] = [
         unit: 'шт',
       },
     ],
+    sales: null,
   },
   {
     id: 4,
@@ -69,6 +76,7 @@ export const products: ProductType[] = [
       { id: 405, count: 4, unit: 'кг' },
       { id: 406, count: 10, unit: 'кг' },
     ],
+    sales: null,
   },
   {
     id: 5,
@@ -76,6 +84,7 @@ export const products: ProductType[] = [
     img: freshStep,
     price: 5,
     numberOfPackages: [{ id: 501, count: 1, unit: 'шт' }],
+    sales: null,
   },
   {
     id: 6,
@@ -86,6 +95,7 @@ export const products: ProductType[] = [
       { id: 601, count: 3, unit: 'кг' },
       { id: 602, count: 14, unit: 'кг' },
     ],
+    sales: mockSalesData,
   },
   {
     id: 7,
@@ -96,6 +106,7 @@ export const products: ProductType[] = [
       { id: 701, count: 60, unit: 'г' },
       { id: 702, count: 140, unit: 'г' },
     ],
+    sales: null,
   },
   {
     id: 8,
@@ -103,6 +114,7 @@ export const products: ProductType[] = [
     img: royalCanin,
     price: 25,
     numberOfPackages: [{ id: 801, count: 473, unit: 'мл' }],
+    sales: mockSalesData,
   },
   {
     id: 9,
@@ -110,6 +122,7 @@ export const products: ProductType[] = [
     img: freshStep,
     price: 45,
     numberOfPackages: [{ id: 901, count: 1, unit: 'шт' }],
+    sales: null,
   },
   {
     id: 10,
@@ -117,6 +130,7 @@ export const products: ProductType[] = [
     img: furminator,
     price: 18,
     numberOfPackages: [{ id: 1001, count: 1, unit: 'шт' }],
+    sales: null,
   },
   {
     id: 11,
@@ -127,6 +141,7 @@ export const products: ProductType[] = [
       { id: 1101, count: 400, unit: 'г' },
       { id: 1102, count: 800, unit: 'г' },
     ],
+    sales: null,
   },
   {
     id: 12,
@@ -134,6 +149,7 @@ export const products: ProductType[] = [
     img: royalCanin,
     price: 85,
     numberOfPackages: [{ id: 1201, count: 1, unit: 'шт' }],
+    sales: null,
   },
   {
     id: 13,
@@ -144,6 +160,7 @@ export const products: ProductType[] = [
       { id: 1301, count: 0.4, unit: 'мл' },
       { id: 1302, count: 0.8, unit: 'мл' },
     ],
+    sales: null,
   },
   {
     id: 14,
@@ -151,5 +168,6 @@ export const products: ProductType[] = [
     img: furminator,
     price: 28,
     numberOfPackages: [{ id: 1401, count: 1, unit: 'шт' }],
+    sales: null,
   },
 ]

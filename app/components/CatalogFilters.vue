@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { mockBrands } from '@data/catalogBrands'
 import { categories } from '@data/catalogCategories'
-import { sales } from '@data/catalogSales'
+import { checkedSales } from '@data/catalogSales'
 
 export interface ModelValue {
   sales: string[] | undefined
@@ -43,7 +43,7 @@ watch(
     <FilterBox
       v-model="checkedCategory.sales"
       variant="secondary"
-      :data="sales"
+      :data="checkedSales"
     />
     <FilterBox
       v-model="checkedCategory.categories"

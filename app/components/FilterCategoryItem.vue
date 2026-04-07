@@ -2,15 +2,17 @@
 import type { ModelCategories } from '@components/CatalogFilters.vue'
 import type { Brand } from '@data/catalogBrands'
 import type { Category } from '@data/catalogCategories'
-import type { Sales } from '@data/catalogSales'
+import type { CheckedSales } from '@data/catalogSales'
 
 const props = defineProps<{
-  item: Category | Brand | Sales
+  item: Category | Brand | CheckedSales
 }>()
 
 const modelValue = defineModel<ModelCategories | string[]>()
 
-function isCategoryType(item: Category | Brand | Sales): item is Category {
+function isCategoryType(
+  item: Category | Brand | CheckedSales
+): item is Category {
   return 'subcategories' in item
 }
 
