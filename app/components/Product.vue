@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type ProductType from '@data/product'
+import type { ProductType } from '@data/product'
 
 const props = withDefaults(
   defineProps<{

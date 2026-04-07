@@ -6,7 +6,7 @@ import royalCanin from '@assets/img/royalCanin.png'
 import royalSecond from '@assets/img/royalSecond.png'
 import { mockSalesData } from '@data/catalogSales'
 
-export default interface ProductType {
+export interface ProductType {
   id: number
   name: string
   img: string

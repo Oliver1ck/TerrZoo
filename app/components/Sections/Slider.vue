@@ -1,5 +1,7 @@
 <script setup lang="ts">
 // import 'swiper/swiper.css'
+import type { ArticleType } from '@data/articles'
+import type { ProductType } from '@data/product'
 import type { Swiper as SwiperType } from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -17,6 +19,7 @@ const {
   title?: string
   theme?: 'white' | 'gray'
   article?: boolean
+  data?: ProductType[] | ArticleType[]
 }>()
 
 const sectionClasses = computed(() => [

@@ -31,10 +31,10 @@ watch(
       'Checked categories',
       newValue.categories,
       'Checked brands',
-      newValue.brands
+      newValue.brands,
     )
   },
-  { deep: true }
+  { deep: true },
 )
 </script>
 
@@ -61,7 +61,7 @@ watch(
 
 <style lang="scss" scoped>
 .catalog__filters {
-  flex: 0 1 16.875rem;
+  flex: 0 0 16.875rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
