@@ -11,7 +11,7 @@ const props = defineProps<{
 const modelValue = defineModel<ModelCategories | string[]>()
 
 function isCategoryType(
-  item: Category | Brand | CheckedSales
+  item: Category | Brand | CheckedSales,
 ): item is Category {
   return 'subcategories' in item
 }
@@ -50,9 +50,9 @@ watch(
     }
 
     categoryModel.value.subCategories = subcategories.value.map(
-      sub => sub.title
+      sub => sub.title,
     )
-  }
+  },
 )
 </script>
 
@@ -76,31 +76,48 @@ watch(
     <div
       v-if="isCategoryType(item) && subcategories.length"
       class="filter__inner"
+      :class="{
+        'filter__inner--active': categoryModel.mainCategory === item.title,
+      }"
     >
-      <VChecked
-        v-for="checkItem in subcategories"
-        :key="checkItem.id"
-        v-model="categoryModel.subCategories"
-        :value="checkItem.title"
-        :name="item.title"
-      >
-        {{ checkItem.title }}
-      </VChecked>
+      <div class="filter__inner-content">
+        <VChecked
+          v-for="checkItem in subcategories"
+          :key="checkItem.id"
+          v-model="categoryModel.subCategories"
+          :value="checkItem.title"
+          :name="item.title"
+        >
+          {{ checkItem.title }}
+        </VChecked>
+      </div>
     </div>
   </li>
 </template>
 
 <style lang="scss" scoped>
 .filter-category__item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-rows: 1fr;
 }
 
 .filter__inner {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 0.3s ease;
+  padding-left: 1.5rem;
+
+  &--active {
+    margin-top: 0.5rem;
+    grid-template-rows: 1fr;
+  }
+}
+
+.filter__inner-content {
+  min-height: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding-left: 1.5rem;
 }
 </style>
