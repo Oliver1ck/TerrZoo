@@ -24,7 +24,11 @@ const { toggleBurger, activeModal } = useModal()
             Обратный звонок
           </Button>
           <div v-if="!isDesktop" class="header__top-controls">
-            <Button variant="search" @click="toggleBurger" />
+            <Button variant="search" @click="toggleBurger">
+              <template #icon>
+                <img src="@assets/img/icons/searchIcon.svg" alt="search icon" />
+              </template>
+            </Button>
             <VLink to="/basket" variant="basket">
               <template #icon>
                 <img src="@assets/img/icons/basket.svg" alt="basket icon" />

@@ -41,6 +41,13 @@ const id = useId()
       <Button
         variant="select"
         text-align="left"
+        icon-pos="right"
+        :position="{
+          absolute: true,
+          top: '50%',
+          right: '0.5rem',
+          transform: 'translateY(-50%)',
+        }"
         :selectActive="isOpen"
         @click="isOpen = !isOpen"
       >
@@ -48,6 +55,12 @@ const id = useId()
           props.options.find(option => option.value === modelValue)?.label
             || modelValue
         }}
+        <template #icon>
+          <img
+            src="@assets/img/icons/chevron-down_minor.svg"
+            alt="chevron down icon"
+          />
+        </template>
       </Button>
       <ul class="select__list" :class="{ 'select__list--active': isOpen }">
         <li

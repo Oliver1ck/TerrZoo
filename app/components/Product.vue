@@ -56,8 +56,13 @@ const productSales = computed(() => {
           </b>
         </Typography>
       </div>
-      <Button variant="product-basket">
-        +
+      <Button variant="product-basket" icon-pos="right">
+        <template #default>
+          +
+        </template>
+        <template #icon>
+          <img src="@assets/img/icons/basket.svg" alt="basket icon" />
+        </template>
       </Button>
     </div>
     <Button variant="outlined">
