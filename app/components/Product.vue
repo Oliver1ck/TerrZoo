@@ -65,7 +65,7 @@ const productSales = computed(() => {
         </template>
       </Button>
     </div>
-    <Button variant="outlined">
+    <Button variant="outlined" content-align="center">
       Купить в 1 клик
     </Button>
     <Sales v-if="product.sales" :postion="{ top: '0.5rem', left: '0.5rem' }" />
