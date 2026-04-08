@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import type { CSSProperties } from 'vue'
+
 type Variant =
   | 'callback'
   | 'outlined'
+  | 'outlined-secondary'
   | 'burger'
   | 'search'
   | 'product-basket'
@@ -11,14 +14,15 @@ type Variant =
 type ControlVariant = 'primary' | 'secondary'
 type TextAlign = 'left' | 'center' | 'right' | 'inherit'
 type IconPos = 'left' | 'right'
+type ContentAlign = 'flex-start' | 'center' | 'flex-end'
 
 interface IconPosition {
   absolute?: boolean
-  top?: string
-  right?: string
-  bottom?: string
-  left?: string
-  transform?: string
+  top?: CSSProperties['top']
+  right?: CSSProperties['right']
+  bottom?: CSSProperties['bottom']
+  left?: CSSProperties['left']
+  transform?: CSSProperties['transform']
 }
 
 const props = withDefaults(
@@ -29,7 +33,10 @@ const props = withDefaults(
     selectActive?: boolean
     textAlign?: TextAlign
     iconPos?: IconPos
+    contentAlign?: ContentAlign
     position?: IconPosition
+    gap?: CSSProperties['gap']
+    fullWidth?: boolean
   }>(),
   {
     variant: 'callback',
@@ -38,17 +45,37 @@ const props = withDefaults(
     selectActive: false,
     textAlign: 'inherit',
     iconPos: 'left',
+    contentAlign: 'flex-start',
     position: () => ({
       absolute: false,
     }),
+    gap: '0.25rem',
+    fullWidth: false,
   },
 )
+
+const DEFAULT_ICON_POSITION: Required<IconPosition> = {
+  absolute: false,
+  top: 'auto',
+  right: 'auto',
+  bottom: 'auto',
+  left: 'auto',
+  transform: 'translateY(0)',
+}
+
+const normalizedIconPosition = computed<Required<IconPosition>>(() => ({
+  ...DEFAULT_ICON_POSITION,
+  ...props.position,
+}))
+
+const isAbsoluteIcon = computed(() => normalizedIconPosition.value.absolute)
 
 const classes = computed(() => [
   'button',
   `button--${props.variant}`,
   { 'button--burger--active': props.state },
   { [`button--control-${props.controlVariant}`]: props.variant === 'control' },
+  { 'button--full-width': props.fullWidth },
 ])
 
 const contentClasses = computed(() => [
@@ -59,29 +86,38 @@ const contentClasses = computed(() => [
 const innerClasses = computed(() => [
   'button__inner',
   `button__inner--${props.iconPos}`,
-  { 'button__inner--icon-absolute': props.position.absolute },
+  `button__inner--content-${props.contentAlign}`,
+  { 'button__inner--icon-absolute': isAbsoluteIcon.value },
 ])
 
 const iconClasses = computed(() => [
   'button__icon',
   {
-    'button__icon--absolute': props.position.absolute,
-    'button__icon--active': props.variant === 'select' && props.selectActive,
+    'button__icon--absolute': isAbsoluteIcon.value,
   },
 ])
 
+const iconTransform = computed(() => {
+  const baseTransform = normalizedIconPosition.value.transform
+
+  if (props.variant === 'select' && props.selectActive) {
+    return `${baseTransform} rotate(180deg)`
+  }
+
+  return `${baseTransform} rotate(0deg)`
+})
+
 const iconStyle = computed(() => {
-  if (!props.position.absolute) {
+  if (!isAbsoluteIcon.value) {
     return undefined
   }
 
   return {
-    top: props.position.top,
-    right: props.position.right,
-    bottom: props.position.bottom,
-    left: props.position.left,
-    transform: props.position.transform,
-  }
+    top: normalizedIconPosition.value.top,
+    right: normalizedIconPosition.value.right,
+    bottom: normalizedIconPosition.value.bottom,
+    left: normalizedIconPosition.value.left,
+  } as CSSProperties
 })
 </script>
 
@@ -105,10 +141,14 @@ const iconStyle = computed(() => {
   transition: all 0.3s ease;
   position: relative;
 
+  &--full-width {
+    width: 100%;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: v-bind(gap);
 
     &--left {
       flex-direction: row;
@@ -121,11 +161,22 @@ const iconStyle = computed(() => {
     &--icon-absolute {
       flex-direction: row;
     }
+
+    &--content-flex-start {
+      justify-content: flex-start;
+    }
+
+    &--content-center {
+      justify-content: center;
+    }
+
+    &--content-flex-end {
+      justify-content: flex-end;
+    }
   }
 
   &__content {
     display: block;
-    width: 100%;
 
     &--left {
       text-align: left;
@@ -178,6 +229,30 @@ const iconStyle = computed(() => {
       border: 1px solid var(--Icon-Highlight);
       background: var(--Icon-Highlight);
       color: #fff;
+    }
+  }
+
+  &--outlined-secondary {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--Button-border-gradient);
+    background: var(--Action-Secondary-Default);
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
+    color: var(--Text-Default);
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem; /* 133.333% */
+    position: relative;
+    top: 0;
+    left: 0;
+
+    &:active {
+      top: 1px;
     }
   }
   &--burger {
@@ -309,6 +384,7 @@ const iconStyle = computed(() => {
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
+    will-change: transform;
     flex: 0 0 auto;
 
     & :deep(img),
@@ -320,10 +396,7 @@ const iconStyle = computed(() => {
 
     &--absolute {
       position: absolute;
-    }
-
-    &--active {
-      transform: translateY(-50%) rotate(180deg);
+      transform: v-bind(iconTransform);
     }
   }
 }
