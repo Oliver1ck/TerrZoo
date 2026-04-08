@@ -7,6 +7,8 @@ import { catalogSortOptions } from '@data/catalogSort'
 import { products } from '@data/product'
 
 const selectedSort = ref<string | null>(catalogSortOptions[0]?.value ?? null)
+
+const { open } = useModal()
 </script>
 
 <template>
@@ -24,6 +26,21 @@ const selectedSort = ref<string | null>(catalogSortOptions[0]?.value ?? null)
             :options="catalogSortOptions"
             label="Сортировать по:"
           />
+          <Button
+            class="filters_btn"
+            gap="0.5rem"
+            variant="outlined-secondary"
+            :full-width="true"
+            content-align="center"
+            @click="open('filters')"
+          >
+            <template #default>
+              Фильтры
+            </template>
+            <template #icon>
+              <img src="@assets/img/icons/filter_major.svg" alt="fitler icon" />
+            </template>
+          </Button>
         </div>
         <div class="catalog__layout">
           <CatalogFilters />
@@ -63,5 +80,18 @@ const selectedSort = ref<string | null>(catalogSortOptions[0]?.value ?? null)
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.filters_btn {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .catalog__title {
+    flex-direction: column;
+  }
+  .filters_btn {
+    display: block;
+  }
 }
 </style>

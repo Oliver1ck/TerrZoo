@@ -26,18 +26,17 @@ function selectOption(option: string) {
   modelValue.value = option
   isOpen.value = false
 }
-const id = useId()
 </script>
 
 <template>
   <div ref="selectRef" class="select">
-    <label :for="id">
+    <label>
       <Typography variant="body-sm-medium">
         <slot name="label"></slot>
         {{ props.label }}
       </Typography>
     </label>
-    <div :id="id" class="select__wrapper">
+    <div class="select__wrapper">
       <Button
         variant="select"
         text-align="left"
@@ -142,6 +141,20 @@ const id = useId()
     &:hover {
       background: var(--Surface-Selected-Default);
     }
+  }
+}
+
+@media (max-width: 992px) {
+  .select {
+    flex: 1 1 auto;
+    max-width: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .select__wrapper {
+    max-width: none;
   }
 }
 </style>

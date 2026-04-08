@@ -19,7 +19,7 @@ const props = withDefaults(
   {
     variant: 'primary',
     searchField: false,
-  }
+  },
 )
 
 const computedPadding = computed(() => {
@@ -52,10 +52,10 @@ watchDebounced(
 
     filterData.value =
       props.data?.filter(item =>
-        item.title.toLowerCase().includes(newValue.toLowerCase())
+        item.title.toLowerCase().includes(newValue.toLowerCase()),
       ) || []
   },
-  { debounce: 300 }
+  { debounce: 300 },
 )
 </script>
 
@@ -78,22 +78,23 @@ watchDebounced(
 
 <style lang="scss" scoped>
 .filter-box {
-  padding: v-bind(computedPadding);
+  padding: v-bind(computedPadding) 1rem;
   border-radius: 0.3125rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  &--primary {
-    background: var(--Surface-Default);
-  }
-  &--secondary {
-    background: var(--Product-Secondary-Bg);
-  }
+  background: var(--Surface-Default);
 }
 
 .filter-box__list {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+@media (max-width: 992px) {
+  .filter-box {
+    padding: 0;
+  }
 }
 </style>

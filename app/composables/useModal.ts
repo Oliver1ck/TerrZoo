@@ -1,6 +1,12 @@
 import { useTimeoutFn } from '@vueuse/core'
 
-export type ModalType = 'callback' | 'one-click' | 'success' | 'burger' | null
+export type ModalType =
+  | 'callback'
+  | 'one-click'
+  | 'success'
+  | 'burger'
+  | 'filters'
+  | null
 
 export function useModal() {
   const activeModal = useState<ModalType>('active-modal', () => null)
@@ -31,10 +37,18 @@ export function useModal() {
   }
 
   const toggleBurger = () => {
-    if (activeModal.value === 'burger') {
+    if (activeModal.value === 'burger' || activeModal.value === 'filters') {
       close()
     } else {
       open('burger')
+    }
+  }
+
+  const toggleFilters = () => {
+    if (activeModal.value === 'filters') {
+      close()
+    } else {
+      open('filters')
     }
   }
 
@@ -44,5 +58,6 @@ export function useModal() {
     open,
     close,
     toggleBurger,
+    toggleFilters,
   }
 }

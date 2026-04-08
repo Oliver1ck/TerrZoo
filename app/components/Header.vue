@@ -39,7 +39,7 @@ const { toggleBurger, activeModal } = useModal()
             </VLink>
             <Button
               variant="burger"
-              :state="activeModal === 'burger'"
+              :state="activeModal === 'burger' || activeModal === 'filters'"
               @click="toggleBurger"
             />
           </div>
