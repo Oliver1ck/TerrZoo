@@ -26,11 +26,11 @@ watch(
   checkedCategory,
   newValue => {
     console.log(
-      'Checked sales',
+      'Checked sales \n',
       newValue.sales,
-      'Checked categories',
+      '\n Checked categories',
       newValue.categories,
-      'Checked brands',
+      '\n Checked brands \n',
       newValue.brands,
     )
   },

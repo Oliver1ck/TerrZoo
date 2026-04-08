@@ -12,7 +12,7 @@ type ColorVars =
   | 'Disabled'
   | 'Warning'
   | 'Critical-Default'
-type Size = 'xl' | 'lg' | 'md' | 'sm' | 'sales'
+type Size = 'xl' | 'lg' | 'md' | 'sm' | 'sales' | 'sm-medium'
 type Variant = `heading-${Size}` | `body-${Size}`
 type TypographyIconPos = 'left' | 'right'
 const props = withDefaults(
@@ -128,6 +128,17 @@ const classes = computed(() => [
     font-style: normal;
     font-weight: 400;
     line-height: 1.25rem; /* 142.857% */
+  }
+
+  &--body-sm-medium {
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem;
   }
 
   &--body-md {
