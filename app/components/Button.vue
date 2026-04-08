@@ -10,6 +10,7 @@ type Variant =
   | 'product-basket'
   | 'control'
   | 'select'
+  | 'primary'
 
 type ControlVariant = 'primary' | 'secondary'
 type TextAlign = 'left' | 'center' | 'right' | 'inherit'
@@ -39,7 +40,7 @@ const props = withDefaults(
     fullWidth?: boolean
   }>(),
   {
-    variant: 'callback',
+    variant: 'primary',
     state: false,
     controlVariant: 'primary',
     selectActive: false,
@@ -143,6 +144,32 @@ const iconStyle = computed(() => {
 
   &--full-width {
     width: 100%;
+  }
+
+  &--primary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    background: var(--Icon-Highlight);
+    box-shadow:
+      0 1px 0 0 rgba(0, 0, 0, 0.08),
+      0 -1px 0 0 rgba(0, 0, 0, 0.2) inset;
+    color: var(--Text-On-Primary);
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem; /* 142.857% */
+
+    &:hover {
+      border-radius: 0.25rem;
+      background: var(--Text-Highlight);
+      box-shadow:
+        0 1px 0 0 rgba(0, 0, 0, 0.08),
+        0 -1px 0 0 rgba(0, 0, 0, 0.2) inset;
+    }
   }
 
   &__inner {
@@ -397,6 +424,14 @@ const iconStyle = computed(() => {
     &--absolute {
       position: absolute;
       transform: v-bind(iconTransform);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .button {
+    &--primary {
+      padding: 0.5rem 1rem;
     }
   }
 }
