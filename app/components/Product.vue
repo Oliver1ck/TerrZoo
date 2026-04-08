@@ -51,7 +51,9 @@ const productSales = computed(() => {
           </b>
         </Typography>
         <Typography tag="p" variant="body-md">
-          <b> {{ productSales?.discount_price || product.price }} BYN </b>
+          <b>
+            {{ productSales?.discount_price || product.price.toFixed(2) }} BYN
+          </b>
         </Typography>
       </div>
       <Button variant="product-basket">
