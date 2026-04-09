@@ -105,7 +105,7 @@ const { activeModal, close } = useModal()
 @media (max-width: 992px) {
   .catalog__filters {
     padding: 3rem 0 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
@@ -115,7 +115,9 @@ const { activeModal, close } = useModal()
     transform: translateX(-100%);
     transition: all 0.3s ease;
     gap: 0.75rem;
-    overflow: auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 
     & .container {
       padding: 0.62rem;

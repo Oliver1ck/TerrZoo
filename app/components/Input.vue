@@ -19,7 +19,7 @@ const props = withDefaults(
   {
     type: 'text',
     disabled: false,
-  }
+  },
 )
 const modelValue = defineModel<string | number>()
 
@@ -135,6 +135,12 @@ const inputId = props.id || useId()
   &__error-msg {
     color: var(--Error-Color, #ef4444);
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .v-input__control {
+    font-size: 1rem;
   }
 }
 </style>
