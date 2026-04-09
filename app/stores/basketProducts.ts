@@ -21,7 +21,15 @@ const basketProductSchema = v.object({
       unit: v.picklist(['шт', 'кг', 'г', 'л', 'мл']),
     }),
   ),
-  sales: v.nullable(v.unknown()),
+  sales: v.nullable(
+    v.object({
+      id: v.number(),
+      name: v.string(),
+      discount_percentage: v.number(),
+      start_date: v.string(),
+      end_date: v.string(),
+    }),
+  ),
   checkedPackageUnit: v.nullable(v.number()),
   count: v.number(),
 })
