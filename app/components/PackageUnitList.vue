@@ -5,12 +5,12 @@ defineProps<{
   data: NumberOfPackages[]
 }>()
 
-const activeUnitId = ref<number | null>(null)
+const modelValue = defineModel<number | null>()
 
 function handleUnitClick(unitId: number, isActive: boolean) {
-  activeUnitId.value = unitId
+  modelValue.value = unitId
   if (isActive) {
-    activeUnitId.value = null
+    modelValue.value = null
   }
 }
 </script>
@@ -21,7 +21,7 @@ function handleUnitClick(unitId: number, isActive: boolean) {
       v-for="unit in data"
       :key="unit.id"
       :unit="unit"
-      :is-active="activeUnitId === unit.id"
+      :is-active="modelValue === unit.id"
       @click="isActive => handleUnitClick(unit.id, isActive)"
     />
   </ul>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useMediaQuery } from '@vueuse/core'
+import { storeToRefs } from 'pinia'
 
 const isDesktop = useMediaQuery('(min-width: 993px)', {
   ssrWidth: 1200,
@@ -9,6 +10,8 @@ onMounted(() => {
   mounted.value = true
 })
 const { toggleBurger, activeModal } = useModal()
+const basketStore = useBasketProductsStore()
+const { countProducts } = storeToRefs(basketStore)
 </script>
 
 <template>
@@ -34,7 +37,7 @@ const { toggleBurger, activeModal } = useModal()
                 <img src="@assets/img/icons/basket.svg" alt="basket icon" />
               </template>
               <template #default>
-                0
+                {{ mounted ? countProducts : 0 }}
               </template>
             </VLink>
             <Button
@@ -66,7 +69,7 @@ const { toggleBurger, activeModal } = useModal()
                 <img src="@assets/img/icons/basket.svg" alt="basket icon" />
               </template>
               <template #default>
-                0
+                {{ mounted ? countProducts : 0 }}
               </template>
             </VLink>
           </div>

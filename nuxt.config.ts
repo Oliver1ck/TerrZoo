@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     '@assets': fileURLToPath(new URL('./app/assets', import.meta.url)),
     '@components': fileURLToPath(new URL('./app/components', import.meta.url)),
     '@composables': fileURLToPath(
-      new URL('./app/composables', import.meta.url)
+      new URL('./app/composables', import.meta.url),
     ),
     '@data': fileURLToPath(new URL('./app/data', import.meta.url)),
     '@layouts': fileURLToPath(new URL('./app/layouts', import.meta.url)),
@@ -35,5 +35,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/device'],
+  modules: ['@nuxtjs/device', '@pinia/nuxt'],
 })

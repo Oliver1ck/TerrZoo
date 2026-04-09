@@ -25,6 +25,13 @@ const productSales = computed(() => {
     ).toFixed(2),
   }
 })
+const checkedPackageUnit = ref<number | null>(null)
+
+const { addProduct, products } = useBasketProductsStore()
+
+watch(products, newValue => {
+  console.log('Basket products:', newValue)
+})
 </script>
 
 <template>
@@ -37,7 +44,10 @@ const productSales = computed(() => {
         {{ product.name }}
       </Typography>
     </NuxtLink>
-    <PackageUnitList :data="product.numberOfPackages" />
+    <PackageUnitList
+      v-model="checkedPackageUnit"
+      :data="product.numberOfPackages"
+    />
     <div class="product__basket-wrap">
       <div class="product__basket-sales">
         <Typography
@@ -56,7 +66,17 @@ const productSales = computed(() => {
           </b>
         </Typography>
       </div>
-      <Button variant="product-basket" icon-pos="right">
+      <Button
+        variant="product-basket"
+        icon-pos="right"
+        @click="
+          () => {
+            if (checkedPackageUnit) {
+              addProduct(product, checkedPackageUnit)
+            }
+          }
+        "
+      >
         <template #default>
           +
         </template>
