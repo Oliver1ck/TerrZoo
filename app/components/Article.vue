@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ArticleType } from '@data/articles'
+import type { ArticleType } from '@custom-types/article'
 
 defineProps<{
   article: ArticleType

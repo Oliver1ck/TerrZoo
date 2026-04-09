@@ -1,16 +1,8 @@
+import type { ArticleType } from '@custom-types/article'
+
 import articleFirstImg from '@assets/img/articleFirst.png'
 import articleSecondImg from '@assets/img/articleSecond.png'
 import articleThirdImg from '@assets/img/articleThird.png'
-
-export interface ArticleType {
-  id: number
-  title: string
-  description_short: string
-  description: string
-  image_url: string
-  published_date: string
-  time_to_read: number
-}
 
 export const articles: ArticleType[] = [
   {

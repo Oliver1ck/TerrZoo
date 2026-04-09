@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { ModelCategories } from '@components/CatalogFilters.vue'
-import type { Brand } from '@data/catalogBrands'
-import type { Category } from '@data/catalogCategories'
-import type { CheckedSales } from '@data/catalogSales'
+import type { Brand } from '@custom-types/catalogBrand'
+import type { Category } from '@custom-types/catalogCategory'
+import type { CheckedSales } from '@custom-types/catalogSales'
 
 const props = defineProps<{
   item: Category | Brand | CheckedSales

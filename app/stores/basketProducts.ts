@@ -1,4 +1,4 @@
-import type { ProductType } from '~/data/product'
+import type { ProductType } from '@custom-types/product'
 
 import { useStorage } from '@vueuse/core'
 import { defineStore, skipHydrate } from 'pinia'

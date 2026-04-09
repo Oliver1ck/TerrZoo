@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NumberOfPackages } from '@data/product'
+import type { NumberOfPackages } from '@custom-types/product'
 
 const {
   unit = {

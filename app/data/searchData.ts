@@ -1,9 +1,7 @@
+import type { Product } from '@custom-types/search'
+
 import productCatImage from '@assets/img/productCat.png'
 
-export interface Product {
-  name: string
-  img: string
-}
 export const searchList: Product[] = [
   {
     name: 'Лакомство РОДНЫЕ КОРМА для собак корень бычий цельный сушеный в дровяной печи',

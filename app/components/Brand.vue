@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BrandType } from '@data/brand'
+import type { BrandType } from '@custom-types/brand'
 
 defineProps<{
   brand: BrandType

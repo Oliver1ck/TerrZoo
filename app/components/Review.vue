@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ReviewType } from '@data/review'
+import type { ReviewType } from '@custom-types/review'
 
 defineProps<{
   review: ReviewType

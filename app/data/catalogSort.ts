@@ -1,7 +1,4 @@
-export interface CatalogSortOption {
-  label: string
-  value: string
-}
+import type { CatalogSortOption } from '@custom-types/catalogSort'
 
 export const catalogSortOptions: CatalogSortOption[] = [
   {

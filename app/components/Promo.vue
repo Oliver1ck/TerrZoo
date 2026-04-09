@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Promotion } from '@data/promotionData'
+import type { Promotion } from '@custom-types/promotion'
 
 type Variant = 'primary' | 'secondary'
 const props = withDefaults(
@@ -9,7 +9,7 @@ const props = withDefaults(
   }>(),
   {
     variant: 'primary',
-  }
+  },
 )
 const classes = computed(() => ['promo', `promo--${props.variant}`])
 </script>

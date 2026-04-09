@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProductType } from '@data/product'
+import type { ProductType } from '@custom-types/product'
 
 const props = withDefaults(
   defineProps<{
@@ -27,11 +27,7 @@ const productSales = computed(() => {
 })
 const checkedPackageUnit = ref<number | null>(null)
 
-const { addProduct, products } = useBasketProductsStore()
-
-watch(products, newValue => {
-  console.log('Basket products:', newValue)
-})
+const { addProduct } = useBasketProductsStore()
 </script>
 
 <template>

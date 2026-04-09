@@ -1,25 +1,10 @@
-import type { Sales } from '@data/catalogSales'
+import type { ProductType } from '@custom-types/product'
 
 import freshStep from '@assets/img/freshStep.png'
 import furminator from '@assets/img/furminator.png'
 import royalCanin from '@assets/img/royalCanin.png'
 import royalSecond from '@assets/img/royalSecond.png'
 import { mockSalesData } from '@data/catalogSales'
-
-export interface ProductType {
-  id: number
-  name: string
-  img: string
-  price: number
-  numberOfPackages: NumberOfPackages[]
-  sales: Sales | null
-}
-
-export interface NumberOfPackages {
-  id: number
-  count: number
-  unit: 'шт' | 'кг' | 'г' | 'л' | 'мл'
-}
 
 export const products: ProductType[] = [
   {

@@ -1,18 +1,8 @@
+import type { Category } from '@custom-types/catalogCategory'
+
 import { ref } from 'vue'
 
-export interface Category {
-  id: number
-  title: string
-  subcategories: Subcategory[]
-}
-
-export interface Subcategory {
-  id: number
-  categoryId: number
-  title: string
-}
-
-export const categories = ref([
+export const categories = ref<Category[]>([
   {
     id: 1,
     title: 'Корм',

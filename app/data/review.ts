@@ -1,10 +1,4 @@
-export interface ReviewType {
-  id: number
-  name: string
-  phone_number: string
-  pet: string
-  description: string
-}
+import type { ReviewType } from '@custom-types/review'
 
 export const mockReviews: ReviewType[] = [
   {

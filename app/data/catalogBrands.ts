@@ -1,7 +1,4 @@
-export interface Brand {
-  id: number
-  title: string
-}
+import type { Brand } from '@custom-types/catalogBrand'
 
 export const mockBrands: Brand[] = [
   { id: 1, title: 'AIRYVEST' },

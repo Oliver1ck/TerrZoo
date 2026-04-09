@@ -1,12 +1,7 @@
+import type { Promotion } from '@custom-types/promotion'
+
 import catPromo from '@assets/img/promotion/catPromotion.png'
 import dogPromo from '@assets/img/promotion/dogPromotion.png'
-
-export interface Promotion {
-  id: number
-  img: string
-  title: string
-  variant: 'primary' | 'secondary'
-}
 
 export const dataPromoStatic: Promotion[] = [
   {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Product } from '@data/searchData'
+import type { Product } from '@custom-types/search'
 
 import { useTimeout, watchDebounced } from '@vueuse/core'
 
@@ -12,7 +12,7 @@ const props = withDefaults(
   }>(),
   {
     drop: false,
-  }
+  },
 )
 const newSearchList = ref<Product[]>([])
 const searchModel = defineModel<string>('searchModel')
@@ -40,7 +40,7 @@ watchDebounced(
       }
     }
   },
-  { debounce: 500 }
+  { debounce: 500 },
 )
 function handleFocusOut() {
   searchListVisible.value = false

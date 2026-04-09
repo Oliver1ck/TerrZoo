@@ -1,7 +1,4 @@
-export interface CheckedSales {
-  id: number
-  title: string
-}
+import type { CheckedSales, Sales } from '@custom-types/catalogSales'
 
 export const checkedSales: CheckedSales[] = [
   {
@@ -9,14 +6,6 @@ export const checkedSales: CheckedSales[] = [
     title: 'Только акционные товары',
   },
 ]
-
-export interface Sales {
-  id: number
-  name: string
-  discount_percentage: number
-  start_date: string
-  end_date: string
-}
 
 export const mockSalesData: Sales = {
   id: 1,
