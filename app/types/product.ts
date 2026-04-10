@@ -14,3 +14,8 @@ export interface NumberOfPackages {
   count: number
   unit: 'шт' | 'кг' | 'г' | 'л' | 'мл'
 }
+
+export interface BasketProductType extends ProductType {
+  checkedPackageUnit: number | null
+  count: number
+}

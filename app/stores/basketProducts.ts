@@ -1,13 +1,8 @@
-import type { ProductType } from '@custom-types/product'
+import type { BasketProductType, ProductType } from '@custom-types/product'
 
 import { useStorage } from '@vueuse/core'
 import { defineStore, skipHydrate } from 'pinia'
 import * as v from 'valibot'
-
-export interface BasketProductType extends ProductType {
-  checkedPackageUnit: number | null
-  count: number
-}
 
 const basketProductSchema = v.object({
   id: v.number(),
@@ -74,9 +69,19 @@ export const useBasketProductsStore = defineStore('basketProducts', () => {
     }
   }
 
-  const removeProduct = (product: ProductType) => {
-    products.value = products.value.filter(p => p.id !== product.id)
+  const removeProductById = (productId: number) => {
+    products.value = products.value.filter(p => p.id !== productId)
   }
 
-  return { products, countProducts, addProduct, removeProduct }
+  const removeProduct = (product: ProductType) => {
+    removeProductById(product.id)
+  }
+
+  return {
+    products,
+    countProducts,
+    addProduct,
+    removeProductById,
+    removeProduct,
+  }
 })
