@@ -20,10 +20,11 @@ const {
   incrementProductCount,
   getProductCount,
   decrementProductCount,
+  setCheckedPackageUnit,
 } = useBasketProductsStore()
 
 watch(checkedUnit, newValue => {
-  console.log(newValue)
+  setCheckedPackageUnit(props.product.id, newValue)
 })
 </script>
 
@@ -77,7 +78,7 @@ watch(checkedUnit, newValue => {
             </template>
           </Button>
         </div>
-        <ProductPrice :product="product" />
+        <ProductPrice :product="product" :checked-unit="checkedUnit" />
       </div>
     </div>
   </article>
