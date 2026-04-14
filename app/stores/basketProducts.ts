@@ -8,7 +8,7 @@ const basketProductSchema = v.object({
   id: v.number(),
   name: v.string(),
   img: v.string(),
-  price: v.number(),
+  pricePerUnit: v.number(),
   numberOfPackages: v.array(
     v.object({
       id: v.number(),

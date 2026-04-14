@@ -4,7 +4,7 @@ export interface ProductType {
   id: number
   name: string
   img: string
-  price: number
+  pricePerUnit: number
   numberOfPackages: NumberOfPackages[]
   sales: Sales | null
 }

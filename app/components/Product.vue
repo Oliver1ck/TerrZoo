@@ -30,7 +30,7 @@ const { addProduct } = useBasketProductsStore()
       :data="product.numberOfPackages"
     />
     <div class="product__basket-wrap">
-      <ProductPrice :product="product" />
+      <ProductPrice :product="product" :checked-unit="checkedPackageUnit" />
       <Button
         variant="product-basket"
         icon-pos="right"
