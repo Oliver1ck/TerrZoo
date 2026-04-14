@@ -11,6 +11,7 @@ type Variant =
   | 'interactive'
   | 'primary-button'
   | 'breadCrumbs'
+  | 'title'
 
 // sm - 0.875rem, md - 1rem, lg - 1.125rem
 type Size = 'sm' | 'md' | 'lg'
@@ -35,7 +36,7 @@ const props = withDefaults(
     iconPosition: 'left',
     contentPosition: 'left',
     position: 'left',
-  }
+  },
 )
 
 const classes = computed(() => [
@@ -238,6 +239,16 @@ function handleClick() {
         0 1px 0 0 rgba(0, 0, 0, 0.08),
         0 -1px 0 0 rgba(0, 0, 0, 0.2) inset;
     }
+  }
+
+  &--title {
+    color: var(--Text-Default, #202223);
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 600;
   }
   &--sm {
     font-size: 0.875rem;

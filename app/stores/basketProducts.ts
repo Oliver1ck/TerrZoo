@@ -14,6 +14,8 @@ const basketProductSchema = v.object({
       id: v.number(),
       count: v.number(),
       unit: v.picklist(['шт', 'кг', 'г', 'л', 'мл']),
+      value: v.number(),
+      price: v.number(),
     }),
   ),
   sales: v.nullable(
@@ -32,6 +34,7 @@ const basketProductSchema = v.object({
 export const useBasketProductsStore = defineStore('basketProducts', () => {
   const products = skipHydrate(
     useStorage<BasketProductType[]>('basketProducts', [], undefined, {
+      initOnMounted: true,
       serializer: {
         read: (value: string) => {
           try {
@@ -77,11 +80,41 @@ export const useBasketProductsStore = defineStore('basketProducts', () => {
     removeProductById(product.id)
   }
 
+  const incrementProductCount = (productId: number) => {
+    const product = products.value.find(p => p.id === productId)
+    if (product) {
+      product.count++
+    }
+  }
+
+  const decrementProductCount = (productId: number) => {
+    const product = products.value.find(p => p.id === productId)
+    if (product && product.count > 1) {
+      product.count--
+    }
+  }
+
+  const getProductCount = (productId: number) => {
+    const product = products.value.find(p => p.id === productId)
+    return product ? product.count : 0
+  }
+
+  const setCheckedPackageUnit = (productId: number, unitId: number | null) => {
+    const product = products.value.find(p => p.id === productId)
+    if (product) {
+      product.checkedPackageUnit = unitId
+    }
+  }
+
   return {
     products,
     countProducts,
     addProduct,
     removeProductById,
     removeProduct,
+    incrementProductCount,
+    decrementProductCount,
+    getProductCount,
+    setCheckedPackageUnit,
   }
 })

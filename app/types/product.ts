@@ -13,6 +13,8 @@ export interface NumberOfPackages {
   id: number
   count: number
   unit: 'шт' | 'кг' | 'г' | 'л' | 'мл'
+  value: number
+  price: number
 }
 
 export interface BasketProductType extends ProductType {
