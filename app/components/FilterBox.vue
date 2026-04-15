@@ -38,6 +38,7 @@ const computedPadding = computed(() => {
       return null
   }
 })
+const fullPadding = computed(() => `${computedPadding.value || '1rem'} 1rem`)
 const modelValue = defineModel<ModelCategories | string[]>()
 const searchValue = ref<string>('')
 const filterData = ref<Category[] | Brand[] | CheckedSales[]>(props.data || [])
@@ -60,7 +61,12 @@ watchDebounced(
 </script>
 
 <template>
-  <div class="filter-box" :class="`filter-box--${variant}`">
+  <WhiteSurface
+    class="filter-box"
+    :class="`filter-box--${variant}`"
+    :padding="fullPadding"
+    mobile-padding="0"
+  >
     <Typography v-if="title" tag="h3" variant="heading-sm">
       {{ title }}
     </Typography>
@@ -73,28 +79,19 @@ watchDebounced(
         :item="item"
       />
     </ul>
-  </div>
+  </WhiteSurface>
 </template>
 
 <style lang="scss" scoped>
 .filter-box {
-  padding: v-bind(computedPadding) 1rem;
-  border-radius: 0.3125rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: var(--Surface-Default);
 }
 
 .filter-box__list {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-}
-
-@media (max-width: 992px) {
-  .filter-box {
-    padding: 0;
-  }
 }
 </style>

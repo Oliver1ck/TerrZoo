@@ -7,26 +7,23 @@ defineProps<{
 </script>
 
 <template>
-  <li class="brand">
+  <WhiteSurface
+    tag="li"
+    class="brand"
+    padding="0.88rem 1.25rem"
+    mobile-padding="0.5rem"
+    radius="0.25rem"
+  >
     <img :src="brand.imageUrl" :alt="brand.name" />
-  </li>
+  </WhiteSurface>
 </template>
 
 <style lang="scss" scoped>
 .brand {
-  padding: 0.88rem 1.25rem;
-  border-radius: 0.25rem;
-  background: var(--Surface-Default);
   & img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-  }
-}
-
-@media (max-width: 992px) {
-  .brand {
-    padding: 0.5rem;
   }
 }
 </style>
