@@ -143,6 +143,7 @@ const iconStyle = computed(() => {
   background: none;
   transition: all 0.3s ease;
   position: relative;
+  touch-action: manipulation;
 
   &--full-width {
     width: 100%;
