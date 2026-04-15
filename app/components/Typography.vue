@@ -22,6 +22,8 @@ const props = withDefaults(
     iconPosition?: TypographyIconPos
     color?: ColorVars
     textAlign?: 'left' | 'center' | 'right'
+    fontSize?: string | undefined
+    fontWeight?: string | undefined
   }>(),
   {
     tag: 'p',
@@ -29,6 +31,8 @@ const props = withDefaults(
     iconPosition: 'left',
     color: 'Default',
     textAlign: 'left',
+    fontSize: undefined,
+    fontWeight: undefined,
   },
 )
 
@@ -55,10 +59,17 @@ const classes = computed(() => [
   `typography-position--${props.iconPosition}`,
   `typography-align--${props.textAlign}`,
 ])
+
+const styles = computed(() => {
+  return {
+    fontSize: props.fontSize,
+    fontWeight: props.fontWeight,
+  }
+})
 </script>
 
 <template>
-  <component :is="tag" :class="classes">
+  <component :is="tag" :class="classes" :style="styles">
     <slot name="icon" />
     <span>
       <slot />

@@ -132,4 +132,25 @@ watch(checkedUnit, newValue => {
   flex-direction: column;
   gap: 1rem;
 }
+
+@media (max-width: 992px) {
+  .product-basket {
+    // flex-direction: column;
+    flex-wrap: wrap;
+
+    &__content {
+      flex: 1 1 29.4rem;
+      // flex: initial;
+      width: 100%;
+    }
+    &__actions {
+      // justify-content: flex-start;
+      justify-content: initial;
+    }
+    .img-wrap {
+      flex: 0 0 3.5rem;
+      height: 3.5rem;
+    }
+  }
+}
 </style>

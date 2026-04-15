@@ -29,6 +29,7 @@ const props = withDefaults(
     iconPosition?: LinkIconPos
     contentPosition?: 'left' | 'center' | 'right'
     position?: 'left' | 'center' | 'right' | 'fullWidth'
+    padding?: string | undefined
   }>(),
   {
     variant: 'primary',
@@ -36,6 +37,7 @@ const props = withDefaults(
     iconPosition: 'left',
     contentPosition: 'left',
     position: 'left',
+    padding: undefined,
   },
 )
 
@@ -57,7 +59,12 @@ function handleClick() {
 </script>
 
 <template>
-  <NuxtLink :to="props.to" :class="classes" @click="handleClick">
+  <NuxtLink
+    :to="props.to"
+    :class="classes"
+    :style="{ padding: props.padding }"
+    @click="handleClick"
+  >
     <slot name="icon" />
     <span>
       <slot />

@@ -34,7 +34,7 @@ const discountPrice = computed(() => {
     <Typography
       v-if="props.product.sales"
       tag="p"
-      variant="body-md"
+      variant="body-sm"
       color="Disabled"
     >
       <b>
