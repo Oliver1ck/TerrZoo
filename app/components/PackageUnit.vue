@@ -4,8 +4,10 @@ import type { NumberOfPackages } from '@custom-types/product'
 const {
   unit = {
     id: 1,
-    count: 85,
+    count: 1,
     unit: 'г',
+    value: 85,
+    price: 12,
   },
   isActive = false,
 } = defineProps<{
@@ -25,7 +27,7 @@ const emit = defineEmits<{
     @click="emit('click', isActive)"
   >
     <Typography tag="p" variant="body-sm">
-      {{ unit.count }} {{ unit.unit }}
+      {{ unit.value }} {{ unit.unit }}
     </Typography>
   </li>
 </template>

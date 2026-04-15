@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <article class="article">
+  <WhiteSurface tag="article" class="article" padding="1rem" radius="0.3125rem">
     <NuxtLink to="/" class="article__link">
       <div class="article__img">
         <img :src="article.image_url" :alt="article.title" />
@@ -49,7 +49,7 @@ defineProps<{
         </template>
       </Typography>
     </div>
-  </article>
+  </WhiteSurface>
 </template>
 
 <style lang="scss" scoped>
@@ -57,9 +57,6 @@ defineProps<{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
-  border-radius: 0.3125rem;
-  background: var(--Surface-Default);
   height: 100%;
   transition: all 0.3s ease;
 

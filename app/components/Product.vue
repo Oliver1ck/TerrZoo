@@ -12,19 +12,6 @@ const props = withDefaults(
 )
 
 const classes = computed(() => ['product', `product--${props.variant}`])
-const productSales = computed(() => {
-  if (!props.product.sales) {
-    return null
-  }
-
-  return {
-    ...props.product.sales,
-    discount_price: (
-      props.product.price
-      * (1 - props.product.sales.discount_percentage / 100)
-    ).toFixed(2),
-  }
-})
 const checkedPackageUnit = ref<number | null>(null)
 
 const { addProduct } = useBasketProductsStore()
@@ -33,9 +20,7 @@ const { addProduct } = useBasketProductsStore()
 <template>
   <article :class="classes">
     <NuxtLink to="/" class="product__title-wrap">
-      <div class="product__img-wrap">
-        <img :src="product.img" :alt="product.name" />
-      </div>
+      <ProductImage :src="product.img" :alt="product.name" />
       <Typography variant="heading-sm" tag="h3">
         {{ product.name }}
       </Typography>
@@ -45,29 +30,13 @@ const { addProduct } = useBasketProductsStore()
       :data="product.numberOfPackages"
     />
     <div class="product__basket-wrap">
-      <div class="product__basket-sales">
-        <Typography
-          v-if="product.sales"
-          tag="p"
-          variant="body-md"
-          color="Disabled"
-        >
-          <b>
-            <s>{{ product.price }} BYN</s>
-          </b>
-        </Typography>
-        <Typography tag="p" variant="body-md">
-          <b>
-            {{ productSales?.discount_price || product.price.toFixed(2) }} BYN
-          </b>
-        </Typography>
-      </div>
+      <ProductPrice :product="product" :checked-unit="checkedPackageUnit" />
       <Button
         variant="product-basket"
         icon-pos="right"
         @click="
           () => {
-            if (checkedPackageUnit) {
+            if (checkedPackageUnit !== null) {
               addProduct(product, checkedPackageUnit)
             }
           }
@@ -126,25 +95,10 @@ const { addProduct } = useBasketProductsStore()
     }
   }
 }
-.product__img-wrap {
-  & img {
-    max-height: 8.125rem;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    mix-blend-mode: darken;
-  }
-}
 
 .product__basket-wrap {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.product__basket-sales {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 </style>

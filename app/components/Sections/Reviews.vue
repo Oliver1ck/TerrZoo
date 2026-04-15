@@ -31,7 +31,11 @@ function goToNext() {
 <template>
   <section class="reviews">
     <div class="container">
-      <div class="reviews__wrapper">
+      <WhiteSurface
+        class="reviews__wrapper"
+        padding="1rem 0"
+        radius="0.3125rem"
+      >
         <Typography tag="h2" variant="heading-lg" text-align="center">
           Отзывы наших клиентов
         </Typography>
@@ -100,7 +104,7 @@ function goToNext() {
             </template>
           </Button>
         </div>
-      </div>
+      </WhiteSurface>
     </div>
   </section>
 </template>
@@ -110,9 +114,6 @@ function goToNext() {
   margin-bottom: 3.5rem;
 }
 .reviews__wrapper {
-  background: var(--Surface-Default);
-  border-radius: 0.3125rem;
-  padding: 1rem 0;
   display: flex;
   flex-direction: column;
 }

@@ -11,5 +11,6 @@
   "htmlWhitespaceSensitivity": "css",
   "vueIndentScriptAndStyle": false,
   "singleAttributePerLine": false,
-  "bracketSameLine": false
+  "bracketSameLine": false,
+  "experimentalOperatorPosition": "start"
 }

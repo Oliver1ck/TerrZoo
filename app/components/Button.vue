@@ -9,8 +9,10 @@ type Variant =
   | 'search'
   | 'product-basket'
   | 'control'
+  | 'control-square'
   | 'select'
   | 'primary'
+  | 'none'
 
 type ControlVariant = 'primary' | 'secondary'
 type TextAlign = 'left' | 'center' | 'right' | 'inherit'
@@ -141,6 +143,7 @@ const iconStyle = computed(() => {
   background: none;
   transition: all 0.3s ease;
   position: relative;
+  touch-action: manipulation;
 
   &--full-width {
     width: 100%;
@@ -386,6 +389,14 @@ const iconStyle = computed(() => {
         top: 1px;
       }
     }
+  }
+  &--control-square {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--Button-border-gradient);
+    background: var(--Action-Secondary-Default);
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
   }
   &--select {
     border-radius: 0.25rem;

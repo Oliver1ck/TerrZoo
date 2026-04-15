@@ -11,6 +11,7 @@ type Variant =
   | 'interactive'
   | 'primary-button'
   | 'breadCrumbs'
+  | 'title'
 
 // sm - 0.875rem, md - 1rem, lg - 1.125rem
 type Size = 'sm' | 'md' | 'lg'
@@ -28,6 +29,7 @@ const props = withDefaults(
     iconPosition?: LinkIconPos
     contentPosition?: 'left' | 'center' | 'right'
     position?: 'left' | 'center' | 'right' | 'fullWidth'
+    padding?: string | undefined
   }>(),
   {
     variant: 'primary',
@@ -35,7 +37,8 @@ const props = withDefaults(
     iconPosition: 'left',
     contentPosition: 'left',
     position: 'left',
-  }
+    padding: undefined,
+  },
 )
 
 const classes = computed(() => [
@@ -56,7 +59,12 @@ function handleClick() {
 </script>
 
 <template>
-  <NuxtLink :to="props.to" :class="classes" @click="handleClick">
+  <NuxtLink
+    :to="props.to"
+    :class="classes"
+    :style="{ padding: props.padding }"
+    @click="handleClick"
+  >
     <slot name="icon" />
     <span>
       <slot />
@@ -238,6 +246,16 @@ function handleClick() {
         0 1px 0 0 rgba(0, 0, 0, 0.08),
         0 -1px 0 0 rgba(0, 0, 0, 0.2) inset;
     }
+  }
+
+  &--title {
+    color: var(--Text-Default, #202223);
+    font-feature-settings:
+      'liga' off,
+      'clig' off;
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 600;
   }
   &--sm {
     font-size: 0.875rem;
