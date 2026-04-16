@@ -28,7 +28,7 @@ const sumPrice = computed(() => {
 <template>
   <BreadCrumbs />
   <div class="basket-page">
-    <section class="basket">
+    <section v-if="products.length > 0" class="basket">
       <div class="container">
         <Typography class="basket__title" variant="heading-lg" tag="h1">
           Моя корзина
@@ -107,6 +107,29 @@ const sumPrice = computed(() => {
         </div>
       </div>
     </section>
+    <section v-else class="basket">
+      <div class="container">
+        <div class="basket__wrapper">
+          <img src="@assets/img/basketPlug.png" alt="Cat" />
+          <Typography
+            class="basket__plug-tittle"
+            variant="heading-lg"
+            text-align="center"
+          >
+            В корзине нет товаров. Выберите нужные товары в нашем каталоге
+          </Typography>
+          <VLink
+            to="/catalog"
+            variant="primary-button"
+            size="sm"
+            content-position="center"
+            position="center"
+          >
+            Перейти в каталог товаров
+          </VLink>
+        </div>
+      </div>
+    </section>
     <Slider title="Популярные товары" />
     <WhiteSurface padding="1.5rem 0" radius="0">
       <Slider title="Просмотренные товары" variant="secondary" />
@@ -124,6 +147,26 @@ const sumPrice = computed(() => {
 .basket {
   &__content {
     flex: 0 1 48.125rem;
+  }
+
+  &__wrapper {
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+
+    & img {
+      max-width: 23.0625rem;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__plug-tittle {
+    max-width: 40.875rem;
   }
 
   &__list {
@@ -187,6 +230,10 @@ const sumPrice = computed(() => {
     &__content {
       flex: initial;
       width: 100%;
+    }
+
+    &__wrapper {
+      margin-top: 3rem;
     }
     &__wrap {
       flex-direction: column;
