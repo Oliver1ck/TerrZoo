@@ -1,9 +1,9 @@
 export interface Filter {
-  sales: string[]
+  sales: number[]
   categories: FilterCategories
-  brands: string[]
+  brands: number[]
 }
 export interface FilterCategories {
-  mainCategory: string | null
-  subCategories: string[]
+  mainCategory: number | null
+  subCategories: number[]
 }

@@ -6,7 +6,7 @@ defineProps<{
   value?: string | number
 }>()
 
-const modelValue = defineModel<string | null>({ default: null })
+const modelValue = defineModel<number | null>({ default: null })
 const inputId = useId()
 </script>
 

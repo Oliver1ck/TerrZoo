@@ -39,7 +39,7 @@ const computedPadding = computed(() => {
   }
 })
 const fullPadding = computed(() => `${computedPadding.value || '1rem'} 1rem`)
-const modelValue = defineModel<FilterCategories | string[]>()
+const modelValue = defineModel<FilterCategories | number[]>()
 const searchValue = ref<string>('')
 const filterData = ref<Category[] | Brand[] | CheckedSales[]>(props.data || [])
 watchDebounced(

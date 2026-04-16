@@ -17,10 +17,10 @@ const props = withDefaults(
   {
     disabled: false,
     checked: false,
-  }
+  },
 )
 
-const modelValue = defineModel<string[] | undefined>(undefined)
+const modelValue = defineModel<number[] | undefined>(undefined)
 
 const inputId = props.id || useId()
 </script>
@@ -44,7 +44,8 @@ const inputId = props.id || useId()
     <div
       class="v-checked__indicator"
       :class="{
-        'v-checked__indicator--active': modelValue?.includes(`${value}`),
+        'v-checked__indicator--active':
+          value !== undefined && modelValue?.includes(Number(value)),
       }"
     >
       <img src="@assets/img/icons/check.svg" alt="check icon" />

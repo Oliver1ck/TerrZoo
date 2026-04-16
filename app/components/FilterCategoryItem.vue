@@ -8,7 +8,7 @@ const props = defineProps<{
   item: Category | Brand | CheckedSales
 }>()
 
-const modelValue = defineModel<FilterCategories | string[]>()
+const modelValue = defineModel<FilterCategories | number[]>()
 
 function isCategoryType(
   item: Category | Brand | CheckedSales,
@@ -25,9 +25,9 @@ const categoryModel = computed<FilterCategories>({
   },
 })
 
-const checkedModel = computed<string[]>({
+const checkedModel = computed<number[]>({
   get() {
-    return modelValue.value as string[]
+    return modelValue.value as number[]
   },
   set(value) {
     modelValue.value = value
@@ -45,13 +45,11 @@ const subcategories = computed(() => {
 watch(
   () => categoryModel.value.mainCategory,
   mainCategory => {
-    if (!isCategoryType(props.item) || mainCategory !== String(props.item.id)) {
+    if (!isCategoryType(props.item) || mainCategory !== props.item.id) {
       return
     }
 
-    categoryModel.value.subCategories = subcategories.value.map(sub =>
-      String(sub.id),
-    )
+    categoryModel.value.subCategories = subcategories.value.map(sub => sub.id)
   },
 )
 </script>
@@ -62,13 +60,13 @@ watch(
       v-if="isCategoryType(item)"
       v-model="categoryModel.mainCategory"
       :title="item.title"
-      :value="String(item.id)"
+      :value="item.id"
       name="category"
     />
     <VChecked
       v-else
       v-model="checkedModel"
-      :value="String(item.id)"
+      :value="item.id"
       :label="item.title"
       :name="`item-${item.id}`"
     />
@@ -77,7 +75,7 @@ watch(
       v-if="isCategoryType(item) && subcategories.length"
       class="filter__inner"
       :class="{
-        'filter__inner--active': categoryModel.mainCategory === String(item.id),
+        'filter__inner--active': categoryModel.mainCategory === item.id,
       }"
     >
       <div class="filter__inner-content">
@@ -85,7 +83,7 @@ watch(
           v-for="checkItem in subcategories"
           :key="checkItem.id"
           v-model="categoryModel.subCategories"
-          :value="String(checkItem.id)"
+          :value="checkItem.id"
           :name="`subcategory-${item.id}`"
         >
           {{ checkItem.title }}

@@ -8,7 +8,7 @@ export function useFilteredProducts(products: ProductType[]) {
 
   const filteredProducts = computed(() => {
     const selectedBrandTitles = mockBrands
-      .filter(brand => filters.value.brands.includes(String(brand.id)))
+      .filter(brand => filters.value.brands.includes(brand.id))
       .map(brand => brand.title.toLowerCase())
 
     return products.filter(product => {
@@ -18,14 +18,14 @@ export function useFilteredProducts(products: ProductType[]) {
 
       const { mainCategory, subCategories } = filters.value.categories
 
-      if (mainCategory && String(product.category.id) !== mainCategory) {
+      if (mainCategory && product.category.id !== mainCategory) {
         return false
       }
 
       if (subCategories.length > 0) {
         const productSubcategoryIds = (
           product.category.subcategories || []
-        ).map(sub => String(sub.id))
+        ).map(sub => sub.id)
 
         if (!subCategories.some(id => productSubcategoryIds.includes(id))) {
           return false
