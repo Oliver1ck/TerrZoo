@@ -65,11 +65,10 @@ export const useBasketProductsStore = defineStore('basketProducts', () => {
     checkedPackageUnit: number | null,
     count: number = 1,
   ) => {
-    if (!products.value.some(p => p.id === product.id)) {
-      products.value.push({ ...product, count, checkedPackageUnit })
-    } else {
-      products.value.find(p => p.id === product.id)!.count += count
+    if (products.value.some(p => p.id === product.id)) {
+      return null
     }
+    products.value.push({ ...product, count, checkedPackageUnit })
   }
 
   const removeProductById = (productId: number) => {
