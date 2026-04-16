@@ -1,3 +1,4 @@
+import type { Brand } from '@custom-types/catalogBrand'
 import type { Category } from '@custom-types/catalogCategory'
 import type { Sales } from '@custom-types/catalogSales'
 
@@ -8,6 +9,7 @@ export interface ProductType {
   pricePerUnit: number
   numberOfPackages: NumberOfPackages[]
   sales: Sales | null
+  brand: Brand
   category: Category
 }
 

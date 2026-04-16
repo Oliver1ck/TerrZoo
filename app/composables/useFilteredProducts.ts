@@ -1,16 +1,10 @@
 import type { ProductType } from '@custom-types/product'
 
-import { mockBrands } from '@data/catalogBrands'
-
 export function useFilteredProducts(products: ProductType[]) {
   const filterStore = useFilterProducts()
   const { filters } = storeToRefs(filterStore)
 
   const filteredProducts = computed(() => {
-    const selectedBrandTitles = mockBrands
-      .filter(brand => filters.value.brands.includes(brand.id))
-      .map(brand => brand.title.toLowerCase())
-
     return products.filter(product => {
       if (filters.value.sales.length > 0 && !product.sales) {
         return false
@@ -32,16 +26,11 @@ export function useFilteredProducts(products: ProductType[]) {
         }
       }
 
-      if (selectedBrandTitles.length > 0) {
-        const productName = product.name.toLowerCase()
-
-        if (
-          !selectedBrandTitles.some(brandTitle =>
-            productName.includes(brandTitle),
-          )
-        ) {
-          return false
-        }
+      if (
+        filters.value.brands.length > 0
+        && !filters.value.brands.includes(product.brand.id)
+      ) {
+        return false
       }
 
       return true

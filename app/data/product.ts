@@ -22,6 +22,10 @@ export const products: ProductType[] = [
       },
     ],
     sales: mockSalesData,
+    brand: {
+      id: 1,
+      title: 'ROYAL CANIN',
+    },
     category: {
       id: 1,
       title: 'Корм',
@@ -40,6 +44,10 @@ export const products: ProductType[] = [
       { id: 204, count: 1, unit: 'л', value: 30, price: 474.9 },
     ],
     sales: mockSalesData,
+    brand: {
+      id: 2,
+      title: 'FRESH STEP',
+    },
     category: {
       id: 4,
       title: 'Наполнитель',
@@ -61,6 +69,10 @@ export const products: ProductType[] = [
       },
     ],
     sales: null,
+    brand: {
+      id: 3,
+      title: 'FURMINATOR',
+    },
     category: {
       id: 5,
       title: 'Гигиена и уход',
@@ -81,6 +93,10 @@ export const products: ProductType[] = [
       { id: 406, count: 1, unit: 'кг', value: 10, price: 1100 },
     ],
     sales: null,
+    brand: {
+      id: 1,
+      title: 'ROYAL CANIN',
+    },
     category: {
       id: 1,
       title: 'Корм',
@@ -94,6 +110,10 @@ export const products: ProductType[] = [
     pricePerUnit: 5,
     numberOfPackages: [{ id: 501, count: 1, unit: 'шт', value: 1, price: 5 }],
     sales: null,
+    brand: {
+      id: 4,
+      title: 'TRIXIE',
+    },
     category: {
       id: 3,
       title: 'Игрушки',
@@ -110,6 +130,10 @@ export const products: ProductType[] = [
       { id: 602, count: 1, unit: 'кг', value: 14, price: 560 },
     ],
     sales: mockSalesData,
+    brand: {
+      id: 5,
+      title: 'PRO PLAN',
+    },
     category: {
       id: 1,
       title: 'Корм',
@@ -126,6 +150,10 @@ export const products: ProductType[] = [
       { id: 702, count: 1, unit: 'г', value: 140, price: 9.8 },
     ],
     sales: null,
+    brand: {
+      id: 6,
+      title: 'DREAMIES',
+    },
     category: {
       id: 2,
       title: 'Лакомства',
@@ -141,6 +169,10 @@ export const products: ProductType[] = [
       { id: 801, count: 1, unit: 'мл', value: 473, price: 23.65 },
     ],
     sales: mockSalesData,
+    brand: {
+      id: 7,
+      title: '8in1',
+    },
     category: {
       id: 5,
       title: 'Гигиена и уход',
@@ -154,6 +186,10 @@ export const products: ProductType[] = [
     pricePerUnit: 45,
     numberOfPackages: [{ id: 901, count: 1, unit: 'шт', value: 1, price: 45 }],
     sales: null,
+    brand: {
+      id: 4,
+      title: 'TRIXIE',
+    },
     category: {
       id: 11,
       title: 'Когтеточки',
@@ -167,6 +203,10 @@ export const products: ProductType[] = [
     pricePerUnit: 18,
     numberOfPackages: [{ id: 1001, count: 1, unit: 'шт', value: 1, price: 18 }],
     sales: null,
+    brand: {
+      id: 8,
+      title: 'TITBIT',
+    },
     category: {
       id: 2,
       title: 'Лакомства',
@@ -183,6 +223,10 @@ export const products: ProductType[] = [
       { id: 1102, count: 1, unit: 'г', value: 800, price: 16 },
     ],
     sales: null,
+    brand: {
+      id: 9,
+      title: 'BRIT',
+    },
     category: {
       id: 1,
       title: 'Корм',
@@ -196,6 +240,10 @@ export const products: ProductType[] = [
     pricePerUnit: 85,
     numberOfPackages: [{ id: 1201, count: 1, unit: 'шт', value: 1, price: 85 }],
     sales: null,
+    brand: {
+      id: 10,
+      title: 'STEFAN',
+    },
     category: {
       id: 7,
       title: 'Амуниция, витамины',
@@ -212,6 +260,10 @@ export const products: ProductType[] = [
       { id: 1302, count: 1, unit: 'мл', value: 0.8, price: 70 },
     ],
     sales: null,
+    brand: {
+      id: 11,
+      title: 'АДВАНТЕЙДЖ',
+    },
     category: {
       id: 5,
       title: 'Гигиена и уход',
@@ -225,6 +277,10 @@ export const products: ProductType[] = [
     pricePerUnit: 28,
     numberOfPackages: [{ id: 1401, count: 1, unit: 'шт', value: 1, price: 28 }],
     sales: null,
+    brand: {
+      id: 12,
+      title: 'SAVIC',
+    },
     category: {
       id: 9,
       title: 'Туалеты',
