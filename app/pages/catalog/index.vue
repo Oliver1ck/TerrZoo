@@ -8,10 +8,7 @@ import { products } from '@data/product'
 
 const selectedSort = ref<string | null>(catalogSortOptions[0]?.value ?? null)
 const { filteredProducts } = useFilteredProducts(products)
-const { filters } = storeToRefs(useFilterProducts())
-watch(filters, newFilters => {
-  console.log('Filters changed:', newFilters)
-})
+const { resetFilters } = useFilterProducts()
 const { open } = useModal()
 </script>
 
@@ -48,11 +45,28 @@ const { open } = useModal()
         </div>
         <div class="catalog__layout">
           <CatalogFilters />
-          <ul class="catalog__products">
+          <ul v-if="filteredProducts.length > 0" class="catalog__products">
             <li v-for="product in filteredProducts" :key="product.id">
               <Product :product="product" />
             </li>
           </ul>
+          <div v-else class="catalog__plug">
+            <img
+              src="@assets/img/catalogPlug.png"
+              alt="No products found Cat"
+            />
+            <Typography
+              variant="heading-lg"
+              text-align="center"
+              class="catalog__plug__title"
+            >
+              По вашему запросу ничего не найдено. Cбросьте фильтр и попробуйте
+              снова
+            </Typography>
+            <Button @click="resetFilters">
+              Сбросить фильтры
+            </Button>
+          </div>
         </div>
         <Slider title="Популярные товары для кого-то" />
         <Slider title="Полезные статьи" :article="true" />
@@ -90,12 +104,38 @@ const { open } = useModal()
   display: none;
 }
 
+.catalog__plug {
+  flex: 1 1 auto;
+  padding-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+  &__title {
+    max-width: 42.375rem;
+  }
+
+  & img {
+    max-width: 13.34106rem;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: darken;
+  }
+}
+
 @media (max-width: 992px) {
   .catalog__title {
     flex-direction: column;
   }
   .filters_btn {
     display: block;
+  }
+
+  .catalog__plug {
+    padding-top: 0;
   }
 }
 </style>
