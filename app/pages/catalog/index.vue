@@ -7,7 +7,11 @@ import { catalogSortOptions } from '@data/catalogSort'
 import { products } from '@data/product'
 
 const selectedSort = ref<string | null>(catalogSortOptions[0]?.value ?? null)
-
+const { filteredProducts } = useFilteredProducts(products)
+const { filters } = storeToRefs(useFilterProducts())
+watch(filters, newFilters => {
+  console.log('Filters changed:', newFilters)
+})
 const { open } = useModal()
 </script>
 
@@ -45,7 +49,7 @@ const { open } = useModal()
         <div class="catalog__layout">
           <CatalogFilters />
           <ul class="catalog__products">
-            <li v-for="product in products" :key="product.id">
+            <li v-for="product in filteredProducts" :key="product.id">
               <Product :product="product" />
             </li>
           </ul>

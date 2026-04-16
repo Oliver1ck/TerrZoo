@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { ModelCategories } from '@components/CatalogFilters.vue'
 import type { Brand } from '@custom-types/catalogBrand'
 import type { Category } from '@custom-types/catalogCategory'
 import type { CheckedSales } from '@custom-types/catalogSales'
+import type { FilterCategories } from '@custom-types/filter'
 
 const props = defineProps<{
   item: Category | Brand | CheckedSales
 }>()
 
-const modelValue = defineModel<ModelCategories | string[]>()
+const modelValue = defineModel<FilterCategories | string[]>()
 
 function isCategoryType(
   item: Category | Brand | CheckedSales,
@@ -16,9 +16,9 @@ function isCategoryType(
   return 'subcategories' in item
 }
 
-const categoryModel = computed<ModelCategories>({
+const categoryModel = computed<FilterCategories>({
   get() {
-    return modelValue.value as ModelCategories
+    return modelValue.value as FilterCategories
   },
   set(value) {
     modelValue.value = value
@@ -39,18 +39,18 @@ const subcategories = computed(() => {
     return []
   }
 
-  return props.item.subcategories
+  return props.item.subcategories || []
 })
 
 watch(
   () => categoryModel.value.mainCategory,
   mainCategory => {
-    if (!isCategoryType(props.item) || mainCategory !== props.item.title) {
+    if (!isCategoryType(props.item) || mainCategory !== String(props.item.id)) {
       return
     }
 
-    categoryModel.value.subCategories = subcategories.value.map(
-      sub => sub.title,
+    categoryModel.value.subCategories = subcategories.value.map(sub =>
+      String(sub.id),
     )
   },
 )
@@ -62,22 +62,22 @@ watch(
       v-if="isCategoryType(item)"
       v-model="categoryModel.mainCategory"
       :title="item.title"
-      :value="item.title"
+      :value="String(item.id)"
       name="category"
     />
     <VChecked
       v-else
       v-model="checkedModel"
-      :value="item.title"
+      :value="String(item.id)"
       :label="item.title"
-      :name="item.title"
+      :name="`item-${item.id}`"
     />
 
     <div
       v-if="isCategoryType(item) && subcategories.length"
       class="filter__inner"
       :class="{
-        'filter__inner--active': categoryModel.mainCategory === item.title,
+        'filter__inner--active': categoryModel.mainCategory === String(item.id),
       }"
     >
       <div class="filter__inner-content">
@@ -85,8 +85,8 @@ watch(
           v-for="checkItem in subcategories"
           :key="checkItem.id"
           v-model="categoryModel.subCategories"
-          :value="checkItem.title"
-          :name="item.title"
+          :value="String(checkItem.id)"
+          :name="`subcategory-${item.id}`"
         >
           {{ checkItem.title }}
         </VChecked>

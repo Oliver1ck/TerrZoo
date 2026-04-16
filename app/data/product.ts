@@ -22,6 +22,11 @@ export const products: ProductType[] = [
       },
     ],
     sales: mockSalesData,
+    category: {
+      id: 1,
+      title: 'Корм',
+      subcategories: [{ id: 102, categoryId: 1, title: 'Влажный' }],
+    },
   },
   {
     id: 2,
@@ -35,6 +40,11 @@ export const products: ProductType[] = [
       { id: 204, count: 1, unit: 'л', value: 30, price: 474.9 },
     ],
     sales: mockSalesData,
+    category: {
+      id: 4,
+      title: 'Наполнитель',
+      subcategories: [],
+    },
   },
   {
     id: 3,
@@ -51,6 +61,11 @@ export const products: ProductType[] = [
       },
     ],
     sales: null,
+    category: {
+      id: 5,
+      title: 'Гигиена и уход',
+      subcategories: [],
+    },
   },
   {
     id: 4,
@@ -66,6 +81,11 @@ export const products: ProductType[] = [
       { id: 406, count: 1, unit: 'кг', value: 10, price: 1100 },
     ],
     sales: null,
+    category: {
+      id: 1,
+      title: 'Корм',
+      subcategories: [{ id: 101, categoryId: 1, title: 'Сухой' }],
+    },
   },
   {
     id: 5,
@@ -74,6 +94,11 @@ export const products: ProductType[] = [
     pricePerUnit: 5,
     numberOfPackages: [{ id: 501, count: 1, unit: 'шт', value: 1, price: 5 }],
     sales: null,
+    category: {
+      id: 3,
+      title: 'Игрушки',
+      subcategories: [],
+    },
   },
   {
     id: 6,
@@ -85,6 +110,11 @@ export const products: ProductType[] = [
       { id: 602, count: 1, unit: 'кг', value: 14, price: 560 },
     ],
     sales: mockSalesData,
+    category: {
+      id: 1,
+      title: 'Корм',
+      subcategories: [{ id: 101, categoryId: 1, title: 'Сухой' }],
+    },
   },
   {
     id: 7,
@@ -96,6 +126,11 @@ export const products: ProductType[] = [
       { id: 702, count: 1, unit: 'г', value: 140, price: 9.8 },
     ],
     sales: null,
+    category: {
+      id: 2,
+      title: 'Лакомства',
+      subcategories: [],
+    },
   },
   {
     id: 8,
@@ -106,6 +141,11 @@ export const products: ProductType[] = [
       { id: 801, count: 1, unit: 'мл', value: 473, price: 23.65 },
     ],
     sales: mockSalesData,
+    category: {
+      id: 5,
+      title: 'Гигиена и уход',
+      subcategories: [],
+    },
   },
   {
     id: 9,
@@ -114,6 +154,11 @@ export const products: ProductType[] = [
     pricePerUnit: 45,
     numberOfPackages: [{ id: 901, count: 1, unit: 'шт', value: 1, price: 45 }],
     sales: null,
+    category: {
+      id: 11,
+      title: 'Когтеточки',
+      subcategories: [],
+    },
   },
   {
     id: 10,
@@ -122,6 +167,11 @@ export const products: ProductType[] = [
     pricePerUnit: 18,
     numberOfPackages: [{ id: 1001, count: 1, unit: 'шт', value: 1, price: 18 }],
     sales: null,
+    category: {
+      id: 2,
+      title: 'Лакомства',
+      subcategories: [],
+    },
   },
   {
     id: 11,
@@ -133,6 +183,11 @@ export const products: ProductType[] = [
       { id: 1102, count: 1, unit: 'г', value: 800, price: 16 },
     ],
     sales: null,
+    category: {
+      id: 1,
+      title: 'Корм',
+      subcategories: [{ id: 102, categoryId: 1, title: 'Влажный' }],
+    },
   },
   {
     id: 12,
@@ -141,6 +196,11 @@ export const products: ProductType[] = [
     pricePerUnit: 85,
     numberOfPackages: [{ id: 1201, count: 1, unit: 'шт', value: 1, price: 85 }],
     sales: null,
+    category: {
+      id: 7,
+      title: 'Амуниция, витамины',
+      subcategories: [],
+    },
   },
   {
     id: 13,
@@ -152,6 +212,11 @@ export const products: ProductType[] = [
       { id: 1302, count: 1, unit: 'мл', value: 0.8, price: 70 },
     ],
     sales: null,
+    category: {
+      id: 5,
+      title: 'Гигиена и уход',
+      subcategories: [],
+    },
   },
   {
     id: 14,
@@ -160,5 +225,10 @@ export const products: ProductType[] = [
     pricePerUnit: 28,
     numberOfPackages: [{ id: 1401, count: 1, unit: 'шт', value: 1, price: 28 }],
     sales: null,
+    category: {
+      id: 9,
+      title: 'Туалеты',
+      subcategories: [],
+    },
   },
 ]

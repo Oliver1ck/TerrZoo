@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { ModelCategories } from '@components/CatalogFilters.vue'
 import type { Brand } from '@custom-types/catalogBrand'
 import type { Category } from '@custom-types/catalogCategory'
 import type { CheckedSales } from '@custom-types/catalogSales'
+import type { FilterCategories } from '@custom-types/filter'
 
 import { watchDebounced } from '@vueuse/core'
 
@@ -39,7 +39,7 @@ const computedPadding = computed(() => {
   }
 })
 const fullPadding = computed(() => `${computedPadding.value || '1rem'} 1rem`)
-const modelValue = defineModel<ModelCategories | string[]>()
+const modelValue = defineModel<FilterCategories | string[]>()
 const searchValue = ref<string>('')
 const filterData = ref<Category[] | Brand[] | CheckedSales[]>(props.data || [])
 watchDebounced(

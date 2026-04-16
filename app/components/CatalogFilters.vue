@@ -3,39 +3,8 @@ import { mockBrands } from '@data/catalogBrands'
 import { categories } from '@data/catalogCategories'
 import { checkedSales } from '@data/catalogSales'
 
-export interface ModelValue {
-  sales: string[] | undefined
-  categories: ModelCategories
-  brands: string[] | undefined
-}
-export interface ModelCategories {
-  mainCategory: string | undefined
-  subCategories: string[] | []
-}
-
-const checkedCategory = ref<ModelValue>({
-  sales: [],
-  categories: {
-    mainCategory: '',
-    subCategories: [],
-  },
-  brands: [],
-})
-
-watch(
-  checkedCategory,
-  newValue => {
-    console.log(
-      'Checked sales \n',
-      newValue.sales,
-      '\n Checked categories',
-      newValue.categories,
-      '\n Checked brands \n',
-      newValue.brands,
-    )
-  },
-  { deep: true },
-)
+const filterStore = useFilterProducts()
+const { filters } = storeToRefs(filterStore)
 
 const { activeModal, close } = useModal()
 </script>
@@ -48,19 +17,19 @@ const { activeModal, close } = useModal()
     <div class="container">
       <div class="catalog__filters-wrap">
         <FilterBox
-          v-model="checkedCategory.sales"
+          v-model="filters.sales"
           variant="secondary"
           :data="checkedSales"
         />
         <hr />
         <FilterBox
-          v-model="checkedCategory.categories"
+          v-model="filters.categories"
           title="Тип товара"
           :data="categories"
         />
         <hr />
         <FilterBox
-          v-model="checkedCategory.brands"
+          v-model="filters.brands"
           title="Бренд"
           :searchField="true"
           :data="mockBrands"
