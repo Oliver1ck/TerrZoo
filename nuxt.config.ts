@@ -28,10 +28,6 @@ export default defineNuxtConfig({
     '@custom-types': fileURLToPath(new URL('./app/types', import.meta.url)),
   },
 
-  routeRules: {
-    '/catalog': { prerender: false },
-  },
-
   nitro: {
     prerender: {
       crawlLinks: true,

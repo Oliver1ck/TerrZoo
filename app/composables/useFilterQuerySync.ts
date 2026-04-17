@@ -11,7 +11,11 @@ export function useFilterQuerySync() {
   const route = useRoute()
   const router = useRouter()
 
-  if (isFilterEmpty(filters.value)) {
+  const applyRouteFilters = () => {
+    if (!isFilterEmpty(filters.value)) {
+      return
+    }
+
     const routeFilters = parseQueryToFilters(route.query)
 
     if (!isFilterEmpty(routeFilters)) {
@@ -19,12 +23,27 @@ export function useFilterQuerySync() {
     }
   }
 
+  if (import.meta.server) {
+    applyRouteFilters()
+    return
+  }
+
+  onMounted(() => {
+    // In static hosting, route query is unknown at prerender time,
+    // so we apply it only after hydration to keep HTML consistent.
+    applyRouteFilters()
+  })
+
   watch(
     () => filters.value,
     activeFilters => {
+      if (isQuerySyncedWithFilters(route.query, activeFilters)) {
+        return
+      }
+
       router.replace({ query: mapFiltersToQuery(activeFilters) })
     },
-    { deep: true, immediate: true },
+    { deep: true },
   )
 }
 
@@ -103,4 +122,24 @@ function parseQueryToFilters(query: LocationQuery): Filter {
     },
     brands: parsedBrands,
   }
+}
+
+/**
+ * Checks if current route query already matches filter state.
+ * Prevents redundant router updates and navigation noise.
+ */
+function isQuerySyncedWithFilters(
+  query: LocationQuery,
+  filters: Filter,
+): boolean {
+  const mappedFilters = mapFiltersToQuery(filters)
+
+  return (
+    getQueryParamValue(query.category)
+    === (mappedFilters.category ? String(mappedFilters.category) : '')
+    && getQueryParamValue(query.subcategories)
+    === (mappedFilters.subcategories || '')
+    && getQueryParamValue(query.sales) === (mappedFilters.sales || '')
+    && getQueryParamValue(query.brands) === (mappedFilters.brands || '')
+  )
 }
