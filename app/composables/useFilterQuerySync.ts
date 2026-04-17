@@ -41,7 +41,15 @@ export function useFilterQuerySync() {
         return
       }
 
-      router.replace({ query: mapFiltersToQuery(activeFilters) })
+      const normalizedPath = route.path.endsWith('/')
+        ? route.path
+        : `${route.path}/`
+
+      router.replace({
+        path: normalizedPath,
+        query: mapFiltersToQuery(activeFilters),
+        hash: route.hash,
+      })
     },
     { deep: true },
   )
