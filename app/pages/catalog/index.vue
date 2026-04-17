@@ -3,6 +3,7 @@ import CatalogFilters from '@components/CatalogFilters.vue'
 import AnimalSection from '@components/Sections/AnimalSection.vue'
 import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
 import Slider from '@components/Sections/Slider.vue'
+import { useFilterQuerySync } from '@composables/useFilterQuerySync'
 import { catalogSortOptions } from '@data/catalogSort'
 import { products } from '@data/product'
 
@@ -10,6 +11,7 @@ const selectedSort = ref<string | null>(catalogSortOptions[0]?.value ?? null)
 const { filteredProducts } = useFilteredProducts(products)
 const { resetFilters } = useFilterProducts()
 const { open } = useModal()
+useFilterQuerySync()
 </script>
 
 <template>

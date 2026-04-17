@@ -1,6 +1,7 @@
 import type { Filter } from '@custom-types/filter'
 
 export const useFilterProducts = defineStore('filterProducts', () => {
+  const router = useRouter()
   const initialFilters: Filter = {
     sales: [],
     categories: {
@@ -29,6 +30,7 @@ export const useFilterProducts = defineStore('filterProducts', () => {
 
   function resetFilters() {
     filters.value = structuredClone(initialFilters)
+    router.replace({ query: {} })
   }
 
   return {
