@@ -41,12 +41,11 @@ export function useFilterQuerySync() {
         return
       }
 
-      const normalizedPath = route.path.endsWith('/')
-        ? route.path
-        : `${route.path}/`
+      // const normalizedPath = route.path.endsWith('/')
+      //   ? route.path
+      //   : `${route.path}/`
 
       router.replace({
-        path: normalizedPath,
         query: mapFiltersToQuery(activeFilters),
         hash: route.hash,
       })
