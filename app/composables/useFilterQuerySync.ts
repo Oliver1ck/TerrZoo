@@ -67,6 +67,7 @@ function mapFiltersToQuery(filter: Filter) {
     subcategories: filter.categories.subCategories.join(',') || undefined,
     sales: filter.sales.join(',') || undefined,
     brands: filter.brands.join(',') || undefined,
+    orderBy: filter.orderBy ?? undefined,
   }
 }
 
@@ -82,6 +83,7 @@ function isFilterEmpty(filter: Filter): boolean {
     && filter.categories.mainCategory === null
     && filter.categories.subCategories.length === 0
     && filter.brands.length === 0
+    && filter.orderBy === null
   )
 }
 
@@ -113,6 +115,7 @@ function parseQueryToFilters(query: LocationQuery): Filter {
   const subcategories = getQueryParamValue(query.subcategories)
   const sales = getQueryParamValue(query.sales)
   const brands = getQueryParamValue(query.brands)
+  const orderBy = getQueryParamValue(query.orderBy)
 
   const mainCategory = +category || null
   const subCategories = subcategories
@@ -120,6 +123,7 @@ function parseQueryToFilters(query: LocationQuery): Filter {
     : []
   const parsedSales = sales ? sales.split(',').map(Number) : []
   const parsedBrands = brands ? brands.split(',').map(Number) : []
+  const parsedOrderBy = parseOrderBy(orderBy)
 
   return {
     sales: parsedSales,
@@ -128,7 +132,26 @@ function parseQueryToFilters(query: LocationQuery): Filter {
       subCategories,
     },
     brands: parsedBrands,
+    orderBy: parsedOrderBy,
   }
+}
+
+/**
+ * Ensures route query sort value matches supported options.
+ */
+function parseOrderBy(value: string): Filter['orderBy'] {
+  const allowedValues = [
+    'date-added',
+    'name-asc',
+    'name-desc',
+    'price-asc',
+    'price-desc',
+    'popularity',
+  ]
+
+  return allowedValues.includes(value)
+    ? (value as NonNullable<Filter['orderBy']>)
+    : null
 }
 
 /**
@@ -148,5 +171,6 @@ function isQuerySyncedWithFilters(
     === (mappedFilters.subcategories || '')
     && getQueryParamValue(query.sales) === (mappedFilters.sales || '')
     && getQueryParamValue(query.brands) === (mappedFilters.brands || '')
+    && getQueryParamValue(query.orderBy) === (mappedFilters.orderBy || '')
   )
 }

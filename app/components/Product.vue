@@ -19,7 +19,10 @@ const { addProduct } = useBasketProductsStore()
 
 <template>
   <article :class="classes">
-    <NuxtLink to="/" class="product__title-wrap">
+    <NuxtLink
+      :to="`/catalog/product/${product.id}`"
+      class="product__title-wrap"
+    >
       <ProductImage :src="product.img" :alt="product.name" />
       <Typography variant="heading-sm" tag="h3">
         {{ product.name }}

@@ -5,7 +5,7 @@ export function useFilteredProducts(products: ProductType[]) {
   const { filters } = storeToRefs(filterStore)
 
   const filteredProducts = computed(() => {
-    return products.filter(product => {
+    const filtered = products.filter(product => {
       if (filters.value.sales.length > 0 && !product.sales) {
         return false
       }
@@ -35,6 +35,31 @@ export function useFilteredProducts(products: ProductType[]) {
 
       return true
     })
+
+    switch (filters.value.orderBy) {
+      case 'name-asc':
+        return [...filtered].sort((a, b) => a.name.localeCompare(b.name, 'ru'))
+
+      case 'name-desc':
+        return [...filtered].sort((a, b) => b.name.localeCompare(a.name, 'ru'))
+
+      case 'price-asc':
+        return [...filtered].sort((a, b) => a.pricePerUnit - b.pricePerUnit)
+
+      case 'price-desc':
+        return [...filtered].sort((a, b) => b.pricePerUnit - a.pricePerUnit)
+
+      case 'popularity':
+        return [...filtered].sort(
+          (a, b) => Number(Boolean(b.sales)) - Number(Boolean(a.sales)),
+        )
+
+      case 'date-added':
+        return [...filtered].sort((a, b) => a.id - b.id)
+
+      default:
+        return filtered
+    }
   })
 
   return {

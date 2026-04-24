@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Filter } from '@custom-types/filter'
+
 import CatalogFilters from '@components/CatalogFilters.vue'
 import AnimalSection from '@components/Sections/AnimalSection.vue'
 import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
@@ -7,9 +9,17 @@ import { useFilterQuerySync } from '@composables/useFilterQuerySync'
 import { catalogSortOptions } from '@data/catalogSort'
 import { products } from '@data/product'
 
-const selectedSort = ref<string | null>(catalogSortOptions[0]?.value ?? null)
+const filterStore = useFilterProducts()
+const { filters } = storeToRefs(filterStore)
+
+const selectedSort = computed<Filter['orderBy']>({
+  get: () => filters.value.orderBy ?? catalogSortOptions[0]?.value ?? null,
+  set: value => {
+    filters.value.orderBy = value
+  },
+})
 const { filteredProducts } = useFilteredProducts(products)
-const { resetFilters } = useFilterProducts()
+const { resetFilters } = filterStore
 const { open } = useModal()
 useFilterQuerySync()
 </script>

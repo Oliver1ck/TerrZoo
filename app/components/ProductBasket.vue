@@ -30,7 +30,7 @@ watch(checkedUnit, newValue => {
 
 <template>
   <article class="product-basket">
-    <NuxtLink class="img-wrap" :to="`/product/${product.id}`">
+    <NuxtLink class="img-wrap" :to="`catalog/product/${product.id}`">
       <ProductImage
         :src="product.img"
         :alt="product.name"
@@ -39,7 +39,7 @@ watch(checkedUnit, newValue => {
       />
     </NuxtLink>
     <div class="product-basket__content">
-      <VLink :to="`/product/${product.id}`" variant="title" size="md">
+      <VLink :to="`catalog/product/${product.id}`" variant="title" size="md">
         {{ product.name }}
       </VLink>
       <PackageUnitList v-model="checkedUnit" :data="product.numberOfPackages" />

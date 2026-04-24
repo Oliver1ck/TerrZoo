@@ -9,6 +9,7 @@ export const useFilterProducts = defineStore('filterProducts', () => {
       subCategories: [],
     },
     brands: [],
+    orderBy: null,
   }
 
   const filters = ref<Filter>(structuredClone(initialFilters))
