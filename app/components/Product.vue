@@ -24,7 +24,7 @@ const { addProduct } = useBasketProductsStore()
       class="product__title-wrap"
     >
       <ProductImage :src="product.img" :alt="product.name" />
-      <Typography variant="heading-sm" tag="h3">
+      <Typography variant="heading-sm" tag="h3" class="product__title">
         {{ product.name }}
       </Typography>
     </NuxtLink>
@@ -78,6 +78,17 @@ const { addProduct } = useBasketProductsStore()
 
   &--secondary {
     background: var(--Product-Secondary-Bg);
+  }
+
+  &__title {
+    display: -webkit-box;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
   }
 
   &:hover {

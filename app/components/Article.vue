@@ -12,7 +12,7 @@ defineProps<{
       <div class="article__img">
         <img :src="article.image_url" :alt="article.title" />
       </div>
-      <Typography tag="h3" variant="heading-sm">
+      <Typography tag="h3" variant="heading-sm" class="article__title">
         <b>
           {{ article.title }}
         </b>
@@ -64,6 +64,17 @@ defineProps<{
     box-shadow:
       0 0 2px 0 rgba(0, 0, 0, 0.06),
       0 12px 32px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  &__title {
+    display: -webkit-box;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
   }
 }
 

@@ -2,6 +2,7 @@ import type { ProductType } from '@custom-types/product'
 
 import freshStep from '@assets/img/freshStep.png'
 import furminator from '@assets/img/furminator.png'
+import testImg from '@assets/img/productTest.avif'
 import royalCanin from '@assets/img/royalCanin.png'
 import royalSecond from '@assets/img/royalSecond.png'
 import { mockSalesData } from '@data/catalogSales'
@@ -11,6 +12,7 @@ export const products: ProductType[] = [
     id: 1,
     name: 'Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..',
     img: royalCanin,
+    images: [royalCanin],
     pricePerUnit: 0.14,
     numberOfPackages: [
       {
@@ -36,6 +38,7 @@ export const products: ProductType[] = [
     id: 2,
     name: 'FRESH STEP CAT LITTER CLAY EXTREME – Фреш Степ наполнитель..',
     img: freshStep,
+    images: [freshStep],
     pricePerUnit: 15.83,
     numberOfPackages: [
       { id: 201, count: 1, unit: 'л', value: 6, price: 95 },
@@ -58,6 +61,7 @@ export const products: ProductType[] = [
     id: 3,
     name: 'FURMINATOR SHORT HAIR LARGE CAT M/L Фурминатор для короткошерстных кошек..',
     img: furminator,
+    images: [furminator],
     pricePerUnit: 95,
     numberOfPackages: [
       {
@@ -83,6 +87,7 @@ export const products: ProductType[] = [
     id: 4,
     name: 'Сухой корм ROYAL CANIN STERILISED 37 для взрослых кастрированных котов и..',
     img: royalSecond,
+    images: [royalSecond, royalCanin, testImg],
     pricePerUnit: 110,
     numberOfPackages: [
       { id: 401, count: 1, unit: 'кг', value: 0.2, price: 22 },
@@ -107,6 +112,7 @@ export const products: ProductType[] = [
     id: 5,
     name: 'Игрушка для кошек TRIXIE мышка плюшевая с мятой',
     img: freshStep,
+    images: [freshStep],
     pricePerUnit: 5,
     numberOfPackages: [{ id: 501, count: 1, unit: 'шт', value: 1, price: 5 }],
     sales: null,
@@ -124,6 +130,7 @@ export const products: ProductType[] = [
     id: 6,
     name: 'Сухой корм PRO PLAN OptiDigest для взрослых собак средних пород..',
     img: furminator,
+    images: [furminator],
     pricePerUnit: 40,
     numberOfPackages: [
       { id: 601, count: 1, unit: 'кг', value: 3, price: 120 },
@@ -144,6 +151,7 @@ export const products: ProductType[] = [
     id: 7,
     name: 'Лакомство DREAMIES подушечки с курицей для кошек',
     img: royalSecond,
+    images: [royalSecond],
     pricePerUnit: 0.07,
     numberOfPackages: [
       { id: 701, count: 1, unit: 'г', value: 60, price: 4.2 },
@@ -164,6 +172,7 @@ export const products: ProductType[] = [
     id: 8,
     name: 'Шампунь 8in1 Perfect Coat Tender Care для щенков',
     img: royalCanin,
+    images: [royalCanin],
     pricePerUnit: 0.05,
     numberOfPackages: [
       { id: 801, count: 1, unit: 'мл', value: 473, price: 23.65 },
@@ -183,6 +192,7 @@ export const products: ProductType[] = [
     id: 9,
     name: 'Когтеточка TRIXIE столбик с площадкой',
     img: freshStep,
+    images: [freshStep],
     pricePerUnit: 45,
     numberOfPackages: [{ id: 901, count: 1, unit: 'шт', value: 1, price: 45 }],
     sales: null,
@@ -200,6 +210,7 @@ export const products: ProductType[] = [
     id: 10,
     name: 'Лакомство TITBIT корень бычий для собак',
     img: furminator,
+    images: [furminator],
     pricePerUnit: 18,
     numberOfPackages: [{ id: 1001, count: 1, unit: 'шт', value: 1, price: 18 }],
     sales: null,
@@ -217,6 +228,7 @@ export const products: ProductType[] = [
     id: 11,
     name: 'Консервы BRIT Premium с говядиной и рубцом для собак',
     img: royalSecond,
+    images: [royalSecond],
     pricePerUnit: 0.02,
     numberOfPackages: [
       { id: 1101, count: 1, unit: 'г', value: 400, price: 8 },
@@ -237,6 +249,7 @@ export const products: ProductType[] = [
     id: 12,
     name: 'Сумка-переноска STEFAN для кошек и мелких собак..',
     img: royalCanin,
+    images: [royalCanin],
     pricePerUnit: 85,
     numberOfPackages: [{ id: 1201, count: 1, unit: 'шт', value: 1, price: 85 }],
     sales: null,
@@ -254,6 +267,7 @@ export const products: ProductType[] = [
     id: 13,
     name: 'Капли Адвантейдж от блох для кошек и кроликов',
     img: freshStep,
+    images: [freshStep],
     pricePerUnit: 87.5,
     numberOfPackages: [
       { id: 1301, count: 1, unit: 'мл', value: 0.4, price: 35 },
@@ -274,6 +288,7 @@ export const products: ProductType[] = [
     id: 14,
     name: 'Лоток SAVIC Iriz с сеткой для кошек',
     img: furminator,
+    images: [furminator],
     pricePerUnit: 28,
     numberOfPackages: [{ id: 1401, count: 1, unit: 'шт', value: 1, price: 28 }],
     sales: null,

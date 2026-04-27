@@ -69,30 +69,7 @@ const sumPrice = computed(() => {
                 {{ products.length > 1 ? 'товара' : 'товар' }}
               </Typography>
             </div>
-            <div class="basket__pickup">
-              <img src="@assets/img/icons/box.svg" alt="box icon" />
-              <div class="basket__pickup-info">
-                <Typography
-                  tag="h4"
-                  variant="heading-md"
-                  color="On-Interactive"
-                  font-weight="600"
-                >
-                  Самовывоз
-                </Typography>
-                <Typography color="On-Interactive">
-                  <template #icon>
-                    <img
-                      src="@assets/img/icons/location_white.svg"
-                      alt="location icon"
-                    />
-                  </template>
-                  <template #default>
-                    Минск, ул. Чюрлёниса, 6.
-                  </template>
-                </Typography>
-              </div>
-            </div>
+            <PickupInfo variant="primary" />
             <VLink
               to="/"
               variant="outline"
@@ -208,17 +185,6 @@ const sumPrice = computed(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  &__pickup {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    &-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.38rem;
-    }
   }
 }
 

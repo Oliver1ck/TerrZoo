@@ -65,7 +65,10 @@ export const useBasketProductsStore = defineStore('basketProducts', () => {
     checkedPackageUnit: number | null,
     count: number = 1,
   ) => {
-    if (products.value.some(p => p.id === product.id)) {
+    if (
+      products.value.some(p => p.id === product.id)
+      || checkedPackageUnit === null
+    ) {
       return null
     }
     products.value.push({ ...product, count, checkedPackageUnit })

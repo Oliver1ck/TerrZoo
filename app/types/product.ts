@@ -6,6 +6,7 @@ export interface ProductType {
   id: number
   name: string
   img: string
+  images: string[]
   pricePerUnit: number
   numberOfPackages: NumberOfPackages[]
   sales: Sales | null
