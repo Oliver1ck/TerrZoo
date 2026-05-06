@@ -12,6 +12,14 @@ export interface ProductType {
   sales: Sales | null
   brand: Brand
   category: Category
+  description: string
+  keyFeatures: string[]
+  guaranteedAnalysis: ProductNutrient[]
+  nutritionalAdditives: ProductNutrient[]
+  techAdditives: string[]
+  ingredients: string
+  feedingRecommendations: string
+  waterNote: string
 }
 
 export interface NumberOfPackages {
@@ -20,6 +28,11 @@ export interface NumberOfPackages {
   unit: 'шт' | 'кг' | 'г' | 'л' | 'мл'
   value: number
   price: number
+}
+
+export interface ProductNutrient {
+  name: string
+  value: string
 }
 
 export interface BasketProductType extends ProductType {

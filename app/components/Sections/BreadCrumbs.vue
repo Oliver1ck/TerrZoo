@@ -8,10 +8,10 @@ const props = defineProps<{
 }>()
 const routes: Routes[] = [
   { label: 'Главная', path: '/' },
-  { label: 'Каталог', path: 'catalog' },
-  { label: 'Статьи', path: 'articles' },
-  { label: 'Акции', path: 'promotions' },
-  { label: 'Корзина', path: 'basket' },
+  { label: 'Каталог', path: '/catalog' },
+  { label: 'Статьи', path: '/articles' },
+  { label: 'Акции', path: '/promotions' },
+  { label: 'Корзина', path: '/basket' },
 ]
 const route = useRoute()
 
@@ -22,7 +22,9 @@ const breadCrumbs = computed(() => {
     crumbs.push(...props.parentRoutes)
     return crumbs
   }
-  crumbs.push(...routes.filter(r => currentRoute.includes(r.path)))
+  crumbs.push(
+    ...routes.filter(r => currentRoute.includes(r.path.replace('/', ''))),
+  )
   return crumbs
 })
 </script>

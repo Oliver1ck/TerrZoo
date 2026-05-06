@@ -27,6 +27,24 @@ const basketProductSchema = v.object({
       end_date: v.string(),
     }),
   ),
+  description: v.string(),
+  keyFeatures: v.array(v.string()),
+  guaranteedAnalysis: v.array(
+    v.object({
+      name: v.string(),
+      value: v.string(),
+    }),
+  ),
+  nutritionalAdditives: v.array(
+    v.object({
+      name: v.string(),
+      value: v.string(),
+    }),
+  ),
+  techAdditives: v.array(v.string()),
+  ingredients: v.string(),
+  feedingRecommendations: v.string(),
+  waterNote: v.string(),
   checkedPackageUnit: v.nullable(v.number()),
   count: v.number(),
 })

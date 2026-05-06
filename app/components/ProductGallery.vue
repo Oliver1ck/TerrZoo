@@ -120,6 +120,7 @@ watch(
 
 @media (max-width: 992px) {
   .product-gallery {
+    gap: 0.6rem;
     grid-template-columns: minmax(17.3rem, 1fr) minmax(3.38rem, 5.75rem);
     &__main {
       min-height: 14rem;
