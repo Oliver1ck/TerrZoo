@@ -14,3 +14,5 @@ export const mockSalesData: Sales = {
   start_date: '2024-11-29',
   end_date: '2024-11-30',
 }
+
+export const mockSalesDataArr: Sales[] = [mockSalesData]
