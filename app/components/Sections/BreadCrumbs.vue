@@ -16,8 +16,8 @@ const routes: Routes[] = [
 const route = useRoute()
 
 const breadCrumbs = computed(() => {
-  const currentRoute = route.fullPath.split('/').filter(Boolean)
-  const crumbs = [{ label: 'Главная', path: '/' }]
+  const currentRoute = route.fullPath.split('/').filter(Boolean).join('')
+  const crumbs = []
   if (props.parentRoutes) {
     crumbs.push(...props.parentRoutes)
     return crumbs
