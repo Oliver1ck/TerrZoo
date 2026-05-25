@@ -6,6 +6,7 @@ import AnimalSection from '@components/Sections/AnimalSection.vue'
 import BreadCrumbs from '@components/Sections/BreadCrumbs.vue'
 import Slider from '@components/Sections/Slider.vue'
 import { useFilterQuerySync } from '@composables/useFilterQuerySync'
+import { animalList } from '@data/animal'
 import { catalogSortOptions } from '@data/catalogSort'
 import { products } from '@data/product'
 
@@ -22,6 +23,19 @@ const { filteredProducts } = useFilteredProducts(products)
 const { resetFilters } = filterStore
 const { open } = useModal()
 useFilterQuerySync()
+
+const route = useRoute()
+const petName = computed(
+  () =>
+    animalList.filter(animal => {
+      if (route.params.id) {
+        if (animal.id === +route.params.id) {
+          return animal
+        }
+      }
+      return null
+    })[0]?.name,
+)
 </script>
 
 <template>
@@ -32,7 +46,7 @@ useFilterQuerySync()
       <div class="catalog__wrapper">
         <div class="catalog__title">
           <Typography variant="heading-xl" tag="h1">
-            Каталог товаров
+            Каталог товаров для {{ petName?.toLowerCase() }}
           </Typography>
           <VSelect
             v-model="selectedSort"

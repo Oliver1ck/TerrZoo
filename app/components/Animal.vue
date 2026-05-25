@@ -12,13 +12,13 @@ const props = withDefaults(
       image: '@assets/img/animals/dog.png',
       description: 'Собака',
     }),
-  }
+  },
 )
-// `catalog/${props.animal.id}`
+const url = computed(() => `/catalog/${props.animal.id}`)
 </script>
 
 <template>
-  <NuxtLink to="/" class="animal">
+  <NuxtLink :to="url" class="animal">
     <img :src="props.animal.image" :alt="props.animal.description" />
     <Typography tag="h3" variant="heading-sm" text-align="center">
       {{ props.animal.name }}

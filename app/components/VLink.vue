@@ -41,6 +41,30 @@ const props = withDefaults(
   },
 )
 
+const route = useRoute()
+
+function filterPathSegments(path: string): string[] {
+  return path
+    .split('/')
+    .filter(item => item.length > 0 && Number.isNaN(Number(item)))
+}
+
+const primaryActive = computed(() => {
+  if (props.to === '/' && route.path === '/') {
+    return true
+  }
+
+  const routeSegments = filterPathSegments(route.path)
+  const propsSegments = filterPathSegments(props.to)
+  const firstPropsSegment = propsSegments[0]
+
+  if (!firstPropsSegment) {
+    return false
+  }
+
+  return routeSegments.includes(firstPropsSegment)
+})
+
 const classes = computed(() => [
   'link',
   `link--${props.variant}`,
@@ -48,7 +72,7 @@ const classes = computed(() => [
   `link--icon-${props.iconPosition}`,
   `link--content-${props.contentPosition}`,
   `link--position-${props.position}`,
-  { 'link--primary--active': props.to === useRoute().path },
+  { 'link--primary--active': primaryActive.value },
 ])
 const { activeModal, close } = useModal()
 function handleClick() {
