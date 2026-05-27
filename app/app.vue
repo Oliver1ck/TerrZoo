@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Notification, Notivue } from 'notivue'
+</script>
 
 <template>
   <div class="wrapper">
@@ -6,5 +8,10 @@
       <NuxtPage />
     </NuxtLayout>
     <ModalProvider />
+    <Notivue v-slot="item">
+      <NotivueSwipe :item="item">
+        <Notification :item="item" />
+      </NotivueSwipe>
+    </Notivue>
   </div>
 </template>

@@ -14,7 +14,22 @@ const props = withDefaults(
 const classes = computed(() => ['product', `product--${props.variant}`])
 const checkedPackageUnit = ref<number | null>(null)
 
-const { addProduct } = useBasketProductsStore()
+const basketStore = useBasketProductsStore()
+const { addProduct, productInBasket } = basketStore
+
+function handleAddToBasket() {
+  if (checkedPackageUnit.value !== null && !productInBasket(props.product.id)) {
+    addProduct(props.product, checkedPackageUnit.value)
+    return
+  }
+
+  if (productInBasket(props.product.id)) {
+    push.warning('Товар уже есть в корзине')
+    return
+  }
+
+  push.error('Товар не добавлен. Пожалуйста, выберите фасовку.')
+}
 </script>
 
 <template>
@@ -37,13 +52,7 @@ const { addProduct } = useBasketProductsStore()
       <Button
         variant="product-basket"
         icon-pos="right"
-        @click="
-          () => {
-            if (checkedPackageUnit !== null) {
-              addProduct(product, checkedPackageUnit)
-            }
-          }
-        "
+        @click="handleAddToBasket"
       >
         <template #default>
           +

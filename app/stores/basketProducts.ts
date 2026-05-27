@@ -126,6 +126,10 @@ export const useBasketProductsStore = defineStore('basketProducts', () => {
     }
   }
 
+  const productInBasket = (productId: number) => {
+    return products.value.some(p => p.id === productId)
+  }
+
   return {
     products,
     countProducts,
@@ -136,5 +140,6 @@ export const useBasketProductsStore = defineStore('basketProducts', () => {
     decrementProductCount,
     getProductCount,
     setCheckedPackageUnit,
+    productInBasket,
   }
 })

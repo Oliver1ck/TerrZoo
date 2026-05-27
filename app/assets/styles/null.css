@@ -70,6 +70,17 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+.Notivue__content-message {
+  font-feature-settings:
+    'liga' off,
+    'clig' off;
+  font-family: 'SF Pro Text';
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem; /* 142.857% */
+}
+
 body {
   overflow-x: hidden;
 }

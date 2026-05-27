@@ -14,6 +14,8 @@ export default defineNuxtConfig({
     '~/assets/styles/fonts.css',
     '~/assets/styles/null.css',
     '~/assets/styles/variables.css',
+    'notivue/notification.css',
+    'notivue/animations.css',
   ],
 
   alias: {
@@ -35,5 +37,20 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/device', '@pinia/nuxt'],
+  notivue: {
+    position: 'bottom-right',
+    pauseOnHover: true,
+    pauseOnTouch: true,
+    limit: 4,
+    enqueue: true,
+    avoidDuplicates: true,
+    teleportTo: 'body',
+    notifications: {
+      global: {
+        duration: 3000,
+      },
+    },
+  },
+
+  modules: ['@nuxtjs/device', '@pinia/nuxt', 'notivue/nuxt'],
 })
